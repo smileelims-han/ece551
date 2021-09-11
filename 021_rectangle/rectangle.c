@@ -16,15 +16,75 @@ int max (int a, int b) {
 }
 
 //Declare your rectangle structure here!
-
+struct _rectangle{
+	int x;
+	int y;
+	int width;
+	int height;
+};
+typedef struct _rectangle rectangle;
 
 rectangle canonicalize(rectangle r) {
   //WRITE THIS FUNCTION
+  if(r.width<0){
+	  r.width = 0-r.width;
+          r.x = r.x-r.width;
+  }
+  if(r.height<0){
+	  r.height = 0-r.height;
+	  r.y = r.y-r.height;
+  }
+  else{
+	  return r;
+  }
   return r;
 }
 rectangle intersection(rectangle r1, rectangle r2) {
   //WRITE THIS FUNCTION
-  return r1;
+  if (r1.width<0||r1.height<0){
+	  r1=canonicalize(r1);
+  }
+  if (r2.width<0||r2.height<0){
+	  r2=canonicalize(r2);
+  }
+  //canonicalize rectangle
+  int r1_topx,r1_topy,r2_topx,r2_topy;
+  r1_topx = r1.x+r1.width;
+  r1_topy = r1.y+r1.height;
+  r2_topx = r2.x+r2.width;
+  r2_topy = r2.y+r2.height;
+  //sign rectangle top right
+  rectangle result_r;
+  if (r1.y>r2_topy||r2.y>r1_topy||r1_topx<r2.x||r2_topx<r1.x){
+	  result_r.x=max(r1.x,r2.x);
+	  result_r.y=max(r1.y,r2.y);
+	  result_r.width=0;
+	  result_r.height=0;
+	  return (result_r);
+  }
+  //no intersection condition
+  if (r1.y==r2_topy||r2.y==r1_topy){
+	  result_r.x=max(r1.x,r2.x);
+	  result_r.y=max(r1.y,r2.y);
+	  result_r.width=min(r1_topx,r2_topx)-result_r.x;
+	  result_r.height=0;
+          return (result_r);
+  }
+  if (r1_topx==r2.x||r2_topx==r1.x){
+	  result_r.x=max(r1.x,r2.x);
+	  result_r.y=max(r1.y,r2.y);
+	  result_r.width=0;
+	  result_r.height=min(r1_topy,r2_topy)-result_r.y;
+          return (result_r);
+  }
+//one side intersection but no overlap
+  else{ 
+  result_r.x = max(r1.x,r2.x);
+  result_r.y = max(r1.y,r2.y);
+  result_r.width = min(r1_topx,r2_topx)-result_r.x;
+  result_r.height=min(r1_topy,r2_topy)-result_r.y;
+  return result_r;
+  }
 }
 
 //You should not need to modify any code below this line
