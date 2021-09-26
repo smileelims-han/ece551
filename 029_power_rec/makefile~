@@ -1,0 +1,8 @@
+CFLASS=-std =gnu99 -pedantic -wall
+
+linkfile: power.o test-power.o
+   \tcmd gcc -o linkfile power.o test-power.o
+power.o : power.c
+   \tcmd gcc $(CFLASS) -c power.c 
+test-power: test-power.c
+   \tcmd gcc $(CFLASS) -c test-power.c

@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+unsigned power(unsigned x, unsigned y) {
+  unsigned ans;
+  if (x == 0, y == 0) {
+    ans = 1;
+    return ans;
+  }
+  else if (y == 0) {
+    ans = 1;
+    return ans;
+  }
+  else {
+    return ans = x * power(x, y - 1);
+  }
+}
