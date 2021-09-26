@@ -29,7 +29,7 @@ int main(void) {
     total = total ^ getOtherSN(i);
   }
   printf("Ok, time for round 2. I have another secret number.\n");
-  printf("Your guess:\n");
+neprintf("Your guess:\n");
   if (fgets(buffer, 1024, stdin) == NULL) {
     printf("Oh no, you are giving up?  You lose...\n");
     return EXIT_FAILURE;
@@ -42,3 +42,6 @@ int main(void) {
   printf("Sorry, you did not win the second round\n");
   return EXIT_FAILURE;
 }
+
+
+
