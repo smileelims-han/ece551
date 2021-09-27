@@ -1,0 +1,2 @@
+test: test.c
+	gcc -0 test -std=gun99 -Wall -Werror test.c
