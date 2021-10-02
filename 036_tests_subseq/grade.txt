@@ -1,0 +1,63 @@
+Grading at 10/02/2021:06:14:00.274440
+For commit ID dc0a2e50ece1be4c3d0f4623aa654f730e2cbbe7
+Grading at Sat Oct  2 02:13:59 EDT 2021
+**Testing broken implementation 10 **
+-------------------------------------
+
+array_8 got 2
+
+**Testing broken implementation 11 **
+-------------------------------------
+
+array_1 got 2
+
+**Testing broken implementation 1 **
+-------------------------------------
+
+array_5 got 3
+
+**Testing broken implementation 2 **
+-------------------------------------
+
+
+**Testing broken implementation 3 **
+-------------------------------------
+
+array_1 got 2
+
+**Testing broken implementation 4 **
+-------------------------------------
+
+
+**Testing broken implementation 5 **
+-------------------------------------
+
+array_6 got 7
+
+**Testing broken implementation 6 **
+-------------------------------------
+
+array_1 got 0
+
+**Testing broken implementation 7 **
+-------------------------------------
+
+array_1 got 0
+
+**Testing broken implementation 8 **
+-------------------------------------
+
+array_3 got 1
+
+**Testing broken implementation 9 **
+-------------------------------------
+
+array_6 got 4
+
+**Testing correct implementation **
+-------------------------------------
+
+
+All test programs were handled correctly
+
+Overall Grade: PASSED
