@@ -1,7 +1,19 @@
-Grading at 10/05/2021:21:33:01.211041
-For commit ID b8083f86740f5381dcc131d38acfe0650b1dc939
-Grading at Tue Oct  5 17:33:01 EDT 2021
+Grading at 10/05/2021:21:43:06.726882
+For commit ID 7b123c72f11af5378cf51cd0bd8be51a77d3e9ba
+Grading at Tue Oct  5 17:43:05 EDT 2021
 Running your test cases
-Cannot proceed without testcases.txt
+
+Compiling printCountries
+rm -f *~ printCountries printRunningAvg printCumulative printDailyMax
+gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printCountries.o -o printCountries
++-----------------------------------------------------------------------+
+Test case printCountries invalid.csv
+Your program successfully indicated a failure case
+
+Compiling printDailyMax
+rm -f *~ printCountries printRunningAvg printCumulative printDailyMax
+gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printDailyMax.o -o printDailyMax
+Makefile:4: recipe for target 'printDailyMax' failed
+The code did not compile!
 
 Overall Grade: NO GRADE YET
