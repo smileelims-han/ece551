@@ -1,0 +1,50 @@
+#include "pandemic.h"
+
+#include <stdio.h>
+#include <stdlib.h>
+
+country_t parseLine(char * line) {
+  /* check if *line is empty string */
+  if (line == NULL) {
+    printf("Input is empty.");
+    exit(EXIT_FAILURE);
+  }
+
+  /* if not empty string,find the first comma */
+  /* set up the parameter */
+  country_t ans;
+  const char * temp;
+  char * name;
+  temp = line;
+
+  /* check the location of comma, at the same time check if there has incorrect null terminal inside name */
+  for (int i = 0; *temp != ','; i++) {
+    if (*temp != '\0') {
+      printf("There is incorrect type in country's name.");
+      exit(EXIT_FAILURE);
+    }
+    else {
+      name[i] = temp;
+      temp++;
+    }
+  }
+
+  ans.name[0] = '\0';
+  ans.population = 0;
+  return ans;
+}
+
+void calcRunningAvg(unsigned * data, size_t n_days, double * avg) {
+  //WRITE ME
+}
+
+void calcCumulative(unsigned * data, size_t n_days, uint64_t pop, double * cum) {
+  //WRITE ME
+}
+
+void printCountryWithMax(country_t * countries,
+                         size_t n_countries,
+                         unsigned ** data,
+                         size_t n_days) {
+  //WRITE ME
+}
