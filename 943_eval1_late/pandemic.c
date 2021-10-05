@@ -45,7 +45,6 @@ country_t parseLine(char * line) {
       fprintf(stderr, "There is a comma inside pupolation.");
       exit(EXIT_FAILURE);
     }
-    printf("*calc is %c \n", *calc);
     /* check if there is another comma just in case. */
     if (48 <= *calc && *calc <= 57) {
       ans.population = ans.population * 10ULL + (uint64_t)(*calc - '0');
