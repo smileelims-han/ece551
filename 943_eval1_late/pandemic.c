@@ -38,23 +38,18 @@ country_t parseLine(char * line) {
   /* Then check the chars after comma, are they all numbers */
   calc++;
   ref = calc;
+  ans.population = 0ULL;
 
   for (int j = 0; *calc != '\0' && *calc != ','; j++) {
     if (*calc == ',') {
       fprintf(stderr, "There is a comma inside pupolation.");
       exit(EXIT_FAILURE);
     }
+    printf("*calc is %c \n", *calc);
     /* check if there is another comma just in case. */
-    if (*calc > '9' || *calc < '0') {
-      fprintf(stderr, "The population should be all numbers.");
-      exit(EXIT_FAILURE);
+    if (48 <= *calc && *calc <= 57) {
+      ans.population = ans.population * 10ULL + (uint64_t)(*calc - '0');
     }
-    /* check if all the chars between comma and null terminal are numbers. */
-    else {
-      ans.population = ans.population * 10 + (uint64_t)(*ref - '0');
-      ref++;
-    }
-    /* copy the chars in population in line into the pop */
     calc++;
   }
   return ans;
