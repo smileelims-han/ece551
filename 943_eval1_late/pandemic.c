@@ -45,6 +45,11 @@ country_t parseLine(char * line) {
   ans.population = 0ull;
   size_t pop_length;
 
+  if (*calc == '\n') {
+    fprintf(stderr, "These is no input for population.\n");
+    exit(EXIT_FAILURE);
+  }
+
   /* moving the pointer to the end of numbers and
   calculate the length of numbers */
   for (int j = 0; *calc != '\0'; j++) {
