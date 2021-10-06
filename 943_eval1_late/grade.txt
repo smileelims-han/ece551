@@ -1,6 +1,6 @@
-Grading at 10/06/2021:19:59:03.218616
-For commit ID a8fecd46c3aa32c2351952b527ad5c7a53e31557
-Grading at Wed Oct  6 15:58:59 EDT 2021
+Grading at 10/06/2021:20:09:10.028184
+For commit ID 924fa1f888ee17a5d979d4cf3fbb1dbfb59a4e89
+Grading at Wed Oct  6 16:09:06 EDT 2021
 Running your test cases
 
 Compiling printCountries
@@ -8,8 +8,8 @@ rm -f *~ printCountries printRunningAvg printCumulative printDailyMax
 gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printCountries.o -o printCountries
 +-----------------------------------------------------------------------+
 Test case printCountries invalid.csv
-haha123: 0
-Your program did not indicate a failure case
+ans.pop = 0 
+Your program successfully indicated a failure case
 
 Compiling printDailyMax
 rm -f *~ printCountries printRunningAvg printCumulative printDailyMax
@@ -23,14 +23,32 @@ rm -f *~ printCountries printRunningAvg printCumulative printDailyMax
 gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printCountries.o -o printCountries
 +-----------------------------------------------------------------------+
 Test case printCountries population.csv
-Your file matched the expected output
+Line_1_did_not_match
+Line_2_did_not_match
+Line_3_did_not_match
+Line_4_did_not_match
+Line_5_did_not_match
+Line_6_did_not_match
+Line_7_did_not_match
+Line_8_did_not_match
+Line_9_did_not_match
+Your file did not match the expected output
 
 Compiling printDailyMax
 rm -f *~ printCountries printRunningAvg printCumulative printDailyMax
 gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printDailyMax.o -o printDailyMax
 +-----------------------------------------------------------------------+
 Test case printDailyMax population.csv daily_small.csv
-Your file matched the expected output
+Line_1_did_not_match
+Line_2_did_not_match
+Line_3_did_not_match
+Line_4_did_not_match
+Line_5_did_not_match
+Line_6_did_not_match
+Line_7_did_not_match
+Line_8_did_not_match
+Line_9_did_not_match
+Your file did not match the expected output
 
 You have FAILED one or more of your test cases
 Keep debugging
