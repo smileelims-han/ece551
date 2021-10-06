@@ -100,10 +100,41 @@ void calcCumulative(unsigned * data, size_t n_days, uint64_t pop, double * cum) 
   }
 }
 
-/*
+size_t findMax(unsigned * data, size_t n_days) {
+  size_t maxnum_loc = 0;
+  unsigned maxnum;
+  maxnum = *data;
+  for (size_t i = 0; i < n_days; i++) {
+    if (maxnum < *(data + i)) {
+      maxnum = *(data + i);
+      maxnum_loc = i;
+    }
+  }
+  return maxnum_loc;
+}
+
 void printCountryWithMax(country_t * countries,
                          size_t n_countries,
                          unsigned ** data,
                          size_t n_days) {
-  //WRITE ME
-  }*/
+  if (countries == NULL) {
+    fprintf(stderr, "There is an emtpy input.\n");
+    exit(EXIT_FAILURE);
+  }
+  if (data == NULL) {
+    fprintf(stderr, "There is an emtpy input.\n");
+    exit(EXIT_FAILURE);
+  }
+
+  unsigned maxPer_con[n_countries];
+
+  for (size_t i = 0; i < n_countries; i++) {
+    size_t max_loc = findMax(*(data + i), n_days);
+    maxPer_con[i] = *(data[i] + max_loc);
+  }
+
+  size_t max_country = findMax(maxPer_con, n_countries);
+  printf("%s has the most daily cases with %u\n",
+         (countries + max_country)->name,
+         *(maxPer_con + max_country));
+}
