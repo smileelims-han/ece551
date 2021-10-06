@@ -58,13 +58,26 @@ country_t parseLine(char * line) {
     pop[k] = ref;
     ref++;
   }
+  printf("string pop = %s\n", *pop);
 
   /* using atoi to transfer the chars into numbers */
-  ans.population = atoi(*pop);
-  if (ans.population == 0) {
+  ans.population = strtoul(*pop, pop + pop_length, 10);
+
+  /*if (pop_signed > 0) {
+    ans.population = pop_signed;
+  }
+  if (pop_signed == 0) {
     fprintf(stderr, "The input format is incorrect.\n");
     exit(EXIT_FAILURE);
   }
+  if (pop_signed < 0) {
+    ans.population = pop_signed;
+    printf("the population in uint64 is %ld\n", ans.population);
+    }*/
+
+  /*ans.population = atoi(*pop);
+  if (ans.population == 0) {
+  */
   /* return FAILURE when the first symbol
      (excluded space) is not number */
   /*if (ans.population < 0) {
