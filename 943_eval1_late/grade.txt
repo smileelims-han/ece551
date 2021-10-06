@@ -1,6 +1,6 @@
-Grading at 10/06/2021:17:14:11.734738
-For commit ID 2b931c51af1a9f0e36fe1d381dbd01a6f938dd6d
-Grading at Wed Oct  6 13:14:09 EDT 2021
+Grading at 10/06/2021:19:04:43.736301
+For commit ID c7091bab5a55933b3c2d72f44627e0e810ff4fa3
+Grading at Wed Oct  6 15:04:41 EDT 2021
 Running your test cases
 
 Compiling printCountries
@@ -22,7 +22,27 @@ rm -f *~ printCountries printRunningAvg printCumulative printDailyMax
 gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printCountries.o -o printCountries
 +-----------------------------------------------------------------------+
 Test case printCountries population.csv
-Your file matched the expected output
+Line_1_did_not_match
+Line_2_did_not_match
+Line_3_did_not_match
+Line_4_did_not_match
+Line_5_did_not_match
+Line_6_did_not_match
+Line_7_did_not_match
+Line_8_did_not_match
+Line_9_did_not_match
+Line_10_did_not_match
+Line_11_did_not_match
+Line_12_did_not_match
+Line_13_did_not_match
+Line_14_did_not_match
+Line_15_did_not_match
+Line_16_did_not_match
+Line_17_did_not_match
+Line_18_did_not_match
+Line_19_did_not_match
+Line_20_did_not_match
+Your file did not match the expected output
 
 Compiling printDailyMax
 rm -f *~ printCountries printRunningAvg printCumulative printDailyMax
@@ -30,6 +50,26 @@ gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printDailyMax.o -o prin
 +-----------------------------------------------------------------------+
 Test case printDailyMax population.csv daily_small.csv
 Line_1_did_not_match
+Line_2_did_not_match
+Line_3_did_not_match
+Line_4_did_not_match
+Line_5_did_not_match
+Line_6_did_not_match
+Line_7_did_not_match
+Line_8_did_not_match
+Line_9_did_not_match
+Line_10_did_not_match
+Line_11_did_not_match
+Line_12_did_not_match
+Line_13_did_not_match
+Line_14_did_not_match
+Line_15_did_not_match
+Line_16_did_not_match
+Line_17_did_not_match
+Line_18_did_not_match
+Line_19_did_not_match
+Line_20_did_not_match
+Line_21_did_not_match
 Your file did not match the expected output
 
 You have FAILED one or more of your test cases
