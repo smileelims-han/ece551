@@ -63,7 +63,26 @@ country_t parseLine(char * line) {
 }
 
 void calcRunningAvg(unsigned * data, size_t n_days, double * avg) {
-  //WRITE ME
+  if (data == NULL) {
+    fprintf(stderr, "There is an emtpy input.\n");
+    exit(EXIT_FAILURE);
+  }
+  if (n_days < 7) {
+    fprintf(stderr, "There is not enough days as input.\n");
+    exit(EXIT_FAILURE);
+  }
+  size_t avg_length = n_days - 6;
+  unsigned * ptr = data;
+  unsigned * ref = data;
+  for (size_t i = 0; i < avg_length; i++) {
+    double sum = 0;
+    for (size_t j = 0; j < 7; j++) {
+      sum = sum + *ptr;
+      ptr++;
+    }
+    avg[i] = sum / 7.0;
+    ptr = ref + i + 1;
+  }
 }
 
 /*void calcCumulative(unsigned * data, size_t n_days, uint64_t pop, double * cum) {
