@@ -60,40 +60,8 @@ country_t parseLine(char * line) {
   }
 
   char * end;
-  char * start;
-  start = *pop;
   /* using atoi to transfer the chars into numbers */
   ans.population = strtoll(*pop, &end, 10);
-  printf("the end is to %c \n", *end);
-  printf("the start is to %c \n", *start);
-
-  /*if (&end != &start) {
-    fprintf(stderr, "The input format for population is incorrect. \n");
-    exit(EXIT_FAILURE);
-    }*/
-
-  /*if (pop_signed > 0) {
-    ans.population = pop_signed;
-  }
-  if (pop_signed == 0) {
-    fprintf(stderr, "The input format is incorrect.\n");
-    exit(EXIT_FAILURE);
-  }
-  if (pop_signed < 0) {
-    ans.population = pop_signed;
-    printf("the population in uint64 is %ld\n", ans.population);
-    }*/
-
-  /*ans.population = atoi(*pop);
-  if (ans.population == 0) {
-  */
-  /* return FAILURE when the first symbol
-     (excluded space) is not number */
-  /*if (ans.population < 0) {
-    ans.population = (uint64_t)ans.population;
-    }*/
-  /* incase there is negative number, transfer
-     it into uint64_t */
 
   return ans;
 }
