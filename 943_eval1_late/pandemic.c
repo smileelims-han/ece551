@@ -11,8 +11,8 @@ country_t parseLine(char * line) {
   }
 
   /* find the first comma */
-  /* set up two pointers, one will move
-  in the array to check the desired symbol;
+  /* set up two pointers, one will move in
+  the array to until meet the desired symbol;
   one will set at the begining for reference.
   The difference between the two pointers is
   the length of name or population.*/
@@ -59,7 +59,7 @@ country_t parseLine(char * line) {
   }
 
   char * end;
-  /* using atoi to transfer the chars into numbers */
+  /* using strtoll to transfer the chars into numbers */
   ans.population = strtoll(*pop, &end, 10);
   if (ans.population == 0ull) {
     fprintf(stderr, "The input format for population is incorrect.\n");
