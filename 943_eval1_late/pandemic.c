@@ -58,10 +58,19 @@ country_t parseLine(char * line) {
     pop[k] = ref;
     ref++;
   }
-  printf("string pop = %s\n", *pop);
 
+  char * end;
+  char * start;
+  start = *pop;
   /* using atoi to transfer the chars into numbers */
-  ans.population = strtoul(*pop, pop + pop_length, 10);
+  ans.population = strtoll(*pop, &end, 10);
+  printf("the end is to %c \n", *end);
+  printf("the start is to %c \n", *start);
+
+  /*if (&end != &start) {
+    fprintf(stderr, "The input format for population is incorrect. \n");
+    exit(EXIT_FAILURE);
+    }*/
 
   /*if (pop_signed > 0) {
     ans.population = pop_signed;
