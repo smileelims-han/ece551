@@ -4,6 +4,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+/* get_location is move the input pointer to
+the index where meet the first desired symbol
+in the array the pointer point to*/
 char * get_location(char * calc, char symbol) {
   for (size_t i = 0; *calc != symbol; i++) {
     calc++;
@@ -29,12 +32,8 @@ country_t parseLine(char * line) {
   calc = line;
   ref = line;
 
-  /* Get the location of comma */
+  /* Get the location of comma and the length of name  */
   calc = get_location(calc, ',');
-
-  /*for (int i = 0; *calc != ','; i++) {
-    calc++;
-    }*/
   name_length = calc - ref;
 
   /* copy the chars in sting before comma into ans.name */
@@ -48,29 +47,25 @@ country_t parseLine(char * line) {
   ans.population = 0ull;
   size_t pop_length;
 
+  /* check if the input population is empty */
   if (*calc == '\n') {
     fprintf(stderr, "These is no input for population.\n");
     exit(EXIT_FAILURE);
   }
 
-  /* moving the pointer to the end of numbers and
-  calculate the length of numbers */
+  /* get the length of the whold population input */
   calc = get_location(calc, '\0');
-  /*for (int j = 0; *calc != '\0'; j++) {
-    calc++;
-    }*/
   pop_length = calc - ref;
 
-  /* copy the parts after comma into a new string */
+  /* copy the population part into a new string */
   char * pop[pop_length];
   for (int k = 0; *ref != *calc; k++) {
     pop[k] = ref;
     ref++;
   }
 
-  char * end;
   /* using strtoll to transfer the chars into numbers */
-  ans.population = strtoll(*pop, &end, 10);
+  ans.population = strtoll(*pop, NULL, 10);
   if (ans.population == 0ull) {
     fprintf(stderr, "The input format for population is incorrect.\n");
     exit(EXIT_FAILURE);
