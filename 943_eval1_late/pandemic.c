@@ -1,28 +1,26 @@
 #include "pandemic.h"
 
-#include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 country_t parseLine(char * line) {
-  /* check if is empty string */
   if (line == NULL) {
     fprintf(stderr, "Input is empty.");
     exit(EXIT_FAILURE);
   }
 
   /* find the first comma */
-  country_t ans;
-  size_t name_length;
-  char *calc, *ref;
-  calc = line;
-  ref = line;
   /* set up two pointers, one will move
   in the array to check the desired symbol;
   one will set at the begining for reference.
   The difference between the two pointers is
   the length of name or population.*/
+  country_t ans;
+  size_t name_length;
+  char *calc, *ref;
+  calc = line;
+  ref = line;
 
   /* Get the location of comma */
   for (int i = 0; *calc != ','; i++) {
