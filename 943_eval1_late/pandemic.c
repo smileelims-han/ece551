@@ -24,13 +24,7 @@ country_t parseLine(char * line) {
 
   /* Get the location of comma */
   for (int i = 0; *calc != ','; i++) {
-    if (*calc == '\0') {
-      fprintf(stderr, "There is incorrect type in country's name.");
-      exit(EXIT_FAILURE);
-    }
-    else {
-      calc++;
-    }
+    calc++;
   }
   name_length = calc - ref;
 
