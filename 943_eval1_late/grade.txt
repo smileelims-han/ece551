@@ -1,6 +1,6 @@
-Grading at 10/06/2021:01:21:43.187942
-For commit ID 0f44e04ccb4f9e26379adae8c87b5f034168e3cb
-Grading at Tue Oct  5 21:21:42 EDT 2021
+Grading at 10/06/2021:01:22:54.398000
+For commit ID 4e6573cd90e389186fe9cc44cb31776255abf8cb
+Grading at Tue Oct  5 21:22:53 EDT 2021
 Running your test cases
 
 Compiling printCountries
@@ -8,7 +8,7 @@ rm -f *~ printCountries printRunningAvg printCumulative printDailyMax
 gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printCountries.o -o printCountries
 +-----------------------------------------------------------------------+
 Test case printCountries invalid.csv
-Our printCountries does not consider this an error case
+Your program successfully indicated a failure case
 
 Compiling printDailyMax
 rm -f *~ printCountries printRunningAvg printCumulative printDailyMax
