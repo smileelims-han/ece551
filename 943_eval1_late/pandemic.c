@@ -68,7 +68,7 @@ country_t parseLine(char * line) {
   /* return FAILURE when the first symbol
      (excluded space) is not number */
   if (ans.population < 0) {
-    ans.population = 0 - ans.population;
+    ans.population = (uint64_t)ans.population;
   }
   /* incase there is negative number, transfer
      it into uint64_t */
