@@ -56,28 +56,17 @@ country_t parseLine(char * line) {
     fprintf(stderr, "The input format is incorrect.\n");
     exit(EXIT_FAILURE);
   }
-  /*if (*calc == ',') {
-      fprintf(stderr, "There is a comma inside pupolation.");
-      exit(EXIT_FAILURE);
-    }
-    else if (*calc < 48 || *calc > 57) {
-      fprintf(stderr, "The input of population is incorrect format");
-      exit(EXIT_FAILURE);
-    }
-    else if (48 <= *calc && *calc <= 57) {
-      ans.population = ans.population * 10ULL + (uint64_t)(*calc - '0');
-      printf("ana.population = %ld \n", ans.population);
-    }
-    calc++;
-    }*/
+  if (ans.population < 0) {
+    ans.population = (uint64_t)ans.population;
+  }
   return ans;
 }
 
-/* void calcRunningAvg(unsigned * data, size_t n_days, double * avg) {
+void calcRunningAvg(unsigned * data, size_t n_days, double * avg) {
   //WRITE ME
 }
 
-void calcCumulative(unsigned * data, size_t n_days, uint64_t pop, double * cum) {
+/*void calcCumulative(unsigned * data, size_t n_days, uint64_t pop, double * cum) {
   //WRITE ME
 }
 
