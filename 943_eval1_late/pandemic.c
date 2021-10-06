@@ -1,5 +1,6 @@
 #include "pandemic.h"
 
+#include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -85,10 +86,21 @@ void calcRunningAvg(unsigned * data, size_t n_days, double * avg) {
   }
 }
 
-/*void calcCumulative(unsigned * data, size_t n_days, uint64_t pop, double * cum) {
+void calcCumulative(unsigned * data, size_t n_days, uint64_t pop, double * cum) {
   //WRITE ME
+  if (data == NULL) {
+    fprintf(stderr, "There is an emtpy input.\n");
+    exit(EXIT_FAILURE);
+  }
+
+  unsigned sum = 0;
+  for (size_t i = 0; i < n_days; i++) {
+    sum += *(data + i);
+    *(cum + i) = (sum * 1.0 / pop) * 100000;
+  }
 }
 
+/*
 void printCountryWithMax(country_t * countries,
                          size_t n_countries,
                          unsigned ** data,
