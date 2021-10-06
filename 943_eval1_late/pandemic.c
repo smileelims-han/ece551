@@ -13,7 +13,7 @@ country_t parseLine(char * line) {
   /* if not empty string,find the first comma */
 
   country_t ans;
-  const char *calc,
+  char *calc,
       *ref; /* set up two pointer, one for calculation the length, one for reference the start. */
   size_t name_length;
   calc = line;
@@ -39,18 +39,37 @@ country_t parseLine(char * line) {
   calc++;
   ref = calc;
   ans.population = 0ULL;
+  size_t pop_length;
+  for (int j = 0; *calc != '\0'; j++) {
+    calc++;
+  }
+  pop_length = calc - ref;
+  char * pop[pop_length];
 
-  for (int j = 0; *calc != '\0' && *calc != ','; j++) {
-    if (*calc == ',') {
+  for (int k = 0; *ref != *calc; k++) {
+    pop[k] = ref;
+    ref++;
+  }
+
+  ans.population = atoi(*pop);
+  if (ans.population == 0) {
+    fprintf(stderr, "The input format is incorrect.\n");
+    exit(EXIT_FAILURE);
+  }
+  /*if (*calc == ',') {
       fprintf(stderr, "There is a comma inside pupolation.");
       exit(EXIT_FAILURE);
     }
-    /* check if there is another comma just in case. */
-    if (48 <= *calc && *calc <= 57) {
+    else if (*calc < 48 || *calc > 57) {
+      fprintf(stderr, "The input of population is incorrect format");
+      exit(EXIT_FAILURE);
+    }
+    else if (48 <= *calc && *calc <= 57) {
       ans.population = ans.population * 10ULL + (uint64_t)(*calc - '0');
+      printf("ana.population = %ld \n", ans.population);
     }
     calc++;
-  }
+    }*/
   return ans;
 }
 
