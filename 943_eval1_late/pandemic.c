@@ -42,7 +42,7 @@ country_t parseLine(char * line) {
   /* move the pointers to the first chars after comma */
   calc++;
   ref = calc;
-  ans.population = 0ul;
+  ans.population = 0ull;
   size_t pop_length;
 
   /* moving the pointer to the end of numbers and
@@ -60,9 +60,15 @@ country_t parseLine(char * line) {
   }
 
   char * end;
+  char * start;
+  start = *pop;
   /* using atoi to transfer the chars into numbers */
   ans.population = strtoll(*pop, &end, 10);
-
+  printf("ans.pop = %lu \n", ans.population);
+  if (ans.population == 0ull && &end != &start) {
+    fprintf(stderr, "The input format for population is incorrect.\n");
+    exit(EXIT_FAILURE);
+  }
   return ans;
 }
 
