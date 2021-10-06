@@ -4,6 +4,13 @@
 #include <stdlib.h>
 #include <string.h>
 
+char * get_location(char * calc, char symbol) {
+  for (size_t i = 0; *calc != symbol; i++) {
+    calc++;
+  }
+  return calc;
+}
+
 country_t parseLine(char * line) {
   if (line == NULL) {
     fprintf(stderr, "Input is empty.");
@@ -23,9 +30,11 @@ country_t parseLine(char * line) {
   ref = line;
 
   /* Get the location of comma */
-  for (int i = 0; *calc != ','; i++) {
+  calc = get_location(calc, ',');
+
+  /*for (int i = 0; *calc != ','; i++) {
     calc++;
-  }
+    }*/
   name_length = calc - ref;
 
   /* copy the chars in sting before comma into ans.name */
@@ -46,9 +55,10 @@ country_t parseLine(char * line) {
 
   /* moving the pointer to the end of numbers and
   calculate the length of numbers */
-  for (int j = 0; *calc != '\0'; j++) {
+  calc = get_location(calc, '\0');
+  /*for (int j = 0; *calc != '\0'; j++) {
     calc++;
-  }
+    }*/
   pop_length = calc - ref;
 
   /* copy the parts after comma into a new string */
