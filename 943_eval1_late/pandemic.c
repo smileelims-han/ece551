@@ -65,12 +65,9 @@ country_t parseLine(char * line) {
   }
 
   char * end;
-  char * start;
-  start = *pop;
   /* using atoi to transfer the chars into numbers */
   ans.population = strtoll(*pop, &end, 10);
-  printf("ans.pop = %lu \n", ans.population);
-  if (ans.population == 0ull && &end != &start) {
+  if (ans.population == 0ull) {
     fprintf(stderr, "The input format for population is incorrect.\n");
     exit(EXIT_FAILURE);
   }
