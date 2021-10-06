@@ -1,6 +1,6 @@
-Grading at 10/06/2021:02:46:00.414553
-For commit ID 5f930d49b9bc5561daea9e6d35c0df995e4f4f6e
-Grading at Tue Oct  5 22:45:59 EDT 2021
+Grading at 10/06/2021:05:14:03.858185
+For commit ID 1ec99eff99965be263182060744e5dbf6d783d3d
+Grading at Wed Oct  6 01:14:00 EDT 2021
 Running your test cases
 
 Compiling printCountries
@@ -13,7 +13,25 @@ Your program successfully indicated a failure case
 Compiling printDailyMax
 rm -f *~ printCountries printRunningAvg printCumulative printDailyMax
 gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printDailyMax.o -o printDailyMax
-Makefile:4: recipe for target 'printDailyMax' failed
-The code did not compile!
++-----------------------------------------------------------------------+
+Test case printDailyMax population.csv
+Your program successfully indicated a failure case
+
+Compiling printCountries
+rm -f *~ printCountries printRunningAvg printCumulative printDailyMax
+gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printCountries.o -o printCountries
++-----------------------------------------------------------------------+
+Test case printCountries population.csv
+Your file matched the expected output
+
+Compiling printDailyMax
+rm -f *~ printCountries printRunningAvg printCumulative printDailyMax
+gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printDailyMax.o -o printDailyMax
++-----------------------------------------------------------------------+
+Test case printDailyMax population.csv daily_small.csv
+Your file matched the expected output
+
+You have PASSED all of your test cases
+Keep adding test cases until you are satisfied your program is correct
 
 Overall Grade: NO GRADE YET
