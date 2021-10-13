@@ -17,17 +17,30 @@ int main(int argc, char ** argv) {
     for (int j = 0; j < 11; j++) {
       c = fgetc(f);
       if (j < 10 && c == '\n') {
-        fprintf(stderr, "The number of chars in row less than 10.");
+        fprintf(stderr, "The number of chars in row less than 10.\n");
         return EXIT_FAILURE;
       }
       if (j < 10 && c != '\n') {
         input[i][j] = c;
       }
       if (j == 10 && c != '\n') {
-        fprintf(stderr, "The number of chars in row more than 10.");
+        fprintf(stderr, "The number of chars in row more than 10.\n");
+        return EXIT_FAILURE;
+      }
+      if (c == EOF) {
+        fprintf(stderr, "The input matrix end too early.\n");
+        printf("after one round of j,c=%d\n", c);
+      }
+      if (c == EOF) {
+        fprintf(stderr, "The input matrix has less than 10 rows.");
         return EXIT_FAILURE;
       }
     }
+  }
+  c = fgetc(f);
+  if (c != EOF) {
+    fprintf(stderr, "The input matrix has more than 10 rows.");
+    return EXIT_FAILURE;
   }
 
   for (int i = 0; i < 10; i++) {
