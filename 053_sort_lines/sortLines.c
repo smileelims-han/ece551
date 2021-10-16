@@ -14,24 +14,22 @@ void sortData(char ** data, size_t count) {
   qsort(data, count, sizeof(char *), stringOrder);
 }
 
-char ** read_sort(FILE * file) {
-  char ** string = NULL;
+size_t read_sort(FILE * file, char ** array) {
   char * lines = NULL;
   size_t siz = 0;
-  size_t index = 0;
+  size_t count = 0;
   while (getline(&lines, &siz, file)) {
-    string = realloc(string, (index + 1) * sizeof(*string));
-    string[index] = lines;
-    lines = NULL;
-    index++;
+    array = realloc(array, (count + 1) * sizeof(*array));
+    array[count] = lines;
+    count++;
   }
   free(lines);
-  sortData(string, index);
-  return string;
+  sortData(array, count);
+  return count;
 }
 
-void pr_result(char ** sorted, size_t size_sorted) {
-  for (size_t i = 0; i < size_sorted; i++) {
+void pr_result(char ** sorted, size_t n_element) {
+  for (size_t i = 0; i < n_element; i++) {
     printf("%s", sorted[i]);
     free(sorted[i]);
   }
@@ -41,7 +39,7 @@ void pr_result(char ** sorted, size_t size_sorted) {
 int main(int argc, char ** argv) {
   //WRITE YOUR CODE HERE!
   size_t sz = 0;
-  char ** file_string = NULL;
+  char ** arr_str = NULL;
   FILE * f;
   if (argc <= 1) {
     f = stdin;
@@ -49,8 +47,8 @@ int main(int argc, char ** argv) {
       fprintf(stderr, "There is no input in stdin.\n");
       return EXIT_FAILURE;
     }
-    file_string = read_sort(f);
-    pr_result(file_string, sz);
+    sz = read_sort(f, arr_str);
+    pr_result(arr_str, sz);
     if (fclose(f) != 0) {
       fprintf(stderr, "The file cannot close.\n");
       return EXIT_FAILURE;
@@ -64,8 +62,8 @@ int main(int argc, char ** argv) {
         fprintf(stderr, "This is no input in the input files.\n");
         return EXIT_FAILURE;
       }
-      file_string = read_sort(f);
-      pr_result(file_string, sz);
+      sz = read_sort(f, arr_str);
+      pr_result(arr_str, sz);
       if (fclose(f) != 0) {
         fprintf(stderr, "The file cannot close.\n");
         return EXIT_FAILURE;
