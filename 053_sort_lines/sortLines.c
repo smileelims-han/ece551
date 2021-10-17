@@ -14,36 +14,36 @@ void sortData(char ** data, size_t count) {
   qsort(data, count, sizeof(char *), stringOrder);
 }
 
-void read_sort_print(void * file) {
+void sort_print(void * f) {
   size_t sz;
   size_t count = 0;
-  char ** arr_string = NULL;
+  char ** array = NULL;
   char * lines = NULL;
-  while (getline(&lines, &sz, file) >= 0) {
-    arr_string = realloc(arr_string, (count + 1) * sizeof(*arr_string));
-    arr_string[count] = lines;
+  while (getline(&lines, &sz, f) >= 0) {
+    array = realloc(array, (count + 1) * sizeof(*array));
+    array[count] = lines;
     lines = NULL;
     count++;
   }
   free(lines);
-  sortData(arr_string, count);
+  sortData(array, count);
   for (size_t i = 0; i < count; i++) {
-    printf("%s", arr_string[i]);
-    free(arr_string[i]);
+    printf("%s", array[i]);
+    free(array[i]);
   }
-  free(arr_string);
+  free(array);
 }
 
 void read_file(int argc, char ** argv) {
-  for (int i = 1; i < argc - 1; i++) {
-    FILE * f = fopen(argv[i], "r");
+  for (int i = 0; i < argc - 1; i++) {
+    FILE * f = fopen(argv[1 + i], "r");
     if (f == NULL) {
-      fprintf(stderr, "The input file is empty.\n");
+      fprintf(stderr, "The input of a file is empty\n");
       exit(EXIT_FAILURE);
     }
-    read_sort_print(f);
+    sort_print(f);
     if (fclose(f) != 0) {
-      fprintf(stderr, "The file cannot close.\n");
+      fprintf(stderr, "Cannot close the file.\n");
       exit(EXIT_FAILURE);
     }
   }
@@ -52,13 +52,9 @@ void read_file(int argc, char ** argv) {
 int main(int argc, char ** argv) {
   //WRITE YOUR CODE HERE!
   FILE * f;
-  if (argc == 1) {
+  if (argc <= 1) {
     f = stdin;
-    if (f == NULL) {
-      fprintf(stderr, "The input stdin is empty.\n");
-      return EXIT_FAILURE;
-    }
-    read_sort_print(f);
+    sort_print(f);
   }
   if (argc > 1) {
     read_file(argc, argv);
