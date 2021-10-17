@@ -1,6 +1,6 @@
-Grading at 10/17/2021:03:06:08.621408
-For commit ID 859e309f14548be4c3d2a9e13b8dabef77cfc3db
-Grading at Sat Oct 16 23:06:03 EDT 2021
+Grading at 10/17/2021:03:13:55.755999
+For commit ID 86bc5a3f77961a0c4c52ecb6c11769c294352c64
+Grading at Sat Oct 16 23:13:50 EDT 2021
 Attempting to compile minesweeper.c
 #################################################
 testcase1:
