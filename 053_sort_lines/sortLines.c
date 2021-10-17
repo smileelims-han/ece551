@@ -14,56 +14,45 @@ void sortData(char ** data, size_t count) {
   qsort(data, count, sizeof(char *), stringOrder);
 }
 
-size_t read_sort(FILE * file, char ** array) {
-  char * lines = NULL;
-  size_t siz = 0;
+void read_sort_print(FILE * file) {
+  size_t sz = 0;
   size_t count = 0;
-  while (getline(&lines, &siz, file)) {
-    array = realloc(array, (count + 1) * sizeof(*array));
-    array[count] = lines;
+  char ** arr_string = NULL;
+  char * lines = NULL;
+  while (getline(&lines, &sz, file) >= 0) {
+    arr_string = realloc(arr_string, (count + 1) * sizeof(*arr_string));
+    arr_string[count] = lines;
+    lines = NULL;
     count++;
   }
   free(lines);
-  sortData(array, count);
-  return count;
-}
-
-void pr_result(char ** sorted, size_t n_element) {
-  for (size_t i = 0; i < n_element; i++) {
-    printf("%s", sorted[i]);
-    free(sorted[i]);
+  sortData(arr_string, count);
+  for (size_t i = 0; i < count; i++) {
+    printf("%s", arr_string[i]);
+    free(arr_string[i]);
   }
-  free(sorted);
+  free(arr_string);
 }
 
 int main(int argc, char ** argv) {
   //WRITE YOUR CODE HERE!
-  size_t sz = 0;
-  char ** arr_str = NULL;
   FILE * f;
-  if (argc <= 1) {
+  if (argc == 1) {
     f = stdin;
     if (f == NULL) {
-      fprintf(stderr, "There is no input in stdin.\n");
+      fprintf(stderr, "The input stdin is empty.\n");
       return EXIT_FAILURE;
     }
-    sz = read_sort(f, arr_str);
-    pr_result(arr_str, sz);
-    if (fclose(f) != 0) {
-      fprintf(stderr, "The file cannot close.\n");
-      return EXIT_FAILURE;
-    }
+    read_sort_print(f);
   }
   if (argc > 1) {
-    for (int i = 1; i < argc; i++) {
-      sz = 0;
+    for (int i = 1; i < argc - 1; i++) {
       f = fopen(argv[i], "r");
       if (f == NULL) {
-        fprintf(stderr, "This is no input in the input files.\n");
+        fprintf(stderr, "The input file is empty.\n");
         return EXIT_FAILURE;
       }
-      sz = read_sort(f, arr_str);
-      pr_result(arr_str, sz);
+      read_sort_print(f);
       if (fclose(f) != 0) {
         fprintf(stderr, "The file cannot close.\n");
         return EXIT_FAILURE;
