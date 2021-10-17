@@ -137,7 +137,7 @@ int countMines(board_t * b, int x, int y) {
       if (i == y && j == x) {
         break;
       }
-      else if (IS_MINE(b->board[i][j])) {
+      else if (IS_MINE(b->board[j][i])) {
         num_Mines++;
       }
     }
