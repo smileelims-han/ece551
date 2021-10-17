@@ -111,22 +111,23 @@ int countMines(board_t * b, int x, int y) {
   //WRITE ME!
   int left = x - 1;
   int right = x + 1;
-  int top = y + 1;
-  int bottom = y - 1;
+  int top = y - 1;
+  int bottom = y + 1;
+
   if (left < 0) {
     left = 0;
   }
   if (right > b->width - 1) {
     right = b->width - 1;
   }
-  if (top > b->height - 1) {
-    top = b->height - 1;
+  if (top < 0) {
+    top = 0;
   }
-  if (bottom < 0) {
-    bottom = 0;
+  if (bottom > b->height - 1) {
+    bottom = b->height - 1;
   }
   int num_Mines = 0;
-  for (int i = bottom; i <= top; i++) {
+  for (int i = bottom; i >= top; i--) {
     for (int j = left; j <= right; j++) {
       if (IS_MINE(b->board[j][i])) {
         num_Mines++;
