@@ -15,7 +15,7 @@ void sortData(char ** data, size_t count) {
 }
 
 void read_sort_print(FILE * file) {
-  size_t sz = 0;
+  size_t sz;
   size_t count = 0;
   char ** arr_string = NULL;
   char * lines = NULL;
