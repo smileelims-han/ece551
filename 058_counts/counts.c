@@ -13,12 +13,12 @@ counts_t * createCounts(void) {
   return counts;
 }
 
-void add_value(counts_t * c, char * name) {
+void add_value(counts_t * c, const char * name) {
   c->num_counts++;
   c->counts = realloc(c->counts, c->num_counts * sizeof(*c->counts));
   c->counts[c->num_counts - 1] = malloc(sizeof(*c->counts[c->num_counts - 1]));
   c->counts[c->num_counts - 1]->num_value = 1;
-  c->counts[c->num_counts - 1]->value = name;
+  c->counts[c->num_counts - 1]->value = strdup(name);
 }
 
 void addCount(counts_t * c, const char * name) {
@@ -26,19 +26,17 @@ void addCount(counts_t * c, const char * name) {
   if (name == NULL) {
     c->num_unknown++;
   }
-  else {
+  if (name != NULL) {
     int name_saw = 0;
     for (size_t i = 0; i < c->num_counts; i++) {
       if (strcmp(c->counts[i]->value, name) == 0) {
         c->counts[i]->num_value++;
-        name_saw = 1;
+        name_saw++;
         break;
       }
     }
     if (name_saw == 0) {
-      char * value = strdup(name);
-      add_value(c, value);
-      free(value);
+      add_value(c, name);
     }
   }
 }
