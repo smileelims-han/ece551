@@ -1,6 +1,6 @@
-Grading at 10/18/2021:06:11:52.592415
-For commit ID eb19c139c1080bf230cf96f74f2135a066bbf95c
-Grading at Mon Oct 18 02:11:47 EDT 2021
+Grading at 10/18/2021:14:30:40.262473
+For commit ID f3de984882f8f4e4a1c15192fe857126faf9cab7
+Grading at Mon Oct 18 10:30:34 EDT 2021
 Attempting to compile:
 rm -f  outname.o  counts.o  main.o  kv.o count_values *~
 gcc -c -Wall -Werror -std=gnu99 -pedantic -ggdb3 outname.c
@@ -19,144 +19,23 @@ Your file matched the expected output
 Comparing file list1a.txt.counts with answer
 Your output is correct
 Comparing file list1b.txt.counts with answer
-I expected to find a file called '62list1b.txt.counts' but it did not exist
-(or was not a regular file)
-Here are the files that I can find:
-62list1a.txt
-62list1a.txt.counts
-62list1b.txt
-62list2a.txt
-62list2b.txt
-62list2c.txt
-62list3a.txt
-counts.c
-counts.h
-counts.o
-count_values
-count_values.stderr
-count_values.stdout
-grade.txt
-kv.c
-kv.h
-kv.o
-kvs1.txt
-kvs2.txt
-list1a.txt
-list1a.txt.ans
-list1a.txt.counts
-list1b.txt
-list1b.txt.ans
-list2a.txt
-list2a.txt.ans
-list2b.txt
-list2b.txt.ans
-list2c.txt
-list2c.txt.ans
-main.c
-main.o
-Makefile
-outname.c
-outname.h
-outname.o
-README
-temp.txt
-vg.log
-Your output is incorrect
+Your file matched the expected output
+Your output is correct
+  - Valgrind was clean (no errors, no memory leaks)
+valgrind was clean
 #################################################
 testcase3:
 Your file matched the expected output
 Comparing file list2a.txt.counts with answer
 Your output is correct
 Comparing file list2b.txt.counts with answer
-I expected to find a file called '62list2b.txt.counts' but it did not exist
-(or was not a regular file)
-Here are the files that I can find:
-62list1a.txt
-62list1a.txt.counts
-62list1b.txt
-62list2a.txt
-62list2a.txt.counts
-62list2b.txt
-62list2c.txt
-62list3a.txt
-counts.c
-counts.h
-counts.o
-count_values
-count_values.stderr
-count_values.stdout
-grade.txt
-kv.c
-kv.h
-kv.o
-kvs1.txt
-kvs2.txt
-list1a.txt
-list1a.txt.ans
-list1a.txt.counts
-list1b.txt
-list1b.txt.ans
-list2a.txt
-list2a.txt.ans
-list2b.txt
-list2b.txt.ans
-list2c.txt
-list2c.txt.ans
-main.c
-main.o
-Makefile
-outname.c
-outname.h
-outname.o
-README
-temp.txt
-vg.log
-Your output is incorrect
+Your file matched the expected output
+Your output is correct
 Comparing file list2c.txt.counts with answer
-I expected to find a file called '62list2c.txt.counts' but it did not exist
-(or was not a regular file)
-Here are the files that I can find:
-62list1a.txt
-62list1a.txt.counts
-62list1b.txt
-62list2a.txt
-62list2a.txt.counts
-62list2b.txt
-62list2c.txt
-62list3a.txt
-counts.c
-counts.h
-counts.o
-count_values
-count_values.stderr
-count_values.stdout
-grade.txt
-kv.c
-kv.h
-kv.o
-kvs1.txt
-kvs2.txt
-list1a.txt
-list1a.txt.ans
-list1a.txt.counts
-list1b.txt
-list1b.txt.ans
-list2a.txt
-list2a.txt.ans
-list2b.txt
-list2b.txt.ans
-list2c.txt
-list2c.txt.ans
-main.c
-main.o
-Makefile
-outname.c
-outname.h
-outname.o
-README
-temp.txt
-vg.log
-Your output is incorrect
+Your file matched the expected output
+Your output is correct
+  - Valgrind was clean (no errors, no memory leaks)
+valgrind was clean
 #################################################
 testcase4:
 Your file matched the expected output
@@ -165,4 +44,4 @@ Your output is correct
   - Valgrind was clean (no errors, no memory leaks)
 valgrind was clean
 
-Overall Grade: D
+Overall Grade: A
