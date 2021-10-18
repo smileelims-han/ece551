@@ -32,11 +32,13 @@ void addCount(counts_t * c, const char * name) {
       if (strcmp(c->counts[i]->value, name) == 0) {
         c->counts[i]->num_value++;
         name_saw = 1;
+        break;
       }
     }
     if (name_saw == 0) {
       char * value = strdup(name);
       add_value(c, value);
+      free(value);
     }
   }
 }
