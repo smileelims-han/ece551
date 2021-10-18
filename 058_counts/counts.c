@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
 counts_t * createCounts(void) {
   //WRITE ME
   counts_t * counts = malloc(sizeof(*counts));
@@ -15,7 +16,7 @@ counts_t * createCounts(void) {
 void add_value(counts_t * c, char * name) {
   c->num_counts++;
   c->counts = realloc(c->counts, c->num_counts * sizeof(*c->counts));
-  c->counts[c->num_counts - 1] = malloc(sizeof(**c->counts));
+  c->counts[c->num_counts - 1] = malloc(sizeof(*c->counts[c->num_counts - 1]));
   c->counts[c->num_counts - 1]->num_value = 1;
   c->counts[c->num_counts - 1]->value = name;
 }
@@ -26,14 +27,17 @@ void addCount(counts_t * c, const char * name) {
     c->num_unknown++;
   }
   else {
+    int name_saw = 0;
     for (size_t i = 0; i < c->num_counts; i++) {
       if (strcmp(c->counts[i]->value, name) == 0) {
         c->counts[i]->num_value++;
-        exit(EXIT_SUCCESS);
+        name_saw = 1;
       }
     }
-    char * value = strdup(name);
-    add_value(c, value);
+    if (name_saw == 0) {
+      char * value = strdup(name);
+      add_value(c, value);
+    }
   }
 }
 void printCounts(counts_t * c, FILE * outFile) {
