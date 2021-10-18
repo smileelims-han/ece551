@@ -19,18 +19,21 @@ counts_t * countFile(const char * filename, kvarray_t * kvPairs) {
   ssize_t len = 0;
   size_t sz;
   char * line = NULL;
-  while ((len = getline(&line, &sz, f)) >= 0) {
-    char * key = malloc(len * sizeof(*key));
-    strncpy(key, line, len - 1);
-    key[len] = '\0';
 
-    char * value = lookupValue(kvPairs, key);
+  while ((len = getline(&line, &sz, f)) >= 0) {
+    char * e = strchr(line, '\n');
+    size_t len_key = e - line;
+    char * key = malloc((len_key + 1) * sizeof(*key));
+    strncpy(key, line, len_key);
+    key[len_key] = '\0';
+    addCount(c, lookupValue(kvPairs, key));
     free(key);
-    addCount(c, value);
-    free(value);
-    line = NULL;
   }
   free(line);
+  if (fclose(f) != 0) {
+    fprintf(stderr, "The file cannot close.\n");
+    exit(EXIT_FAILURE);
+  }
   return c;
 }
 
