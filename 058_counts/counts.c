@@ -14,11 +14,11 @@ counts_t * createCounts(void) {
 }
 
 void add_value(counts_t * c, const char * name) {
+  c->counts = realloc(c->counts, (c->num_counts + 1) * sizeof(*c->counts));
+  c->counts[c->num_counts] = malloc(sizeof(*c->counts[c->num_counts]));
+  c->counts[c->num_counts]->num_value = 1;
+  c->counts[c->num_counts]->value = strdup(name);
   c->num_counts++;
-  c->counts = realloc(c->counts, c->num_counts * sizeof(*c->counts));
-  c->counts[c->num_counts - 1] = malloc(sizeof(*c->counts[c->num_counts - 1]));
-  c->counts[c->num_counts - 1]->num_value = 1;
-  c->counts[c->num_counts - 1]->value = strdup(name);
 }
 
 void addCount(counts_t * c, const char * name) {
@@ -27,7 +27,7 @@ void addCount(counts_t * c, const char * name) {
     c->num_unknown++;
   }
   if (name != NULL) {
-    int name_saw = 0;
+    size_t name_saw = 0;
     for (size_t i = 0; i < c->num_counts; i++) {
       if (strcmp(c->counts[i]->value, name) == 0) {
         c->counts[i]->num_value++;
@@ -53,6 +53,7 @@ void printCounts(counts_t * c, FILE * outFile) {
 void freeCounts(counts_t * c) {
   //WRITE ME
   for (size_t i = 0; i < c->num_counts; i++) {
+    free(c->counts[i]->value);
     free(c->counts[i]);
   }
   free(c->counts);
