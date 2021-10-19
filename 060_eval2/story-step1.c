@@ -12,7 +12,7 @@ int main(int argc, char ** argv) {
 
   char * temp_file = read_temp(argv[1]);
   catarray_t * cats = NULL;
-  char * parsed_temp = parse_temp(temp_file, cats);
+  char * parsed_temp = parse_temp(temp_file, cats, 0);
 
   printf("%s", parsed_temp);
 

@@ -12,5 +12,11 @@
 char * read_temp(const char * file_name);
 
 //parse the temp file and return the parsed reult string
-char * parse_temp(char * temp, catarray_t * cats);
+char * parse_temp(char * temp, catarray_t * cats, int flag);
+
+//read the list file and creat the catarray_t for it.
+catarray_t * read_list(char * file_name);
+
+void free_cat(catarray_t * cat);
+
 #endif
