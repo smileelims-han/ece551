@@ -28,8 +28,9 @@ int main(int argc, char ** argv) {
   char * parsed_temp = parse_temp(temp, cat, flag);
   printf("%s\n", parsed_temp);
 
+  free_cat(cat);
   free(temp);
   free(parsed_temp);
-  free_cat(cat);
+
   return EXIT_SUCCESS;
 }

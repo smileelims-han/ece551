@@ -81,36 +81,43 @@ void add_to_used(category_t * used, char * word) {
   strcpy(used->words[used->n_words - 1], word);
 }
 
-//check if the name in the c.
-/*void check_name_cats(char * name, catarray_t * c) {
-  if (c->n == 0) {
-    fprintf(stderr, "There is no more valid category in cat.\n");
-    exit(EXIT_FAILURE);
-  }
-  for (size_t i = 0; i < c->n; i++) {
-    if (strcmp(name, c->arr[i].name) == 0) {
-      return;
-    }
-  }
-  fprintf(stderr, "There is an invalet name.\n");
-  exit(EXIT_FAILURE);
-  }*/
-
-void no_reused_cat(catarray_t * cat, char * word) {
+catarray_t * no_reused_cat(catarray_t * cat, char * name, char * word) {
   if (cat->n == 0) {
     fprintf(stderr, "There is no more category avaliable.\n");
     exit(EXIT_FAILURE);
   }
-  for (size_t i = 0; i < cat->n; i++) {
+  catarray_t * new_cat = malloc(sizeof(*new_cat));
+  new_cat->n = cat->n;
+  new_cat->arr = malloc(new_cat->n * sizeof *(new_cat->arr));
+
+  for (size_t i = 0; i < new_cat->n; i++) {
+    new_cat->arr[i].name = strdup(cat->arr[i].name);
+    new_cat->arr[i].n_words = 0;
+    new_cat->arr[i].words = NULL;
+
+    size_t new_count = 0;
     for (size_t j = 0; j < cat->arr[i].n_words; j++) {
-      if (strcmp(word, cat->arr[i].words[j]) == 0) {
-        free(cat->arr[i].words[j]);
-        cat->arr[i].n_words--;
-        return;
+      if (strcmp(cat->arr[i].name, name) == 0 &&
+          strcmp(cat->arr[i].words[j], word) == 0) {
+        continue;
+      }
+      else {
+        new_cat->arr[i].words = realloc(
+            new_cat->arr[i].words, (new_count + 1) * sizeof *(new_cat->arr[i].words));
+        new_cat->arr[i].words[new_count] = strdup(cat->arr[i].words[j]);
+        new_count++;
       }
     }
+    new_cat->arr[i].n_words = new_count;
   }
+  printWords(cat);
+  printf("\n");
+  printWords(new_cat);
+  printf("\n");
+  //free_cat(cat);
+  return new_cat;
 }
+
 char * parse_name(char * start) {
   char * end = strchr(start + 1, '_');
   size_t len_blank = end - start - 1;
@@ -119,62 +126,54 @@ char * parse_name(char * start) {
   cate_name[len_blank] = '\0';
   return cate_name;
 }
+
+//check if the name in temp is in cata
+int check_exist(char * name, catarray_t * cat) {
+  for (size_t i = 0; i < cat->n; i++) {
+    if (strcmp(name, cat->arr[i].name) == 0) {
+      return 1;
+    }
+  }
+  fprintf(stderr, "The name intemplate is not a name in list.\n");
+  return (EXIT_FAILURE);
+}
+
 char * find_replace(char * name, catarray_t * cat, category_t * used) {
   const char * replace_word = NULL;
 
   //if cat is null
   if (cat == NULL) {
     replace_word = chooseWord(name, cat);
+    return (char *)replace_word;
   }
 
   //if name is an integer
-  int i = check_int(name);
+  size_t i = check_int(name);
   if (i != 0) {
-    replace_word = used->words[used->n_words - i];
+    if (i <= used->n_words) {
+      replace_word = used->words[used->n_words - i];
+      return (char *)replace_word;
+    }
+    else {
+      fprintf(stderr, "There is no enough used words for use.\n");
+      exit(EXIT_FAILURE);
+    }
   }
 
-  //if name is char
-  if (i == 0) {
+  //if name is char,find a replace_word in cat, then if flag = 1, took off the word after
+  if (i == 0 && check_exist(name, cat) == 1) {
     replace_word = chooseWord(name, cat);
+    return ((char *)replace_word);
   }
-  return (char *)replace_word;
+  return NULL;
 }
-char * replace_blank(char * p_temp,
-                     size_t n_temp,
-                     char * start,
-                     catarray_t * cats,
-                     category_t * used_word,
-                     int flag) {
-  if (check_underscore(start) == 0) {
-    fprintf(stderr, "The blank format does not meet the requirement.");
-    exit(EXIT_FAILURE);
-  }
 
-  //parse the name
-  char * cat_name = parse_name(start);
-  char * replace_word = find_replace(cat_name, cats, used_word);
-
-  //add the replace_word into the used category
+//find the replace word and put it into blank
+void add_used(char * replace_word, category_t * used_word) {
   used_word->n_words++;
   used_word->words =
       realloc(used_word->words, (used_word->n_words) * sizeof(*used_word->words));
   used_word->words[used_word->n_words - 1] = strdup(replace_word);
-
-  if (flag == 1) {
-    no_reused_cat(cats, replace_word);
-  }
-
-  free(cat_name);
-
-  //replace the word in the string
-  n_temp = n_temp + strlen(used_word->words[used_word->n_words - 1]);
-  p_temp = realloc(p_temp, (n_temp + 1) * sizeof(*p_temp));
-  strcat(p_temp, used_word->words[used_word->n_words - 1]);
-  p_temp[n_temp] = '\0';
-
-  //add the replace word to the used_word
-
-  return p_temp;
 }
 
 char * parse_temp(char * temp, catarray_t * cats, int flag) {
@@ -196,16 +195,33 @@ char * parse_temp(char * temp, catarray_t * cats, int flag) {
       num_temp++;
     }
     if (*ptr == '_') {
-      parsed_t = replace_blank(parsed_t, num_temp, ptr, cats, used_word, flag);
-      num_temp = strlen(parsed_t);
+      if (check_underscore(ptr) == 0) {
+        fprintf(stderr, "The blank format does not meet the requirement.");
+        exit(EXIT_FAILURE);
+      }
+
+      char * list_name = parse_name(ptr);
+      printf("the name in template is %s.\n", list_name);
+      char * replace_word = find_replace(list_name, cats, used_word);
+      printf("the replace_word is %s.\n", replace_word);
+      add_used(replace_word, used_word);
+
+      //replace the word in the string
+      num_temp = num_temp + strlen(used_word->words[used_word->n_words - 1]);
+      parsed_t = realloc(parsed_t, (num_temp + 1) * sizeof(*parsed_t));
+      strcat(parsed_t, used_word->words[used_word->n_words - 1]);
+      parsed_t[num_temp] = '\0';
+
       ptr = strchr(ptr + 1, '_');
+
+      if (flag == 1 && cats != NULL) {
+        cats = no_reused_cat(cats, list_name, replace_word);
+      }
+      free(list_name);
     }
     ptr++;
   }
-
   ptr = NULL;
-  parsed_t = realloc(parsed_t, (num_temp + 1) * sizeof(*parsed_t));
-  parsed_t[num_temp] = '\0';
 
   //free used_word category
   for (size_t i = 0; i < used_word->n_words; i++) {
@@ -318,13 +334,17 @@ catarray_t * read_list(FILE * f) {
 }
 
 void free_cat(catarray_t * cat) {
-  for (size_t i = 0; i < cat->n; i++) {
-    for (size_t j = 0; j < cat->arr[i].n_words; j++) {
-      free(cat->arr[i].words[j]);
+  if (cat != NULL) {
+    for (size_t i = 0; i < cat->n; i++) {
+      for (size_t j = 0; j < cat->arr[i].n_words; j++) {
+        if (cat->arr[i].words[j] != NULL) {
+          free(cat->arr[i].words[j]);
+        }
+      }
+      free(cat->arr[i].words);
+      free(cat->arr[i].name);
     }
-    free(cat->arr[i].words);
-    free(cat->arr[i].name);
+    free(cat->arr);
+    free(cat);
   }
-  free(cat->arr);
-  free(cat);
 }
