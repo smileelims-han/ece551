@@ -1,6 +1,6 @@
-Grading at 10/20/2021:16:11:38.785422
-For commit ID 9a7bb90f59b25e56c615df00e5b132217aa610d2
-Grading at Wed Oct 20 12:11:33 EDT 2021
+Grading at 10/20/2021:18:27:48.004892
+For commit ID fe8e67f0e3005fc0287c841efa4911c4085da015
+Grading at Wed Oct 20 14:27:42 EDT 2021
 Running your test cases
 
 Compiling story-step1
@@ -11,6 +11,8 @@ gcc -o story-step1 story-step1.o rand_story.o provided.o
 rm story-step1.o
 +-----------------------------------------------------------------------+
 Test case 1 (error): story-step1 invalid.txt
+the name in template is animal.
+the replace_word is cat.
 Your program successfully indicated a failure case
 
 Compiling story-step3
@@ -31,7 +33,13 @@ gcc -o story-step1 story-step1.o rand_story.o provided.o
 rm story-step1.o
 +-----------------------------------------------------------------------+
 Test case 3 (success): story-step1 story.txt
-Your file matched the expected output
+Line_1_did_not_match
+Line_2_did_not_match
+Line_3_did_not_match
+Line_4_did_not_match
+Line_5_did_not_match
+Line_6_did_not_match
+Your file did not match the expected output
 
 Compiling story-step2
 rm -f *~ story-step1 story-step2 story-step3 story-step4 story-step1.o story-step2.o story-step3.o story-step4.o rand_story.o
@@ -51,7 +59,13 @@ gcc -o story-step3 story-step3.o rand_story.o provided.o
 rm story-step3.o
 +-----------------------------------------------------------------------+
 Test case 5 (success): story-step3 words.txt story.txt
-Your file matched the expected output
+Line_1_did_not_match
+Line_2_did_not_match
+Line_3_did_not_match
+Line_4_did_not_match
+Line_5_did_not_match
+Line_6_did_not_match
+Your file did not match the expected output
 
 Compiling story-step4
 rm -f *~ story-step1 story-step2 story-step3 story-step4 story-step1.o story-step2.o story-step3.o story-step4.o rand_story.o
