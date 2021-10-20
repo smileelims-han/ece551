@@ -16,7 +16,7 @@ char * read_temp(FILE * f);
 char * parse_temp(char * temp, catarray_t * cats, int flag);
 
 //read the list file and creat the catarray_t for it.
-catarray_t * read_list(char * file_name);
+catarray_t * read_list(FILE * f);
 
 void free_cat(catarray_t * cat);
 

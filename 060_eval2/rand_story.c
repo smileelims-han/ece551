@@ -217,22 +217,23 @@ char * parse_temp(char * temp, catarray_t * cats, int flag) {
 
 int check_name(char * name, catarray_t * cat) {
   if (cat->n == 0) {
-    return 0;
+    return 0;  //there is no category of this name add yet
   }
   else {
     for (size_t i = 0; i < cat->n; i++) {
       if (strcmp(cat->arr[i].name, name) == 0) {
-        return 1;
+        return 1;  //there is already the category of this name
       }
     }
-    return 0;
   }
+  return 0;
 }
 
 void add_name(char * name, char * word, catarray_t * cat) {
   cat->arr = realloc(cat->arr, (cat->n + 1) * sizeof(*cat->arr));
   cat->arr[cat->n].name = name;
   cat->arr[cat->n].n_words = 1;
+  cat->arr[cat->n].words = NULL;
   cat->arr[cat->n].words =
       realloc(cat->arr[cat->n].words,
               cat->arr[cat->n].n_words * sizeof(*(cat->arr[cat->n].words)));
@@ -256,54 +257,54 @@ void add_word(char * name, char * word, catarray_t * cat) {
     }
   }
 }
-
-//for each line in file,add the information to the catarray * cat.
-void add_cat(const char * line, catarray_t * cat) {
-  //find the name and word in given line
-  char * s = strchr(line, ':');
-  char * newline = strchr(line, '\n');
-  if (s == NULL || newline == NULL) {
-    fprintf(stderr, "The format of input list file is wrong.\n");
+char * find_name(char * line) {
+  char * col = strchr(line, ':');
+  if (col == NULL) {
+    fprintf(stderr, "The format of list file is incorrect.\n");
     exit(EXIT_FAILURE);
   }
+  int len_n = col - line;
+  char * name = malloc((len_n + 1) * sizeof(*name));
+  strncpy(name, line, len_n);
+  name[len_n] = '\0';
+  return name;
+}
 
-  size_t len_name = s - line;
-  size_t len_word = newline - s - 1;
-
-  char * name = malloc((len_name + 1) * sizeof(*name));
-  char * word = malloc((len_word + 1) * sizeof(*word));
-
-  strncpy(name, line, len_name);
-  strncpy(word, s + 1, len_word);
-  name[len_name] = '\0';
-  name[len_word] = '\0';
-
-  if (check_name(name, cat) == 0) {
-    add_name(name, word, cat);
-  }
-  if (check_name(name, cat) == 1) {
-    add_word(name, word, cat);
-  }
-  s = NULL;
-  newline = NULL;
-  name = NULL;
-  word = NULL;
+char * find_word(char * line) {
+  char * col = strchr(line, ':');
+  col++;
+  char * newline = strchr(line, '\n');
+  int len_w = newline - col;
+  char * word = malloc((len_w + 1) * sizeof(*word));
+  strncpy(word, col, len_w);
+  word[len_w] = '\0';
+  return word;
 }
 
 //read the list of name and word, return a catarray type.
-catarray_t * read_list(char * file_name) {
-  FILE * f = open_file(file_name);
-
-  ssize_t len = 0;
-  size_t sz;
-  char * line;
+catarray_t * read_list(FILE * f) {
+  size_t sz = 0;
+  char * line = NULL;
   catarray_t * array_cat = malloc(sizeof(*array_cat));
   array_cat->n = 0;
   array_cat->arr = NULL;
 
-  while ((len = getline(&line, &sz, f) >= 0)) {
-    add_cat(line, array_cat);
+  while (getline(&line, &sz, f) >= 0) {
+    char * name = find_name(line);
+    char * word = find_word(line);
+    int name_exist = check_name(name, array_cat);
+
+    //if the name is not exist in category
+    if (name_exist == 0) {
+      add_name(name, word, array_cat);
+    }
+    if (name_exist == 1) {
+      add_word(name, word, array_cat);
+      free(name);
+    }
+    free(line);
     line = NULL;
+    word = NULL;
   }
   free(line);
 
@@ -319,7 +320,9 @@ void free_cat(catarray_t * cat) {
     for (size_t j = 0; j < cat->arr[i].n_words; j++) {
       free(cat->arr[i].words[j]);
     }
-    free(cat->arr);
+    free(cat->arr[i].words);
+    free(cat->arr[i].name);
   }
+  free(cat->arr);
   free(cat);
 }

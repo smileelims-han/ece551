@@ -13,7 +13,7 @@ int main(int argc, char ** argv) {
   }
   FILE * f = open_file(argv[2]);
   char * temp = read_temp(f);
-  catarray_t * cat = read_list(argv[1]);
+  catarray_t * cat = read_list(f);
   char * parsed_temp = parse_temp(temp, cat, 0);
 
   printWords(cat);
