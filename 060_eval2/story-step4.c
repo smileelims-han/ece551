@@ -11,7 +11,8 @@ int main(int argc, char ** argv) {
   }
 
   catarray_t * cat = read_list(argv[2]);
-  char * temp = read_temp(argv[3]);
+  FILE * f = open_file(argv[3]);
+  char * temp = read_temp(f);
   char * parsed_temp = parse_temp(temp, cat, 1);
 
   printWords(cat);

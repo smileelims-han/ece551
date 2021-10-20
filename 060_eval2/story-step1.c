@@ -9,8 +9,8 @@ int main(int argc, char ** argv) {
     fprintf(stderr, "The input file for step1 has to be one template.\n");
     return EXIT_FAILURE;
   }
-
-  char * temp_file = read_temp(argv[1]);
+  FILE * f = open_file(argv[1]);
+  char * temp_file = read_temp(f);
   catarray_t * cats = NULL;
   char * parsed_temp = parse_temp(temp_file, cats, 0);
 

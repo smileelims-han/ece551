@@ -7,18 +7,14 @@ FILE * open_file(const char * file_name) {
     fprintf(stderr, "The input template file is empty.\n");
     exit(EXIT_FAILURE);
   }
-  else {
-    return f;
-  }
+  return f;
 }
 
-char * read_temp(const char * file_name) {
-  FILE * f = open_file(file_name);
+char * read_temp(FILE * f) {
+  char * temp = NULL;
+  int num_temp = 0;
+  int c = 0;
 
-  //creat a string with content of template file.
-  char * temp;
-  size_t num_temp = 0;
-  int c;
   while ((c = fgetc(f)) != EOF) {
     temp = realloc(temp, (num_temp + 1) * sizeof(*temp));
     temp[num_temp] = c;
@@ -37,7 +33,7 @@ char * read_temp(const char * file_name) {
 /*check if the template file following the rule of each
   '_' have a matching '_' on the same line; */
 int check_underscore(char * p) {
-  char * symbol = strchr(p, '_');
+  char * symbol = strchr(p + 1, '_');
   char * next_line = strchr(p, '\n');
   if (symbol == NULL) {
     return 0;
@@ -70,9 +66,7 @@ char * get_used(category_t * used, int n_back) {
     exit(EXIT_FAILURE);
   }
 
-  size_t len_w = strlen(used->words[(used->n_words) - n_back]);
-  char * replace_w = malloc(len_w * sizeof(*replace_w));
-  strcpy(replace_w, used->words[(used->n_words) - n_back]);
+  char * replace_w = used->words[(used->n_words) - n_back];
   return replace_w;
 }
 
@@ -86,18 +80,20 @@ void add_to_used(category_t * used, char * word) {
 }
 
 //check if the name in the c.
-void check_name_cats(char * name, catarray_t * c) {
-  if (check_int(name) == 0) {
-    for (size_t i = 0; i < c->n; i++) {
-      if (strcmp(name, c->arr[i].name) == 0) {
-        return;
-      }
-    }
-    fprintf(stderr, "There is an invalet name.\n");
+/*void check_name_cats(char * name, catarray_t * c) {
+  if (c->n == 0) {
+    fprintf(stderr, "There is no more valid category in cat.\n");
     exit(EXIT_FAILURE);
   }
-  return;
-}
+  for (size_t i = 0; i < c->n; i++) {
+    if (strcmp(name, c->arr[i].name) == 0) {
+      return;
+    }
+  }
+  fprintf(stderr, "There is an invalet name.\n");
+  exit(EXIT_FAILURE);
+  }*/
+
 void no_reused_cat(catarray_t * cat, char * word) {
   if (cat->n == 0) {
     fprintf(stderr, "There is no more category avaliable.\n");
@@ -126,15 +122,12 @@ char * replace_blank(char * p_temp,
   }
 
   //parse the name
-  char * end = strchr(start, '_');
+  char * end = strchr(start + 1, '_');
   size_t len_blank = end - start - 1;
   char * cate_name = malloc((len_blank + 1) * sizeof(*cate_name));
   strncpy(cate_name, start + 1, len_blank);
   cate_name[len_blank] = '\0';
   printf("cate_name = %s\n", cate_name);
-
-  //if name is in catarray
-  check_name_cats(cate_name, cats);
 
   //if name is number - use used word
   char * replace_word = NULL;
@@ -145,7 +138,9 @@ char * replace_blank(char * p_temp,
 
   //if name if not number - use chooseWord
   if (check_int(cate_name) == 0) {
+    //check_name_cats(cate_name, cats);
     replace_word = (char *)chooseWord(cate_name, cats);
+    printf("the replace_word is %s\n", replace_word);
     if (flag == 1) {
       no_reused_cat(cats, replace_word);
     }
@@ -153,15 +148,17 @@ char * replace_blank(char * p_temp,
 
   //replace the word in the string
   size_t len_replace = strlen(replace_word);
-  n_temp = n_temp + len_replace;
-  p_temp = realloc(p_temp, n_temp * sizeof(*p_temp));
+  n_temp = n_temp + len_replace + 1;
+  p_temp = realloc(p_temp, (n_temp) * sizeof(*p_temp));
   strcat(p_temp, replace_word);
+  printf("The template after add word is '%s'\n", p_temp);
   start = end;
+  printf("The ptr now point to %c\n", *start);
 
   //add the replace word to the used_word
   add_to_used(used_word, replace_word);
+  free(cate_name);
   free(replace_word);
-
   return p_temp;
 }
 
@@ -181,13 +178,14 @@ char * parse_temp(char * temp, catarray_t * cats, int flag) {
       parsed_t = realloc(parsed_t, (num_temp + 1) * sizeof(*parsed_t));
       parsed_t[num_temp] = *ptr;
       num_temp++;
-      ptr++;
     }
     if (*ptr == '_') {
       parsed_t = replace_blank(parsed_t, num_temp, ptr, cats, used_word, flag);
       num_temp = strlen(parsed_t);
-      ptr++;
+      ptr = strchr(ptr + 1, '_');
+      printf("The ptr after replace word point to %c\n", *ptr);
     }
+    ptr++;
   }
 
   ptr = NULL;

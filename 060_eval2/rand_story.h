@@ -8,8 +8,9 @@
 #include "provided.h"
 //any functions you want your main to use
 
+FILE * open_file(const char * file_name);
 //read the temp file and return a string of temp file
-char * read_temp(const char * file_name);
+char * read_temp(FILE * f);
 
 //parse the temp file and return the parsed reult string
 char * parse_temp(char * temp, catarray_t * cats, int flag);
