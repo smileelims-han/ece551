@@ -11,12 +11,14 @@ int main(int argc, char ** argv) {
     fprintf(stderr, "The input file number is incorrect.\n");
     return EXIT_FAILURE;
   }
-  FILE * f = open_file(argv[2]);
-  char * temp = read_temp(f);
-  catarray_t * cat = read_list(f);
+  FILE * f_list = open_file(argv[1]);
+  FILE * f_temp = open_file(argv[2]);
+  char * temp = read_temp(f_temp);
+  catarray_t * cat = read_list(f_list);
   char * parsed_temp = parse_temp(temp, cat, 0);
-
+  printf("%s\n", parsed_temp);
   printWords(cat);
+
   free(temp);
   free(parsed_temp);
   free_cat(cat);
