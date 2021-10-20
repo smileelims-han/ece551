@@ -22,7 +22,7 @@ char * read_temp(FILE * f) {
   }
   temp = realloc(temp, (num_temp + 1) * sizeof(*temp));
   temp[num_temp] = '\0';
-  printf("In read_temp, the temp is %s\n", temp);
+
   if (fclose(f) != 0) {
     fprintf(stderr, "The input template file cannot close.\n");
     exit(EXIT_FAILURE);
@@ -49,7 +49,7 @@ int check_int(char * name) {
   char * p = name;
   while (*p != '\0') {
     if (*p > 48 && *p <= 57) {
-      return 1;
+      return 0;
     }
     if (*p == 48) {
       fprintf(stderr, "The number on blank should not be zero.\n");
@@ -57,7 +57,7 @@ int check_int(char * name) {
     }
     p++;
   }
-  return 0;
+  return atoi(name);
 }
 
 char * get_used(category_t * used, int n_back) {
@@ -109,7 +109,34 @@ void no_reused_cat(catarray_t * cat, char * word) {
     }
   }
 }
+char * parse_name(char * start) {
+  char * end = strchr(start + 1, '_');
+  size_t len_blank = end - start - 1;
+  char * cate_name = malloc((len_blank + 1) * sizeof(*cate_name));
+  strncpy(cate_name, start + 1, len_blank);
+  cate_name[len_blank] = '\0';
+  return cate_name;
+}
+char * find_replace(char * name, catarray_t * cat, category_t * used) {
+  const char * replace_word = NULL;
 
+  //if cat is null
+  if (cat == NULL) {
+    replace_word = chooseWord(name, cat);
+  }
+
+  //if name is an integer
+  int i = check_int(name);
+  if (i != 0) {
+    replace_word = used->words[used->n_words - i];
+  }
+
+  //if name is char
+  if (i == 0) {
+    replace_word = chooseWord(name, cat);
+  }
+  return (char *)replace_word;
+}
 char * replace_blank(char * p_temp,
                      size_t n_temp,
                      char * start,
@@ -122,43 +149,29 @@ char * replace_blank(char * p_temp,
   }
 
   //parse the name
-  char * end = strchr(start + 1, '_');
-  size_t len_blank = end - start - 1;
-  char * cate_name = malloc((len_blank + 1) * sizeof(*cate_name));
-  strncpy(cate_name, start + 1, len_blank);
-  cate_name[len_blank] = '\0';
-  printf("cate_name = %s\n", cate_name);
+  char * cat_name = parse_name(start);
+  char * replace_word = find_replace(cat_name, cats, used_word);
 
-  //if name is number - use used word
-  char * replace_word = NULL;
-  if (check_int(cate_name) == 1) {
-    int back = atoi(cate_name);
-    replace_word = get_used(used_word, back);
+  //add the replace_word into the used category
+  used_word->n_words++;
+  used_word->words =
+      realloc(used_word->words, (used_word->n_words) * sizeof(*used_word->words));
+  used_word->words[used_word->n_words - 1] = strdup(replace_word);
+
+  if (flag == 1) {
+    no_reused_cat(cats, replace_word);
   }
 
-  //if name if not number - use chooseWord
-  if (check_int(cate_name) == 0) {
-    //check_name_cats(cate_name, cats);
-    replace_word = (char *)chooseWord(cate_name, cats);
-    printf("the replace_word is %s\n", replace_word);
-    if (flag == 1) {
-      no_reused_cat(cats, replace_word);
-    }
-  }
+  free(cat_name);
 
   //replace the word in the string
-  size_t len_replace = strlen(replace_word);
-  n_temp = n_temp + len_replace + 1;
-  p_temp = realloc(p_temp, (n_temp) * sizeof(*p_temp));
-  strcat(p_temp, replace_word);
-  printf("The template after add word is '%s'\n", p_temp);
-  start = end;
-  printf("The ptr now point to %c\n", *start);
+  n_temp = n_temp + strlen(used_word->words[used_word->n_words - 1]);
+  p_temp = realloc(p_temp, (n_temp + 1) * sizeof(*p_temp));
+  strcat(p_temp, used_word->words[used_word->n_words - 1]);
+  p_temp[n_temp] = '\0';
 
   //add the replace word to the used_word
-  add_to_used(used_word, replace_word);
-  free(cate_name);
-  free(replace_word);
+
   return p_temp;
 }
 
@@ -175,15 +188,15 @@ char * parse_temp(char * temp, catarray_t * cats, int flag) {
 
   while (*ptr != '\0') {
     if (*ptr != '_') {
-      parsed_t = realloc(parsed_t, (num_temp + 1) * sizeof(*parsed_t));
+      parsed_t = realloc(parsed_t, (num_temp + 2) * sizeof(*parsed_t));
       parsed_t[num_temp] = *ptr;
+      parsed_t[num_temp + 1] = '\0';
       num_temp++;
     }
     if (*ptr == '_') {
       parsed_t = replace_blank(parsed_t, num_temp, ptr, cats, used_word, flag);
       num_temp = strlen(parsed_t);
       ptr = strchr(ptr + 1, '_');
-      printf("The ptr after replace word point to %c\n", *ptr);
     }
     ptr++;
   }
@@ -191,6 +204,14 @@ char * parse_temp(char * temp, catarray_t * cats, int flag) {
   ptr = NULL;
   parsed_t = realloc(parsed_t, (num_temp + 1) * sizeof(*parsed_t));
   parsed_t[num_temp] = '\0';
+
+  //free used_word category
+  for (size_t i = 0; i < used_word->n_words; i++) {
+    free(used_word->words[i]);
+  }
+  free(used_word->words);
+  free(used_word);
+
   return parsed_t;
 }
 
