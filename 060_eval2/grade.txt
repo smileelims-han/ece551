@@ -1,6 +1,6 @@
-Grading at 10/20/2021:04:19:26.694219
-For commit ID fc986217b205f7982fc7fe91f1f0ca47323b82a7
-Grading at Wed Oct 20 00:19:22 EDT 2021
+Grading at 10/20/2021:05:08:14.586041
+For commit ID b2fc67b72a0400722fd8a0d6981ae9894ba2ec96
+Grading at Wed Oct 20 01:08:10 EDT 2021
 Running your test cases
 
 Compiling story-step1
@@ -11,15 +11,7 @@ gcc -o story-step1 story-step1.o rand_story.o provided.o
 rm story-step1.o
 +-----------------------------------------------------------------------+
 Test case story-step1 invalid.txt
-In read_temp, the temp is Long long ago, there is a _animal_, who like _
-
-
-cate_name = animal
-the replace_word is cat
-The template after add word is 'Long long ago, there is a cat'
-The ptr now point to _
-The ptr after replace word point to _
-Valgrind reported memory errors
+Your program successfully indicated a failure case
 
 Compiling story-step3
 rm -f *~ story-step1 story-step2 story-step3 story-step4 story-step1.o story-step2.o story-step3.o story-step4.o rand_story.o
@@ -29,9 +21,6 @@ gcc -o story-step3 story-step3.o rand_story.o provided.o
 rm story-step3.o
 +-----------------------------------------------------------------------+
 Test case story-step3 err_words.txt story.txt
-In read_temp, the temp is Once upon a time, there was a _animal_ who lived in a very _adjective_
-_place_. 
-
 Valgrind reported memory errors
 
 Compiling story-step2
