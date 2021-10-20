@@ -1,4 +1,3 @@
-
 #include "rand_story.h"
 
 //read the template file and return a char*
@@ -11,6 +10,7 @@ FILE * open_file(const char * file_name) {
   return f;
 }
 
+//read the template file
 char * read_temp(FILE * f) {
   char * temp = NULL;
   int num_temp = 0;
@@ -62,6 +62,7 @@ int check_int(char * name) {
   return atoi(name);
 }
 
+//get the used words depends on the integer
 char * get_used(category_t * used, int n_back) {
   if (used->n_words == 0) {
     fprintf(stderr, "There is no used work.\n");
@@ -72,6 +73,7 @@ char * get_used(category_t * used, int n_back) {
   return replace_w;
 }
 
+//add the used word to category used
 void add_to_used(category_t * used, char * word) {
   used->n_words++;
   size_t len_w = strlen(word);
@@ -81,7 +83,8 @@ void add_to_used(category_t * used, char * word) {
   strcpy(used->words[used->n_words - 1], word);
 }
 
-catarray_t * no_reused_cat(catarray_t * cat, char * name, char * word) {
+//if not allowed reuse,takeoff the used word from cat
+void * no_reused_cat(catarray_t * cat, char * name, char * word) {
   if (cat->n == 0) {
     fprintf(stderr, "There is no more category avaliable.\n");
     exit(EXIT_FAILURE);
@@ -110,14 +113,12 @@ catarray_t * no_reused_cat(catarray_t * cat, char * name, char * word) {
     }
     new_cat->arr[i].n_words = new_count;
   }
-  printWords(cat);
-  printf("\n");
-  printWords(new_cat);
-  printf("\n");
-  //free_cat(cat);
+
+  free_cat(cat);
   return new_cat;
 }
 
+//parsed the name from line
 char * parse_name(char * start) {
   char * end = strchr(start + 1, '_');
   size_t len_blank = end - start - 1;
@@ -138,6 +139,7 @@ int check_exist(char * name, catarray_t * cat) {
   return (EXIT_FAILURE);
 }
 
+//find the replace words of the blank
 char * find_replace(char * name, catarray_t * cat, category_t * used) {
   const char * replace_word = NULL;
 
@@ -176,6 +178,7 @@ void add_used(char * replace_word, category_t * used_word) {
   used_word->words[used_word->n_words - 1] = strdup(replace_word);
 }
 
+//parse the readen template, return the parsed result
 char * parse_temp(char * temp, catarray_t * cats, int flag) {
   char * ptr = temp;
   char * parsed_t = NULL;
@@ -201,9 +204,7 @@ char * parse_temp(char * temp, catarray_t * cats, int flag) {
       }
 
       char * list_name = parse_name(ptr);
-      printf("the name in template is %s.\n", list_name);
       char * replace_word = find_replace(list_name, cats, used_word);
-      printf("the replace_word is %s.\n", replace_word);
       add_used(replace_word, used_word);
 
       //replace the word in the string
@@ -233,6 +234,7 @@ char * parse_temp(char * temp, catarray_t * cats, int flag) {
   return parsed_t;
 }
 
+//check if the name exist in the cat
 int check_name(char * name, catarray_t * cat) {
   if (cat->n == 0) {
     return 0;  //there is no category of this name add yet
@@ -247,6 +249,7 @@ int check_name(char * name, catarray_t * cat) {
   return 0;
 }
 
+//add the name if not in the cat
 void add_name(char * name, char * word, catarray_t * cat) {
   cat->arr = realloc(cat->arr, (cat->n + 1) * sizeof(*cat->arr));
   cat->arr[cat->n].name = name;
@@ -259,6 +262,7 @@ void add_name(char * name, char * word, catarray_t * cat) {
   cat->n++;
 }
 
+//add the word to the category
 void add_word(char * name, char * word, catarray_t * cat) {
   for (size_t i = 0; i < cat->n; i++) {
     if (strcmp(name, cat->arr[i].name) == 0) {
@@ -275,6 +279,8 @@ void add_word(char * name, char * word, catarray_t * cat) {
     }
   }
 }
+
+//find the name before : in the line
 char * find_name(char * line) {
   char * col = strchr(line, ':');
   if (col == NULL) {
@@ -288,6 +294,7 @@ char * find_name(char * line) {
   return name;
 }
 
+//find the word after : in the line
 char * find_word(char * line) {
   char * col = strchr(line, ':');
   col++;
@@ -333,13 +340,12 @@ catarray_t * read_list(FILE * f) {
   return array_cat;
 }
 
+//free the catarray_t
 void free_cat(catarray_t * cat) {
   if (cat != NULL) {
     for (size_t i = 0; i < cat->n; i++) {
       for (size_t j = 0; j < cat->arr[i].n_words; j++) {
-        if (cat->arr[i].words[j] != NULL) {
-          free(cat->arr[i].words[j]);
-        }
+        free(cat->arr[i].words[j]);
       }
       free(cat->arr[i].words);
       free(cat->arr[i].name);
