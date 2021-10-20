@@ -1,3 +1,4 @@
+
 #include "rand_story.h"
 
 //read the template file and return a char*
@@ -47,8 +48,9 @@ int check_underscore(char * p) {
 //check if the name is integer
 int check_int(char * name) {
   char * p = name;
+
   while (*p != '\0') {
-    if (*p > 48 && *p <= 57) {
+    if (*p < 48 && *p > 57) {
       return 0;
     }
     if (*p == 48) {
