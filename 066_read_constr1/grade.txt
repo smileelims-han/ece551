@@ -1,14 +1,10 @@
-Grading at 11/08/2021:19:04:58.592889
-For commit ID c942be17a360ede1fa7cc2741a149e6e4ef891eb
-Grading at Mon Nov  8 14:04:58 EST 2021
+Grading at 11/08/2021:19:05:48.947575
+For commit ID 78f7f51f0f7a1f2e9b3dbe8bc88952dcded009e0
+Grading at Mon Nov  8 14:05:48 EST 2021
 Attempting to compile:
 g++ -o code -Wall -Werror -std=gnu++98 code.cpp
 Your Makefile produced a binary called 'code'
-Line_7_did_not_match
-Line_8_did_not_match
-Line_9_did_not_match
-Line_10_did_not_match
-Your file did not match the expected output
-Your output did not match what we expected.
+Your file matched the expected output
+Your output matched what we expected
 
-Overall Grade: FAILED
+Overall Grade: PASSED
