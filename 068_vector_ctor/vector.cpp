@@ -5,18 +5,17 @@
 
 /* write your class implementation in this file
  */
-Vector2D::Vector2D() {
-  x = 0;
-  y = 0;
+Vector2D::Vector2D() : x(0), y(0) {
 }
-Vector2D::Vector2D(int init_x, int init_y) {
-  x = init_x;
-  y = init_y;
+
+Vector2D::Vector2D(double init_x, double init_y) : x(init_x), y(init_y) {
 }
+
 void Vector2D::initVector(double init_x, double init_y) {
   x = init_x;
   y = init_y;
 }
+
 double Vector2D::getMagnitude() const {
   double temp = x * x + y * y;
   return std::sqrt(temp);
