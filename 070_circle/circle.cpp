@@ -18,7 +18,7 @@ double Circle::intersectionArea(const Circle & otherCircle) {
     return 0;
   }
   //when the two circles share same center point
-  if (dis_cp == 0) {
+  if (dis_cp <= fabs(radius - otherCircle.radius)) {
     if (radius >= otherCircle.radius) {
       return M_PI * otherCircle.radius * otherCircle.radius;
     }
