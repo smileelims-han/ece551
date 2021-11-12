@@ -15,7 +15,7 @@ void sort_input(std::istream & input) {
   }
 
   if (!input.eof() && !input) {
-    std::cout << "can not read the file" << std::endl;
+    std::cerr << "can not read the file" << std::endl;
   }
 
   std::sort(v.begin(), v.end());
@@ -35,7 +35,7 @@ int main(int argc, char ** argv) {
     for (int i = 1; i < argc; i++) {
       std::ifstream input_file(argv[i]);
       if (!input_file.is_open()) {
-        std::cout << "read fail." << std::endl;
+        std::cerr << "read fail." << std::endl;
         return EXIT_FAILURE;
       }
       sort_input(input_file);
