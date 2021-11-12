@@ -9,17 +9,21 @@
 void sort_input(std::istream & input) {
   std::vector<std::string> v;
   std::string s;
-  if (!input.eof() && !input) {
-    std::cout << "can not read the file" << std::endl;
-  }
 
   while (getline(input, s)) {
     v.push_back(s);
   }
-  sort(v.begin(), v.end());
 
-  for (size_t i = 0; i < v.size(); i++) {
-    std::cout << v[i] << std::endl;
+  if (!input.eof() && !input) {
+    std::cout << "can not read the file" << std::endl;
+  }
+
+  std::sort(v.begin(), v.end());
+
+  std::vector<std::string>::iterator it = v.begin();
+  while (it != v.end()) {
+    std::cout << *it << std::endl;
+    ++it;
   }
 }
 
@@ -28,9 +32,8 @@ int main(int argc, char ** argv) {
     sort_input(std::cin);
   }
   if (argc >= 2) {
-    for (int i = 0; i < argc; i++) {
-      std::ifstream input_file;
-      input_file.open(argv[i], std::ifstream::in);
+    for (int i = 1; i < argc; i++) {
+      std::ifstream input_file(argv[i]);
       if (!input_file.is_open()) {
         std::cout << "read fail." << std::endl;
         return EXIT_FAILURE;
