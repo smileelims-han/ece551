@@ -97,19 +97,36 @@ class Matrix {
     }
     return sum;
   }
-
-  std::ostream & operator<<(std::ostream & s, const Matrix<T> & rhs) {
-    if (rhs.getRows() == 0) {
-      s << "[]";
-      return s;
-    }
-    else {
-      s << "[";
-      for (int i = 0; i < rhs.getRows() - 1; i++) {
-        s << rhs[i] << ",\n";
-      }
-      s << rhs[rhs.getRows() - 1] << "]\n";
-      return s;
-    }
-  }
 };
+
+template<typename T>
+std::ostream & operator<<(std::ostream & s, const Matrix<T> & rhs) {
+  if (rhs.getRows() == 0) {
+    s << "[]";
+    return s;
+  }
+  else {
+    s << "[";
+    for (int i = 0; i < rhs.getRows() - 1; i++) {
+      s << rhs[i] << ",\n";
+    }
+    s << rhs[rhs.getRows() - 1] << "]\n";
+    return s;
+  }
+}
+
+template<typename T>
+std::ostream & operator<<(std::ostream & s, const std::vector<T> & rhs) {
+  if (rhs.size() == 0) {
+    s << "{}";
+    return s;
+  }
+  else {
+    s << "{";
+    for (size_t i = 0; i < rhs.size() - 1; i++) {
+      s << rhs[i] << ",";
+    }
+    s << rhs[rhs.size() - 1] << "}";
+    return s;
+  }
+}
