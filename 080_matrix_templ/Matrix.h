@@ -9,7 +9,6 @@
 
 //YOUR CODE GOES HERE!
 
-#endif
 template<typename T>
 class Matrix {
  private:
@@ -45,8 +44,7 @@ class Matrix {
     if (this != &rhs) {
       std::vector<T> ** temp = new std::vector<T> *[rhs.numRows];
       for (int i = 0; i < rhs.numRows; i++) {
-        temp[i] = new std::vector<T>(rhs.numColumns);
-        *temp[i] = *rhs.rows[i];
+        temp[i] = new std::vector<T>(rhs[i]);
       }
       for (int i = 0; i < numRows; i++) {
         delete rows[i];
@@ -90,6 +88,8 @@ class Matrix {
     assert(numRows == rhs.numRows);
     assert(numColumns == rhs.numColumns);
     Matrix sum(numRows, numColumns);
+    sum.numRows = numRows;
+    sum.numColumns = rhs.numColumns;
     for (int i = 0; i < numRows; i++) {
       for (int j = 0; i < numColumns; j++) {
         sum[i][j] = (*this)[i][j] + rhs[i][j];
@@ -130,3 +130,5 @@ std::ostream & operator<<(std::ostream & s, const std::vector<T> & rhs) {
     return s;
   }
 }
+
+#endif
