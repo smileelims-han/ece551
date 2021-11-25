@@ -8,7 +8,6 @@
 #include <vector>
 
 //YOUR CODE GOES HERE!
-
 template<typename T>
 class Matrix {
  private:
@@ -24,10 +23,10 @@ class Matrix {
     }
   }
 
-  Matrix(const Matrix<T> & rhs) :
+  Matrix(const Matrix & rhs) :
       numRows(rhs.numRows),
       numColumns(rhs.numColumns),
-      rows(new std::vector<T> *[rhs.numRows]) {
+      rows(new std::vector<T> *[numRows]) {
     for (int i = 0; i < numRows; i++) {
       rows[i] = new std::vector<T>(rhs[i]);
     }
@@ -40,7 +39,7 @@ class Matrix {
     delete[] rows;
   }
 
-  Matrix & operator=(const Matrix<T> & rhs) {
+  Matrix & operator=(const Matrix & rhs) {
     if (this != &rhs) {
       std::vector<T> ** temp = new std::vector<T> *[rhs.numRows];
       for (int i = 0; i < rhs.numRows; i++) {
@@ -77,42 +76,41 @@ class Matrix {
       return false;
     }
     for (int i = 0; i < numRows; i++) {
-      if (*rows[i] != *rhs.rows[i]) {
+      if ((*this)[i] != rhs[i]) {
         return false;
       }
     }
     return true;
   }
 
-  Matrix<T> operator+(const Matrix & rhs) const {
+  Matrix operator+(const Matrix & rhs) const {
     assert(numRows == rhs.numRows);
     assert(numColumns == rhs.numColumns);
+
     Matrix sum(numRows, numColumns);
-    sum.numRows = numRows;
+    sum.numRows = rhs.numRows;
     sum.numColumns = rhs.numColumns;
     for (int i = 0; i < numRows; i++) {
-      for (int j = 0; i < numColumns; j++) {
+      for (int j = 0; j < numColumns; j++) {
         sum[i][j] = (*this)[i][j] + rhs[i][j];
       }
     }
     return sum;
   }
 };
-
 template<typename T>
 std::ostream & operator<<(std::ostream & s, const Matrix<T> & rhs) {
   if (rhs.getRows() == 0) {
     s << "[]";
     return s;
   }
-  else {
-    s << "[";
-    for (int i = 0; i < rhs.getRows() - 1; i++) {
-      s << rhs[i] << ",\n";
-    }
-    s << rhs[rhs.getRows() - 1] << "]\n";
-    return s;
+
+  s << "[";
+  for (int i = 0; i < rhs.getRows() - 1; i++) {
+    s << rhs[i] << ",\n";
   }
+  s << rhs[rhs.getRows() - 1] << "]";
+  return s;
 }
 
 template<typename T>
@@ -121,14 +119,13 @@ std::ostream & operator<<(std::ostream & s, const std::vector<T> & rhs) {
     s << "{}";
     return s;
   }
-  else {
-    s << "{";
-    for (size_t i = 0; i < rhs.size() - 1; i++) {
-      s << rhs[i] << ",";
-    }
-    s << rhs[rhs.size() - 1] << "}";
-    return s;
+
+  s << "{";
+  for (size_t i = 0; i < rhs.size() - 1; i++) {
+    s << rhs[i] << ",";
   }
+  s << rhs[rhs.size() - 1] << "}";
+  return s;
 }
 
 #endif
