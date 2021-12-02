@@ -272,6 +272,56 @@ class Tester {
     assert(il_assign1[1] = 100);
     assert(il_assign1.head->next->data =
                100 && il_assign1.getSize() == 3 && il_assign1.head->prev == NULL);
+    IntList * test_1 = new IntList();
+    test_1->addFront(3);
+    test_1->addBack(5);
+    delete test_1;
+    //empty
+    IntList * test_2 = new IntList();
+    delete test_2;
+
+    // copy-assign-delete
+    IntList * test_3 = new IntList();
+    IntList * test_4 = new IntList();
+
+    test_3->addBack(3);
+    test_3->addBack(5);
+    // 3 5
+    IntList * test_5 = new IntList(*test_3);
+    *test_4 = *test_3;
+    assert(test_4->getSize() == 2 && (*test_4)[0] == 3 && (*test_4)[1] == 5 &&
+           test_4->head->prev == NULL && test_4->head->next == test_4->tail &&
+           test_4->head->data == 3 && test_4->head->next->data == 5 &&
+           test_4->tail->data == 5 && test_4->tail->next == NULL &&
+           test_4->tail->prev == test_4->head && test_4->head->next->next == NULL &&
+           test_4->tail->prev->data == 3 && test_4->tail->prev->prev == NULL);
+    test_4->remove(5);
+    test_4->addFront(5);
+    assert(test_4->getSize() == 2 && (*test_4)[0] == 5 && (*test_4)[1] == 3 &&
+           test_4->head->prev == NULL && test_4->head->next == test_4->tail &&
+           test_4->head->data == 5 && test_4->head->next->data == 3 &&
+           test_4->tail->data == 3 && test_4->tail->next == NULL &&
+           test_4->tail->prev == test_4->head && test_4->head->next->next == NULL &&
+           test_4->tail->prev->data == 5 && test_4->tail->prev->prev == NULL);
+
+    assert(test_5->getSize() == 2 && (*test_5)[0] == 3 && (*test_5)[1] == 5 &&
+           test_5->head->prev == NULL && test_5->head->next == test_5->tail &&
+           test_5->head->data == 3 && test_5->head->next->data == 5 &&
+           test_5->tail->data == 5 && test_5->tail->next == NULL &&
+           test_5->tail->prev == test_5->head && test_5->head->next->next == NULL &&
+           test_5->tail->prev->data == 3 && test_5->tail->prev->prev == NULL);
+    test_5->remove(5);
+    test_5->addFront(5);
+    assert(test_5->getSize() == 2 && (*test_5)[0] == 5 && (*test_5)[1] == 3 &&
+           test_5->head->prev == NULL && test_5->head->next == test_5->tail &&
+           test_5->head->data == 5 && test_5->head->next->data == 3 &&
+           test_5->tail->data == 3 && test_5->tail->next == NULL &&
+           test_5->tail->prev == test_5->head && test_5->head->next->next == NULL &&
+           test_5->tail->prev->data == 5 && test_5->tail->prev->prev == NULL);
+
+    delete test_3;
+    delete test_4;
+    delete test_5;
 
     /*il.remove(11);
     // 9 7
@@ -343,56 +393,6 @@ class Tester {
 
     //test destructor
     //non-empty
-    IntList * test_1 = new IntList();
-    test_1->addFront(3);
-    test_1->addBack(5);
-    delete test_1;
-    //empty
-    IntList * test_2 = new IntList();
-    delete test_2;
-
-    // copy-assign-delete
-    IntList * test_3 = new IntList();
-    IntList * test_4 = new IntList();
-
-    test_3->addBack(3);
-    test_3->addBack(5);
-    // 3 5
-    IntList * test_5 = new IntList(*test_3);
-    *test_4 = *test_3;
-    assert(test_4->getSize() == 2 && (*test_4)[0] == 3 && (*test_4)[1] == 5 &&
-           test_4->head->prev == NULL && test_4->head->next == test_4->tail &&
-           test_4->head->data == 3 && test_4->head->next->data == 5 &&
-           test_4->tail->data == 5 && test_4->tail->next == NULL &&
-           test_4->tail->prev == test_4->head && test_4->head->next->next == NULL &&
-           test_4->tail->prev->data == 3 && test_4->tail->prev->prev == NULL);
-    test_4->remove(5);
-    test_4->addFront(5);
-    assert(test_4->getSize() == 2 && (*test_4)[0] == 5 && (*test_4)[1] == 3 &&
-           test_4->head->prev == NULL && test_4->head->next == test_4->tail &&
-           test_4->head->data == 5 && test_4->head->next->data == 3 &&
-           test_4->tail->data == 3 && test_4->tail->next == NULL &&
-           test_4->tail->prev == test_4->head && test_4->head->next->next == NULL &&
-           test_4->tail->prev->data == 5 && test_4->tail->prev->prev == NULL);
-
-    assert(test_5->getSize() == 2 && (*test_5)[0] == 3 && (*test_5)[1] == 5 &&
-           test_5->head->prev == NULL && test_5->head->next == test_5->tail &&
-           test_5->head->data == 3 && test_5->head->next->data == 5 &&
-           test_5->tail->data == 5 && test_5->tail->next == NULL &&
-           test_5->tail->prev == test_5->head && test_5->head->next->next == NULL &&
-           test_5->tail->prev->data == 3 && test_5->tail->prev->prev == NULL);
-    test_5->remove(5);
-    test_5->addFront(5);
-    assert(test_5->getSize() == 2 && (*test_5)[0] == 5 && (*test_5)[1] == 3 &&
-           test_5->head->prev == NULL && test_5->head->next == test_5->tail &&
-           test_5->head->data == 5 && test_5->head->next->data == 3 &&
-           test_5->tail->data == 3 && test_5->tail->next == NULL &&
-           test_5->tail->prev == test_5->head && test_5->head->next->next == NULL &&
-           test_5->tail->prev->data == 5 && test_5->tail->prev->prev == NULL);
-
-    delete test_3;
-    delete test_4;
-    delete test_5;
   }
   void testRemove() {
     IntList il;
