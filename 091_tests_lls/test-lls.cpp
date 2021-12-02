@@ -55,6 +55,7 @@ class Tester {
   void testall() {
     IntList il;
     assert(il.head == NULL && il.tail == NULL && il.getSize() == 0);
+    /////////////////////////addBack
     il.addBack(7);
     //7
     assert(il.find(7) == 0);
@@ -197,7 +198,7 @@ class Tester {
            il_copy1.head->next != il.head->next &&
            il_copy1.head->next->next != il.head->next->next &&
            il_copy1.tail->prev != il.tail->prev);
-    //check addFront back remove after copy
+    //check addFront / back / remove after copy
     il_copy1.remove(9);
     il_copy1.addBack(5);
     il_copy1.addFront(13);
@@ -241,6 +242,7 @@ class Tester {
     il_assign1.remove(7);
     il_assign1.remove(11);
     // 13 9 5
+    // check add front/back/remove after assign
     assert(il_assign1.getSize() == 3 && il_assign1[0] == 13 && il_assign1[1] == 9 &&
            il_assign1[2] == 5 && il_assign1.head->data == 13 &&
            il_assign1.head->prev == NULL &&
@@ -253,6 +255,7 @@ class Tester {
            il_assign1.tail->prev->prev->prev == NULL &&
            il_assign1.tail->prev->prev == il_assign1.head &&
            il_assign1.head->next->prev == il_assign1.head);
+
     //check copy empty list
     IntList il_emp;
     IntList il_copy2(il_emp);
@@ -267,16 +270,20 @@ class Tester {
     assert(il_assign2.tail == NULL);
     assert(il_assign2.getSize() == 0);
     assert(il_assign2.head == il_assign2.tail);
+
     //assign one item
     il_assign1[1] = 100;
     assert(il_assign1[1] = 100);
     assert(il_assign1.head->next->data =
                100 && il_assign1.getSize() == 3 && il_assign1.head->prev == NULL);
+
+    //check deconstructor
     IntList * test_1 = new IntList();
     test_1->addFront(3);
     test_1->addBack(5);
     delete test_1;
-    //empty
+
+    //empty list
     IntList * test_2 = new IntList();
     delete test_2;
 
