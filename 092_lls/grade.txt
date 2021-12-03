@@ -1,35 +1,23 @@
-Grading at 12/03/2021:18:20:39.514223
-For commit ID 3050c614cd9ef4eedc29a1cd92b59c44149fc787
-Grading at Fri Dec  3 13:20:38 EST 2021
+Grading at 12/03/2021:18:51:08.225838
+For commit ID 56a0bcbdf7abed032297011dbb3028bf475c5807
+Grading at Fri Dec  3 13:51:04 EST 2021
 -----------------------------------------------
 testcase 1 : Testing with LinkedList<int>
 ...compiling...
-In file included from tester.cpp:5:0:
-ll.hpp: In instantiation of ‘T& LinkedList<T>::operator=(const LinkedList<T>&) [with T = int]’:
-tester.cpp:100:11:   required from here
-ll.hpp:156:13: error: invalid initialization of reference of type ‘int&’ from expression of type ‘LinkedList<int>’
-     return *this;
-             ^~~~
-The code did not compile.  This test failed.
+The code compiled.
+  - Valgrind reported errors
+Valgrind reported errors (test failed).
 -----------------------------------------------
 testcase 2 : Testing with LinkedList<std::string>
 ...compiling...
-In file included from tester.cpp:5:0:
-ll.hpp: In instantiation of ‘T& LinkedList<T>::operator=(const LinkedList<T>&) [with T = std::__cxx11::basic_string<char>]’:
-tester.cpp:100:11:   required from here
-ll.hpp:156:13: error: invalid initialization of reference of type ‘std::__cxx11::basic_string<char>&’ from expression of type ‘LinkedList<std::__cxx11::basic_string<char> >’
-     return *this;
-             ^~~~
-The code did not compile.  This test failed.
+The code compiled.
+  - Valgrind reported errors
+Valgrind reported errors (test failed).
 -----------------------------------------------
 testcase 3 : Testing with LinkedList<(a custom class we wrote)>
 ...compiling...
-In file included from tester.cpp:5:0:
-ll.hpp: In instantiation of ‘T& LinkedList<T>::operator=(const LinkedList<T>&) [with T = Tester]’:
-tester.cpp:100:11:   required from here
-ll.hpp:156:13: error: invalid initialization of reference of type ‘Tester&’ from expression of type ‘LinkedList<Tester>’
-     return *this;
-             ^~~~
-The code did not compile.  This test failed.
+The code compiled.
+  - Valgrind reported errors
+Valgrind reported errors (test failed).
 
 Overall Grade: F
