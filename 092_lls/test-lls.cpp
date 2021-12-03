@@ -3,7 +3,9 @@
 #include <cstdlib>
 #include <iostream>
 
-#include "il.hpp"
+#include "ll.hpp"
+
+typedef LinkedList<int> IntList;
 
 class Tester {
  public:
@@ -182,15 +184,18 @@ class Tester {
     // il: 11 9 7
     // check copy , assign
     IntList il_copy1(il);
-    assert(il_copy1.getSize() == 3 && il_copy1[0] == 11 && il_copy1[1] == 9 &&
-           il_copy1[2] == 7 && il_copy1.head->data == 11 && il_copy1.head->prev == NULL &&
-           il_copy1.head->next->next == il_copy1.tail &&
-           il_copy1.head->next->prev == il_copy1.head && il_copy1.head->next->data == 9 &&
-           il_copy1.head->next->next->data == 7 && il_copy1.tail->data == 7 &&
-           il_copy1.tail->prev == il_copy1.head->next && il_copy1.tail->next == NULL &&
+    assert(il_copy1.getSize() == 3);
+    assert(il_copy1[0] == 11);
+    assert(il_copy1[1] == 9);
+    assert(il_copy1[2] == 7);
+    assert(il_copy1.head->data == 11 && il_copy1.head->prev == NULL &&
+           il_copy1.head->next->next == il_copy1.tail);
+    assert(il_copy1.head->next->prev == il_copy1.head && il_copy1.head->next->data == 9 &&
+           il_copy1.head->next->next->data == 7 && il_copy1.tail->data == 7);
+    assert(il_copy1.tail->prev == il_copy1.head->next && il_copy1.tail->next == NULL &&
            il_copy1.head->next->next->next == NULL && il_copy1.tail->prev->data == 9 &&
-           il_copy1.tail->prev->prev->data == 11 &&
-           il_copy1.tail->prev->prev->prev == NULL &&
+           il_copy1.tail->prev->prev->data == 11);
+    assert(il_copy1.tail->prev->prev->prev == NULL &&
            il_copy1.tail->prev->prev == il_copy1.head &&
            il_copy1.head->next->prev == il_copy1.head);
     // check if it is a deep copy
@@ -218,10 +223,13 @@ class Tester {
 
     // check assign1
     IntList il_assign1 = il;
-    assert(il_assign1.getSize() == 3 && il_assign1[0] == 11 && il_assign1[1] == 9 &&
-           il_assign1[2] == 7 && il_assign1.head->data == 11 &&
-           il_assign1.head->prev == NULL &&
-           il_assign1.head->next->next == il_assign1.tail &&
+    assert(il_assign1.getSize() == 3);
+    assert(il_assign1[0] == 11);
+    assert(il_assign1[1] == 9);
+    assert(il_assign1[2] == 7);
+    assert(il_assign1.head->data == 11);
+    assert(il_assign1.head->prev == NULL);
+    assert(il_assign1.head->next->next == il_assign1.tail &&
            il_assign1.head->next->prev == il_assign1.head &&
            il_assign1.head->next->data == 9 && il_assign1.head->next->next->data == 7 &&
            il_assign1.tail->data == 7 && il_assign1.tail->prev == il_assign1.head->next &&

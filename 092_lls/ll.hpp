@@ -9,10 +9,7 @@
 //YOUR CODE GOES HERE
 using namespace std;
 
-class Error : public exception {
- public:
-  virtual const char * what() const throw() { return "The input index is incorrect\n"; }
-};
+class Tester;
 
 template<typename T>
 class LinkedList {
@@ -100,26 +97,38 @@ class LinkedList {
 
   //index []
   T & operator[](int index) {
-    Node * current = head;
-    if (index < 0 || index > size) {
-      throw Error();
+    try {
+      if (index > size || index < 0) {
+        throw exception();
+      }
+      Node * current = head;
+      for (int i = 0; i < index; i++) {
+        current = current->next;
+      }
+      return current->data;
     }
-    for (int i = 0; i < index; i++) {
-      current = current->next;
+    catch (exception & e) {
+      cout << "out of range" << e.what() << "\n";
+      exit(EXIT_FAILURE);
     }
-    return current->data;
   }
 
   //index [] const
   const T & operator[](int index) const {
-    Node * current = head;
-    if (index < 0 || index > size) {
-      throw Error();
+    try {
+      if (index > size || index < 0) {
+        throw exception();
+      }
+      Node * current = head;
+      for (int i = 0; i < index; i++) {
+        current = current->next;
+      }
+      return current->data;
     }
-    for (int i = 0; i < index; i++) {
-      current = current->next;
+    catch (exception & e) {
+      cout << "out of range" << e.what() << "\n";
+      exit(EXIT_FAILURE);
     }
-    return current->data;
   }
 
   //find
@@ -167,7 +176,11 @@ class LinkedList {
   }
 
   //copy
-  LinkedList(const LinkedList & rhs) : head(NULL), tail(NULL), size(rhs.size) {
+  LinkedList(const LinkedList & rhs) {
+    head = NULL;
+    tail = NULL;
+    size = 0;
+
     Node * current = rhs.head;
     while (current != NULL) {
       addBack(current->data);
@@ -179,5 +192,7 @@ class LinkedList {
   int getSize() const { return size; }
 
   LinkedList() : head(NULL), tail(NULL), size(0){};
+
+  friend class Tester;
 };
 #endif
