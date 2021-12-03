@@ -145,16 +145,14 @@ class LinkedList {
     size = 0;
   }
   T & operator=(const LinkedList & rhs) {
-    if (this != rhs) {
-      LinkedList<T> temp(rhs);
-      Node * current_head = head;
-      Node * current_tail = tail;
-      head = temp.head;
-      tail = temp.tail;
-      temp.head = current_head;
-      temp.tail = current_tail;
-      size = temp.size;
-    }
+    LinkedList<T> temp(rhs);
+    Node * current_head = head;
+    Node * current_tail = tail;
+    head = temp.head;
+    tail = temp.tail;
+    temp.head = current_head;
+    temp.tail = current_tail;
+    size = temp.size;
     return *this;
   }
   LinkedList(const LinkedList & rhs) : head(NULL), tail(NULL), size(rhs.getSize()) {
