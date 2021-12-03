@@ -54,7 +54,6 @@ class LinkedList {
       return false;
     }
     Node * current = head;
-
     while (current != NULL && current->data != data) {
       current = current->next;
     }
@@ -133,38 +132,40 @@ class LinkedList {
     }
     Node * current = head;
     int index = 0;
-    while (current != NULL && current->data != item) {
+    while (current != NULL) {
+      if (current->data == item) {
+        return index;
+      }
       current = current->next;
       index++;
-    }
-    if (current != NULL) {
-      return index;
     }
     return -1;
   }
 
   //destructor
   ~LinkedList() {
-    Node * current = head;
     while (head != NULL) {
-      current = current->next;
+      Node * current = head->next;
       delete head;
       head = current;
     }
+    head = NULL;
     tail = NULL;
     size = 0;
   }
 
   //assign
   LinkedList & operator=(const LinkedList & rhs) {
-    LinkedList<T> temp(rhs);
-    Node * current_head = head;
-    Node * current_tail = tail;
-    head = temp.head;
-    tail = temp.tail;
-    temp.head = current_head;
-    temp.tail = current_tail;
-    size = temp.size;
+    if (this != &rhs) {
+      LinkedList<T> temp(rhs);
+      Node * current_head = head;
+      Node * current_tail = tail;
+      head = temp.head;
+      tail = temp.tail;
+      temp.head = current_head;
+      temp.tail = current_tail;
+      size = temp.size;
+    }
     return *this;
   }
   //copy
