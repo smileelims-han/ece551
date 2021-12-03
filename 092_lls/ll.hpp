@@ -147,17 +147,13 @@ class LinkedList {
   T & operator=(const LinkedList & rhs) {
     if (this != rhs) {
       LinkedList<T> temp(rhs);
-      while (head != NULL) {
-        Node * current = head->next;
-        delete head;
-        head = temp;
-      }
+      Node * current_head = head;
+      Node * current_tail = tail;
       head = temp.head;
       tail = temp.tail;
+      temp.head = current_head;
+      temp.tail = current_tail;
       size = temp.size;
-      temp.head = NULL;
-      temp.tail = NULL;
-      temp.size = 0;
     }
     return *this;
   }
