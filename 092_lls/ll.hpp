@@ -10,7 +10,6 @@
 using namespace std;
 
 template<typename T>
-
 class LinkedList {
  private:
   class Node {
@@ -27,6 +26,7 @@ class LinkedList {
   int size;
 
  public:
+  //addFront
   void addFront(const T & data) {
     head = new Node(data, head, NULL);
     if (tail == NULL) {
@@ -37,6 +37,7 @@ class LinkedList {
     }
     size++;
   }
+  //addBack
   void addBack(const T & data) {
     tail = new Node(data, NULL, tail);
     if (head == NULL) {
@@ -47,6 +48,7 @@ class LinkedList {
     }
     size++;
   }
+  //bool remove
   bool remove(const T & data) {
     if (head == NULL) {
       return false;
@@ -90,6 +92,7 @@ class LinkedList {
       }
     }
   }
+  //index []
   T & operator[](int index) {
     try {
       if (index > size || index < 0) {
@@ -106,6 +109,7 @@ class LinkedList {
       exit(EXIT_FAILURE);
     }
   }
+  //index [] const
   T & operator[](int index) const {
     try {
       if (index > size || index < 0) {
@@ -122,7 +126,11 @@ class LinkedList {
       exit(EXIT_FAILURE);
     }
   }
+  //find
   int find(const T & item) {
+    if (head == NULL) {
+      return -1;
+    }
     Node * current = head;
     int index = 0;
     while (current != NULL && current->data != item) {
@@ -134,6 +142,8 @@ class LinkedList {
     }
     return -1;
   }
+
+  //destructor
   ~LinkedList() {
     Node * current = head;
     while (head != NULL) {
@@ -144,7 +154,9 @@ class LinkedList {
     tail = NULL;
     size = 0;
   }
-  T & operator=(const LinkedList & rhs) {
+
+  //assign
+  LinkedList & operator=(const LinkedList & rhs) {
     LinkedList<T> temp(rhs);
     Node * current_head = head;
     Node * current_tail = tail;
@@ -155,6 +167,7 @@ class LinkedList {
     size = temp.size;
     return *this;
   }
+  //copy
   LinkedList(const LinkedList & rhs) : head(NULL), tail(NULL), size(rhs.getSize()) {
     Node * current = rhs.head;
     while (current != NULL) {
@@ -162,7 +175,7 @@ class LinkedList {
       current = current->next;
     }
   }
-
+  //getSize
   int getSize() const { return size; }
 
   LinkedList() : head(NULL), tail(NULL), size(0){};
