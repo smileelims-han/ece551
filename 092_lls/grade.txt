@@ -1,6 +1,6 @@
-Grading at 12/03/2021:17:58:48.316232
-For commit ID 8df2ad1af46c6bd938367795e510b77f2dd65c4f
-Grading at Fri Dec  3 12:58:47 EST 2021
+Grading at 12/03/2021:18:10:53.404214
+For commit ID 9080b2d2de85c94aa15a9970208dca4a75dd9988
+Grading at Fri Dec  3 13:10:52 EST 2021
 -----------------------------------------------
 testcase 1 : Testing with LinkedList<int>
 ...compiling...
@@ -154,16 +154,9 @@ In file included from tester.cpp:5:0:
 ll.hpp:148:14: note:   mismatched types ‘const std::istreambuf_iterator<_CharT, _Traits>’ and ‘LinkedList<int>*’
      if (this != rhs) {
          ~~~~~^~~~~~
-ll.hpp:153:14: error: cannot convert ‘LinkedList<int>’ to ‘LinkedList<int>::Node*’ in assignment
-         head = temp;
-         ~~~~~^~~~~~
-ll.hpp:151:16: error: unused variable ‘current’ [-Werror=unused-variable]
-         Node * current = head->next;
-                ^~~~~~~
-ll.hpp:162:13: error: invalid initialization of reference of type ‘int&’ from expression of type ‘LinkedList<int>’
+ll.hpp:158:13: error: invalid initialization of reference of type ‘int&’ from expression of type ‘LinkedList<int>’
      return *this;
              ^~~~
-cc1plus: all warnings being treated as errors
 The code did not compile.  This test failed.
 -----------------------------------------------
 testcase 2 : Testing with LinkedList<std::string>
@@ -363,16 +356,9 @@ In file included from tester.cpp:5:0:
 ll.hpp:148:14: note:   mismatched types ‘const __gnu_cxx::__normal_iterator<_IteratorL, _Container>’ and ‘LinkedList<std::__cxx11::basic_string<char> >*’
      if (this != rhs) {
          ~~~~~^~~~~~
-ll.hpp:153:14: error: cannot convert ‘LinkedList<std::__cxx11::basic_string<char> >’ to ‘LinkedList<std::__cxx11::basic_string<char> >::Node*’ in assignment
-         head = temp;
-         ~~~~~^~~~~~
-ll.hpp:151:16: error: unused variable ‘current’ [-Werror=unused-variable]
-         Node * current = head->next;
-                ^~~~~~~
-ll.hpp:162:13: error: invalid initialization of reference of type ‘std::__cxx11::basic_string<char>&’ from expression of type ‘LinkedList<std::__cxx11::basic_string<char> >’
+ll.hpp:158:13: error: invalid initialization of reference of type ‘std::__cxx11::basic_string<char>&’ from expression of type ‘LinkedList<std::__cxx11::basic_string<char> >’
      return *this;
              ^~~~
-cc1plus: all warnings being treated as errors
 The code did not compile.  This test failed.
 -----------------------------------------------
 testcase 3 : Testing with LinkedList<(a custom class we wrote)>
@@ -527,16 +513,9 @@ In file included from tester.cpp:5:0:
 ll.hpp:148:14: note:   mismatched types ‘const std::istreambuf_iterator<_CharT, _Traits>’ and ‘LinkedList<Tester>*’
      if (this != rhs) {
          ~~~~~^~~~~~
-ll.hpp:153:14: error: cannot convert ‘LinkedList<Tester>’ to ‘LinkedList<Tester>::Node*’ in assignment
-         head = temp;
-         ~~~~~^~~~~~
-ll.hpp:151:16: error: unused variable ‘current’ [-Werror=unused-variable]
-         Node * current = head->next;
-                ^~~~~~~
-ll.hpp:162:13: error: invalid initialization of reference of type ‘Tester&’ from expression of type ‘LinkedList<Tester>’
+ll.hpp:158:13: error: invalid initialization of reference of type ‘Tester&’ from expression of type ‘LinkedList<Tester>’
      return *this;
              ^~~~
-cc1plus: all warnings being treated as errors
 The code did not compile.  This test failed.
 
 Overall Grade: F
