@@ -255,6 +255,24 @@ class Tester {
            il_assign1.tail->prev->prev->prev == NULL &&
            il_assign1.tail->prev->prev == il_assign1.head &&
            il_assign1.head->next->prev == il_assign1.head);
+    il_assign1 = il;
+    assert(il_assign1.getSize() == 3 && il_assign1[0] == 11 && il_assign1[1] == 9 &&
+           il_assign1[2] == 7 && il_assign1.head->data == 11 &&
+           il_assign1.head->prev == NULL &&
+           il_assign1.head->next->next == il_assign1.tail &&
+           il_assign1.head->next->prev == il_assign1.head &&
+           il_assign1.head->next->data == 9 && il_assign1.head->next->next->data == 7 &&
+           il_assign1.tail->data == 7 && il_assign1.tail->prev == il_assign1.head->next &&
+           il_assign1.tail->next == NULL && il_assign1.head->next->next->next == NULL &&
+           il_assign1.tail->prev->data == 9 && il_assign1.tail->prev->prev->data == 11 &&
+           il_assign1.tail->prev->prev->prev == NULL &&
+           il_assign1.tail->prev->prev == il_assign1.head &&
+           il_assign1.head->next->prev == il_assign1.head);
+    //check if it is a deep assign?
+    assert(il_assign1.head != il.head && il_assign1.tail != il.tail &&
+           il_assign1.head->next != il.head->next &&
+           il_assign1.head->next->next != il.head->next->next &&
+           il_assign1.tail->prev != il.tail->prev);
 
     //check copy empty list
     IntList il_emp;
@@ -296,12 +314,18 @@ class Tester {
     // 3 5
     IntList * test_5 = new IntList(*test_3);
     *test_4 = *test_3;
+    //check assign
     assert(test_4->getSize() == 2 && (*test_4)[0] == 3 && (*test_4)[1] == 5 &&
            test_4->head->prev == NULL && test_4->head->next == test_4->tail &&
            test_4->head->data == 3 && test_4->head->next->data == 5 &&
            test_4->tail->data == 5 && test_4->tail->next == NULL &&
            test_4->tail->prev == test_4->head && test_4->head->next->next == NULL &&
            test_4->tail->prev->data == 3 && test_4->tail->prev->prev == NULL);
+    //check deep copy
+    assert(test_4->head != test_3->head && test_4->tail != test_3->tail &&
+           test_4->head->next != test_3->head->next &&
+           test_4->tail->prev != test_3->tail->prev);
+    //addFront/remove after assign
     test_4->remove(5);
     test_4->addFront(5);
     assert(test_4->getSize() == 2 && (*test_4)[0] == 5 && (*test_4)[1] == 3 &&
@@ -310,13 +334,18 @@ class Tester {
            test_4->tail->data == 3 && test_4->tail->next == NULL &&
            test_4->tail->prev == test_4->head && test_4->head->next->next == NULL &&
            test_4->tail->prev->data == 5 && test_4->tail->prev->prev == NULL);
-
+    //check copy correcteness
     assert(test_5->getSize() == 2 && (*test_5)[0] == 3 && (*test_5)[1] == 5 &&
            test_5->head->prev == NULL && test_5->head->next == test_5->tail &&
            test_5->head->data == 3 && test_5->head->next->data == 5 &&
            test_5->tail->data == 5 && test_5->tail->next == NULL &&
            test_5->tail->prev == test_5->head && test_5->head->next->next == NULL &&
            test_5->tail->prev->data == 3 && test_5->tail->prev->prev == NULL);
+    //check copy if deep copy
+    assert(test_5->head != test_3->head && test_5->tail != test_3->tail &&
+           test_5->head->next != test_3->head->next &&
+           test_5->tail->prev != test_3->tail->prev);
+
     test_5->remove(5);
     test_5->addFront(5);
     assert(test_5->getSize() == 2 && (*test_5)[0] == 5 && (*test_5)[1] == 3 &&
