@@ -51,43 +51,43 @@ class LinkedList {
     if (head == NULL) {
       return false;
     }
-    else {
-      Node * current = head;
+    Node * current = head;
 
-      while (current != NULL) {
-        if (current->data == data) {
-          if (head == tail) {
-            delete current;
-            head = NULL;
-            tail = NULL;
-            size = 0;
-            return true;
-          }
-          if (current == head) {
-            head = current->next;
-            current->next->prev = NULL;
-            delete current;
-            size--;
-            return true;
-          }
-          if (current == tail) {
-            tail = current->prev;
-            current->prev->next = NULL;
-            delete current;
-            size--;
-            return true;
-          }
-          else {
-            current->prev->next = current->next;
-            current->next->prev = current->prev;
-            delete current;
-            size--;
-            return true;
-          }
-        }
-        current = current->next;
-      }
+    while (current != NULL && current->data != data) {
+      current = current->next;
+    }
+    if (current == NULL) {
       return false;
+    }
+    else {
+      if (head == tail) {
+        delete current;
+        head = NULL;
+        tail = NULL;
+        size = 0;
+        return true;
+      }
+      if (current == head) {
+        head = current->next;
+        current->next->prev = NULL;
+        delete current;
+        size--;
+        return true;
+      }
+      if (current == tail) {
+        tail = current->prev;
+        current->prev->next = NULL;
+        delete current;
+        size--;
+        return true;
+      }
+      else {
+        current->prev->next = current->next;
+        current->next->prev = current->prev;
+        delete current;
+        size--;
+        return true;
+      }
     }
   }
   T & operator[](int index) {
