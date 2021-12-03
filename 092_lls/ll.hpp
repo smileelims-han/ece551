@@ -144,9 +144,23 @@ class LinkedList {
     tail = NULL;
     size = 0;
   }
-  int getSize() const { return size; }
-
-  LinkedList() : head(NULL), tail(NULL), size(0){};
+  T & operator=(const LinkedList & rhs) {
+    if (this != rhs) {
+      LinkedList<T> temp(rhs);
+      while (head != NULL) {
+        Node * current = head->next;
+        delete head;
+        head = temp;
+      }
+      head = temp.head;
+      tail = temp.tail;
+      size = temp.size;
+      temp.head = NULL;
+      temp.tail = NULL;
+      temp.size = 0;
+    }
+    return *this;
+  }
   LinkedList(const LinkedList & rhs) : head(NULL), tail(NULL), size(rhs.getSize()) {
     Node * current = rhs.head;
     while (current != NULL) {
@@ -154,5 +168,9 @@ class LinkedList {
       current = current->next;
     }
   }
+
+  int getSize() const { return size; }
+
+  LinkedList() : head(NULL), tail(NULL), size(0){};
 };
 #endif
