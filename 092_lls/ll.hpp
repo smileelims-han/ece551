@@ -125,13 +125,12 @@ class LinkedList {
   int find(const T & item) {
     Node * current = head;
     int index = 0;
-    while (current != NULL) {
-      if (current->data == item) {
-        return index;
-      }
-      else {
-        current = current->next;
-      }
+    while (current != NULL && current->data != item) {
+      current = current->next;
+      index++;
+    }
+    if (current != NULL) {
+      return index;
     }
     return -1;
   }
