@@ -41,8 +41,8 @@ class page {
 
     string file_name_str;
     file_name_str += file_name;
-    string file_name_str4;
-    file_name_str4 = file_name_str.substr(0, 4);
+    int name_bef = file_name_str.rfind('/');
+    string file_name_str4 = file_name_str.substr(name_bef + 1, 4);
     if (file_name_str4.compare("page") != 0) {
       cerr << "The file name should start with pageX.\n";
       exit(EXIT_FAILURE);
