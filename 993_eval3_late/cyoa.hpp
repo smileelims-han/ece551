@@ -1,4 +1,3 @@
-
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -133,7 +132,7 @@ class page {
         choice_info new_choice(num);
         size_t k = col_index + 1;
         size_t leng_line = line_vec[i].size();
-        new_choice.choice_context = line_vec[i].substr(k, leng_line - 4);
+        new_choice.choice_context = line_vec[i].substr(k, leng_line - k);
         choice.push_back(new_choice);
         num_choice++;
         i++;
