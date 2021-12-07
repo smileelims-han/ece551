@@ -1,6 +1,6 @@
-Grading at 12/07/2021:20:38:21.698927
-For commit ID 303661b58b944656a00ff43fadaab32742537b47
-Grading at Tue Dec  7 15:38:08 EST 2021
+Grading at 12/07/2021:21:08:24.865143
+For commit ID 30178d5de0a72a3b266d3b4fcf3b2c8890fdcd93
+Grading at Tue Dec  7 16:08:12 EST 2021
 Checking Step 1 test cases required for extra credit
 
 Compiling cyoa-step1
@@ -9,7 +9,7 @@ Compiled for step 1
 +-----------------------------------------------------------------------+
 Test case 1 (success): cyoa-step1 /usr/local/ece551/cyoa/story1/page1.txt
 1c1,24
-< The page is empty.
+< The file name should start with pageX.
 ---
 > One day, a strange old wizard comes to your village and tells you that
 > there is an evil dragon lurking in the hills. This wizard's story explains
@@ -39,7 +39,7 @@ Your file did not match the expected output
 +-----------------------------------------------------------------------+
 Test case 2 (success): cyoa-step1 /usr/local/ece551/cyoa/story1/page2.txt
 1c1,24
-< The page is empty.
+< The file name should start with pageX.
 ---
 > As you take the magic whistle from the wizard's hand, he disappears in a
 > puff of smoke. You decide that you should give the whistle a try before you
@@ -69,7 +69,7 @@ Your file did not match the expected output
 +-----------------------------------------------------------------------+
 Test case 3 (success): cyoa-step1 /usr/local/ece551/cyoa/story1/page3.txt
 1c1,24
-< The page is empty.
+< The file name should start with pageX.
 ---
 > As you take the magic shoes from the wizard's hand, he disappears in a puff
 > of smoke. You decide that you should give the shoes a try before you set
@@ -99,7 +99,7 @@ Your file did not match the expected output
 +-----------------------------------------------------------------------+
 Test case 4 (success): cyoa-step1 /usr/local/ece551/cyoa/story1/page4.txt
 1c1,28
-< The page is empty.
+< The file name should start with pageX.
 ---
 > As you take the magic toaster from the wizard's hand, he disappears in a
 > puff of smoke. You decide that you should give the toaster a try before you
@@ -133,7 +133,7 @@ Your file did not match the expected output
 +-----------------------------------------------------------------------+
 Test case 5 (success): cyoa-step1 /usr/local/ece551/cyoa/story1/page5.txt
 1c1,20
-< The page is empty.
+< The file name should start with pageX.
 ---
 > After thinking about it a bit, you decide that Denevieve is probably a
 > better choice. After all, her singing skills are likely to come in handy,
@@ -159,7 +159,7 @@ Your file did not match the expected output
 +-----------------------------------------------------------------------+
 Test case 6 (success): cyoa-step1 /usr/local/ece551/cyoa/story2/page1.txt
 1c1,15
-< The page is empty.
+< The file name should start with pageX.
 ---
 > One bright weekend afternoon, you decide to adventure, putting on your Ring
 > of the Niebelungen and traveler's cloak and strapping the famed sword Ice
@@ -180,7 +180,7 @@ Your file did not match the expected output
 +-----------------------------------------------------------------------+
 Test case 7 (success): cyoa-step1 /usr/local/ece551/cyoa/story2/page2.txt
 1c1,9
-< The page is empty.
+< The file name should start with pageX.
 ---
 > As you tiptoe past the sleeping dragon, steam rising from her nostrils, you
 > see a gleaming treasure hoard, just beyond the scaly tail.
@@ -194,24 +194,28 @@ Test case 7 (success): cyoa-step1 /usr/local/ece551/cyoa/story2/page2.txt
 Your file did not match the expected output
 +-----------------------------------------------------------------------+
 Test case 8 (success): cyoa-step1 /usr/local/ece551/cyoa/story2/page3.txt
-1c1,2
-< You enjoy a quiet evening at home with a mug of herbal tea and your cats,who only think they are tiny dragons.
+1c1,4
+< The file name should start with pageX.
 ---
 > You enjoy a quiet evening at home with a mug of herbal tea and your cats,
 > who only think they are tiny dragons.
+> 
+> Congratulations! You have won. Hooray!
 Your file did not match the expected output
 +-----------------------------------------------------------------------+
 Test case 9 (success): cyoa-step1 /usr/local/ece551/cyoa/story2/page4.txt
-1c1,2
-< Your famed sword Ice becomes embedded in the dragon's neck scales, and thedragon rolls over, crushing you.
+1c1,4
+< The file name should start with pageX.
 ---
 > Your famed sword Ice becomes embedded in the dragon's neck scales, and the
 > dragon rolls over, crushing you.
+> 
+> Sorry, you have lost. Better luck next time!
 Your file did not match the expected output
 +-----------------------------------------------------------------------+
 Test case 10 (success): cyoa-step1 /usr/local/ece551/cyoa/story2/page5.txt
 1c1,7
-< The page is empty.
+< The file name should start with pageX.
 ---
 > The ruby is slippery, as though wet, and it glides through your fingers,
 > crashing hard into a golden plate, which clatters and crashes like a
@@ -248,26 +252,15 @@ Your program successfully indicated a failure case
 Test case 3 (success): cyoa-step1 test3.txt
 We considered this an error case and gave the following message:
 Expected file name pageX.txt, but found test3.txt
-1,6d0
-< haha
-< 
-< What would you like to do?
-< 
-< 1. gues
-< 2. lul
+1d0
+< The file name should start with pageX.
 Your file did not match the expected output
 +-----------------------------------------------------------------------+
 Test case 4 (success): cyoa-step1 test4.txt
 We considered this an error case and gave the following message:
 Expected file name pageX.txt, but found test4.txt
-1,7d0
-< fal;sjfkoiaweurjkhalkfjalsjfnibjlskdjiejflakjldkjfnblfdjeifjoeiur
-< 
-< What would you like to do?
-< 
-< 1. hhhh
-< 2. lalallkejflwiurhjlj
-< 3. foaiuewrlkahfljkds
+1d0
+< The file name should start with pageX.
 Your file did not match the expected output
 
 You have FAILED one or more of your test cases
