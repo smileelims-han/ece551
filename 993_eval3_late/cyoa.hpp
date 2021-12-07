@@ -38,13 +38,19 @@ class page {
       cerr << "The file cannot open.\n";
       exit(EXIT_FAILURE);
     }
+
+    string file_name_str;
+    file_name_str += file_name;
+    string file_name_str4;
+    file_name_str4 = file_name_str.substr(0, 4);
+    if (file_name_str4.compare("page") != 0) {
+      cerr << "The file name should start with pageX.\n";
+      exit(EXIT_FAILURE);
+    }
+
     string line;
     vector<string> line_vec;
     while (getline(file, line)) {
-      if (line == "") {
-        cerr << "The page is empty.\n";
-        exit(EXIT_FAILURE);
-      }
       line_vec.push_back(line);
     }
     add_page(line_vec);
