@@ -21,11 +21,10 @@ class page {
 
   class choice_info {
    public:
-    page * next;
     int next_pnum;
     string choice_context;
-    choice_info() : next(NULL), next_pnum(0){};
-    choice_info(int num) : next(NULL), next_pnum(num){};
+    choice_info() : next_pnum(0){};
+    choice_info(int num) : next_pnum(num){};
     ~choice_info(){};
   };
 
@@ -72,9 +71,12 @@ class page {
       //check if the second line is the seperator "#"
       if (line_vec[1][0] == '#') {
         win = true;
-        for (int i = 2; i < len; i++) {
-          context.append(line_vec[i]);
-          context.append("\n");
+        if (len != 2) {
+          for (int i = 2; i < len - 1; i++) {
+            context.append(line_vec[i]);
+            context.append("\n");
+          }
+          context.append(line_vec[len - 1]);
         }
       }
       else {
@@ -88,9 +90,12 @@ class page {
       //check if the second line is the seperator "#"
       if (line_vec[1][0] == '#') {
         lose = true;
-        for (int i = 2; i < len; i++) {
-          context.append(line_vec[i]);
-          context.append("\n");
+        if (len != 2) {
+          for (int i = 2; i < len - 1; i++) {
+            context.append(line_vec[i]);
+            context.append("\n");
+          }
+          context.append(line_vec[len - 1]);
         }
       }
       else {
@@ -133,9 +138,13 @@ class page {
         num_choice++;
         i++;
       }
-      for (int m = i + 1; m < len; m++) {
-        context.append(line_vec[m]);
-        context.append("\n");
+
+      if (len != 2) {
+        for (int m = i + 1; m < len - 1; m++) {
+          context.append(line_vec[m]);
+          context.append("\n");
+        }
+        context.append(line_vec[len - 1]);
       }
     }
   }
