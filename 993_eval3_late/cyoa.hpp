@@ -146,6 +146,10 @@ class page {
         context.append(line_vec[len - 1]);
       }
     }
+    else {
+      cerr << "The input formate not following the request.\n";
+      exit(EXIT_FAILURE);
+    }
   }
 
   void print_page() {
