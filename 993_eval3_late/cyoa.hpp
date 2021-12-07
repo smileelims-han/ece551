@@ -85,7 +85,7 @@ class page {
     }
 
     //if the first line is "LOSE"
-    if (line_vec[0] == "LOSE") {
+    else if (line_vec[0] == "LOSE") {
       //check if the second line is the seperator "#"
       if (line_vec[1][0] == '#') {
         lose = true;
