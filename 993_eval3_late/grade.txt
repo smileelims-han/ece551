@@ -1,6 +1,6 @@
-Grading at 12/07/2021:21:08:24.865143
-For commit ID 30178d5de0a72a3b266d3b4fcf3b2c8890fdcd93
-Grading at Tue Dec  7 16:08:12 EST 2021
+Grading at 12/07/2021:21:22:28.400248
+For commit ID ac4227501e34e1073a66577f2c678e64fab12080
+Grading at Tue Dec  7 16:22:15 EST 2021
 Checking Step 1 test cases required for extra credit
 
 Compiling cyoa-step1
@@ -8,8 +8,8 @@ make: 'cyoa-step1' is up to date.
 Compiled for step 1
 +-----------------------------------------------------------------------+
 Test case 1 (success): cyoa-step1 /usr/local/ece551/cyoa/story1/page1.txt
-1c1,24
-< The file name should start with pageX.
+1c1,18
+< One day, a strange old wizard comes to your village and tells you thatthere is an evil dragon lurking in the hills. This wizard's story explainswhy the village's goats and cows have been going missing lately.The wizard tells you: "It is up to you, hero, to stop this dragon. Nobodyelse in this village is foolish...errrr I mean brave enough to stop thisdragon." The wizard offers you a choice of one of three magic items to help you onyour quest. The first is a magic whistle that lets you make any bird call that youwant. The second is a pair of magic shoes that let you jump 10 feet in theair. The third is a magic toaster, which can take any item that you can fitinto it, and turn it into perfectly cooked toast (optionally with butterand/or jam). "Choose wisely, for your quest and your village depend on you."
 ---
 > One day, a strange old wizard comes to your village and tells you that
 > there is an evil dragon lurking in the hills. This wizard's story explains
@@ -29,17 +29,19 @@ Test case 1 (success): cyoa-step1 /usr/local/ece551/cyoa/story1/page1.txt
 > and/or jam). 
 > 
 > "Choose wisely, for your quest and your village depend on you."
-> 
-> What would you like to do?
-> 
+5,7c22,24
+< 1. Choose the magic whistl
+< 2. Choose the magic shoe
+< 3. Choose the magic toaste
+---
 >  1. Choose the magic whistle.
 >  2. Choose the magic shoes.
 >  3. Choose the magic toaster.
 Your file did not match the expected output
 +-----------------------------------------------------------------------+
 Test case 2 (success): cyoa-step1 /usr/local/ece551/cyoa/story1/page2.txt
-1c1,24
-< The file name should start with pageX.
+1c1,18
+< As you take the magic whistle from the wizard's hand, he disappears in apuff of smoke. You decide that you should give the whistle a try before youset off to deal with the dragon (after all, if you learned nothing else inschool, it was that testing is VERY important). You think of a raven and blow on the whistle "CAW CAW CAW CAW". Then youthink of a chicken and blow "COCKADOODLEDOOOO". It seems like the whistleworks great, though you wonder how many different birds you can think ofand how they would help you deal with the dragon. Putting that question in the back of your mind, you contemplate whether ornot you should get some help before you set out. On the one hand, if you goalone, you might be able to better sneak into the dragon's lair. On theother hand, help might be useful.Fortunately for you, the two wisest people you know, Denevieve and Grew,live in the next village over. Thinking about it for several minutes, youdecide whom to go to for help.
 ---
 > As you take the magic whistle from the wizard's hand, he disappears in a
 > puff of smoke. You decide that you should give the whistle a try before you
@@ -59,17 +61,19 @@ Test case 2 (success): cyoa-step1 /usr/local/ece551/cyoa/story1/page2.txt
 > Fortunately for you, the two wisest people you know, Denevieve and Grew,
 > live in the next village over. Thinking about it for several minutes, you
 > decide whom to go to for help.
-> 
-> What would you like to do?
-> 
+5,7c22,24
+< 1. Go to Denevieve for hel
+< 2. Go to Grew for hel
+< 3. Go alon
+---
 >  1. Go to Denevieve for help.
 >  2. Go to Grew for help.
 >  3. Go alone.
 Your file did not match the expected output
 +-----------------------------------------------------------------------+
 Test case 3 (success): cyoa-step1 /usr/local/ece551/cyoa/story1/page3.txt
-1c1,24
-< The file name should start with pageX.
+1c1,18
+< As you take the magic shoes from the wizard's hand, he disappears in a puffof smoke. You decide that you should give the shoes a try before you setoff to deal with the dragon (after all, if you learned nothing else inschool, it was that testing is VERY important). You put on the shoes and start jumping all over the village. As you boundover fences and onto the roofs of small houses, your fellow villagers lookat you in awe. You are sure you could win any basketball game but are alittle more worried about how you will deal with a dragon.Putting that question in the back of your mind, you contemplate whether ornot you should get some help before you set out. On the one hand, if you goalone, you might be able to better sneak into the dragon's lair. On theother hand, help might be useful.Fortunately for you, the two wisest people you know, Denevieve and Grew,live in the next village over. Thinking about it for several minutes, youdecide whom to go to for help.
 ---
 > As you take the magic shoes from the wizard's hand, he disappears in a puff
 > of smoke. You decide that you should give the shoes a try before you set
@@ -89,17 +93,19 @@ Test case 3 (success): cyoa-step1 /usr/local/ece551/cyoa/story1/page3.txt
 > Fortunately for you, the two wisest people you know, Denevieve and Grew,
 > live in the next village over. Thinking about it for several minutes, you
 > decide whom to go to for help.
-> 
-> What would you like to do?
-> 
+5,7c22,24
+< 1. Go to Denevieve for hel
+< 2. Go to Grew for hel
+< 3. Go alon
+---
 >  1. Go to Denevieve for help.
 >  2. Go to Grew for help.
 >  3. Go alone.
 Your file did not match the expected output
 +-----------------------------------------------------------------------+
 Test case 4 (success): cyoa-step1 /usr/local/ece551/cyoa/story1/page4.txt
-1c1,28
-< The file name should start with pageX.
+1c1,22
+< As you take the magic toaster from the wizard's hand, he disappears in apuff of smoke. You decide that you should give the toaster a try before youset off to deal with the dragon (after all, if you learned nothing else inschool, it was that testing is VERY important). Having not had any breakfast, you are quite hungry, so testing the toasterseems like a great solution to two problems. You grab a rock off theground, stuff it in, and think of delicious toast with raspberry jam. A fewseconds later, out pops the most perfectly done toast with just the rightamount of butter and jam. Wow that is good! You spend a while longertesting the toaster again and again "just to be sure". After you arestuffed on toast, you start to wonder how this will help you with thedragon. Putting that question in the back of your mind, you contemplate whether ornot you should get some help before you set out. On the one hand, if you goalone, you might be able to better sneak into the dragon's lair. On theother hand, help might be useful.Fortunately for you, the two wisest people you know, Denevieve and Grew,live in the next village over. Thinking about it for several minutes, youdecide whom to go to for help.
 ---
 > As you take the magic toaster from the wizard's hand, he disappears in a
 > puff of smoke. You decide that you should give the toaster a try before you
@@ -123,17 +129,19 @@ Test case 4 (success): cyoa-step1 /usr/local/ece551/cyoa/story1/page4.txt
 > Fortunately for you, the two wisest people you know, Denevieve and Grew,
 > live in the next village over. Thinking about it for several minutes, you
 > decide whom to go to for help.
-> 
-> What would you like to do?
-> 
+5,7c26,28
+< 1. Go to Denevieve for help
+< 2. Go to Grew for help
+< 3. Go alon
+---
 >  1. Go to Denevieve for help.
 >  2. Go to Grew for help.
 >  3. Go alone.
 Your file did not match the expected output
 +-----------------------------------------------------------------------+
 Test case 5 (success): cyoa-step1 /usr/local/ece551/cyoa/story1/page5.txt
-1c1,20
-< The file name should start with pageX.
+1c1,14
+< After thinking about it a bit, you decide that Denevieve is probably abetter choice. After all, her singing skills are likely to come in handy,especially with your magic whistle. Maybe dragons can be tamed by choirmusic and bird calls? That could be right, but you aren't sure--you sleptthrough that day of Magical Creature Biology class. After knocking on the door, Denevieve is surprised to hear about the dragonthreat but is happy to help you. After all, you were her best student andtested every piece of code extensively and incrementally. Surely you can betrusted with a quest about dragons.The two of you set off into the hills and find the cave of the dragon. Youtake a minute to confer about your musical options and come up with a shortlist of three possible combinations to tame the dragon. 
 ---
 > After thinking about it a bit, you decide that Denevieve is probably a
 > better choice. After all, her singing skills are likely to come in handy,
@@ -149,17 +157,19 @@ Test case 5 (success): cyoa-step1 /usr/local/ece551/cyoa/story1/page5.txt
 > The two of you set off into the hills and find the cave of the dragon. You
 > take a minute to confer about your musical options and come up with a short
 > list of three possible combinations to tame the dragon. 
-> 
-> What would you like to do?
-> 
+5,7c18,20
+< 1. Silent Night, accompanied by raven call
+< 2. Angels We Have Heard on High, accompanied by roosters crowin
+< 3. Bohemian Rhapsody, accompanied by the magestic call of a bald eagl
+---
 >  1. Silent Night, accompanied by raven calls
 >  2. Angels We Have Heard on High, accompanied by roosters crowing
 >  3. Bohemian Rhapsody, accompanied by the magestic call of a bald eagle
 Your file did not match the expected output
 +-----------------------------------------------------------------------+
 Test case 6 (success): cyoa-step1 /usr/local/ece551/cyoa/story2/page1.txt
-1c1,15
-< The file name should start with pageX.
+1c1,9
+< One bright weekend afternoon, you decide to adventure, putting on your Ringof the Niebelungen and traveler's cloak and strapping the famed sword Iceto your back.Half-way up the mountain Matterhorn, you see a cave opening with steamcoming out. You enter the cave and tiptoe inside, straining your eyes inthe gloomy mist.You encounter a dragon.
 ---
 > One bright weekend afternoon, you decide to adventure, putting on your Ring
 > of the Niebelungen and traveler's cloak and strapping the famed sword Ice
@@ -170,60 +180,57 @@ Test case 6 (success): cyoa-step1 /usr/local/ece551/cyoa/story2/page1.txt
 > the gloomy mist.
 > 
 > You encounter a dragon.
-> 
-> What would you like to do?
-> 
+5,7c13,15
+< 1. Try to sneak past the sleeping drag
+< 2. Leave the dragon's cave and go ho
+< 3. Stab the dragon in the ne
+---
 >  1. Try to sneak past the sleeping dragon
 >  2. Leave the dragon's cave and go home
 >  3. Stab the dragon in the neck
 Your file did not match the expected output
 +-----------------------------------------------------------------------+
 Test case 7 (success): cyoa-step1 /usr/local/ece551/cyoa/story2/page2.txt
-1c1,9
-< The file name should start with pageX.
+1c1,4
+< As you tiptoe past the sleeping dragon, steam rising from her nostrils, yousee a gleaming treasure hoard, just beyond the scaly tail.An enormous, rare Scythian ruby gleams atop a pedestal, beckoning you.
 ---
 > As you tiptoe past the sleeping dragon, steam rising from her nostrils, you
 > see a gleaming treasure hoard, just beyond the scaly tail.
 > 
 > An enormous, rare Scythian ruby gleams atop a pedestal, beckoning you.
-> 
-> What would you like to do?
-> 
+5,6c8,9
+< 1. Pick up the ru
+< 2. Pass the ruby to explore the rest of the hoa
+---
 >  1. Pick up the ruby
 >  2. Pass the ruby to explore the rest of the hoard
 Your file did not match the expected output
 +-----------------------------------------------------------------------+
 Test case 8 (success): cyoa-step1 /usr/local/ece551/cyoa/story2/page3.txt
-1c1,4
-< The file name should start with pageX.
+1c1,2
+< You enjoy a quiet evening at home with a mug of herbal tea and your cats,who only think they are tiny dragons.
 ---
 > You enjoy a quiet evening at home with a mug of herbal tea and your cats,
 > who only think they are tiny dragons.
-> 
-> Congratulations! You have won. Hooray!
 Your file did not match the expected output
 +-----------------------------------------------------------------------+
 Test case 9 (success): cyoa-step1 /usr/local/ece551/cyoa/story2/page4.txt
-1c1,4
-< The file name should start with pageX.
+1c1,2
+< Your famed sword Ice becomes embedded in the dragon's neck scales, and thedragon rolls over, crushing you.
 ---
 > Your famed sword Ice becomes embedded in the dragon's neck scales, and the
 > dragon rolls over, crushing you.
-> 
-> Sorry, you have lost. Better luck next time!
 Your file did not match the expected output
 +-----------------------------------------------------------------------+
 Test case 10 (success): cyoa-step1 /usr/local/ece551/cyoa/story2/page5.txt
-1c1,7
-< The file name should start with pageX.
+1c1,5
+< The ruby is slippery, as though wet, and it glides through your fingers,crashing hard into a golden plate, which clatters and crashes like acymbal.The dragon wakes up, roasts you like a marshmallow, and eats you whole.
 ---
 > The ruby is slippery, as though wet, and it glides through your fingers,
 > crashing hard into a golden plate, which clatters and crashes like a
 > cymbal.
 > 
 > The dragon wakes up, roasts you like a marshmallow, and eats you whole.
-> 
-> Sorry, you have lost. Better luck next time!
 Your file did not match the expected output
 Step 1: Failed test cases as above
 
