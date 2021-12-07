@@ -1,6 +1,6 @@
-Grading at 12/07/2021:21:22:28.400248
-For commit ID ac4227501e34e1073a66577f2c678e64fab12080
-Grading at Tue Dec  7 16:22:15 EST 2021
+Grading at 12/07/2021:21:34:41.177594
+For commit ID 4014df145f806fe7005217e50a66a2795784af50
+Grading at Tue Dec  7 16:34:28 EST 2021
 Checking Step 1 test cases required for extra credit
 
 Compiling cyoa-step1
@@ -8,31 +8,12 @@ make: 'cyoa-step1' is up to date.
 Compiled for step 1
 +-----------------------------------------------------------------------+
 Test case 1 (success): cyoa-step1 /usr/local/ece551/cyoa/story1/page1.txt
-1c1,18
-< One day, a strange old wizard comes to your village and tells you thatthere is an evil dragon lurking in the hills. This wizard's story explainswhy the village's goats and cows have been going missing lately.The wizard tells you: "It is up to you, hero, to stop this dragon. Nobodyelse in this village is foolish...errrr I mean brave enough to stop thisdragon." The wizard offers you a choice of one of three magic items to help you onyour quest. The first is a magic whistle that lets you make any bird call that youwant. The second is a pair of magic shoes that let you jump 10 feet in theair. The third is a magic toaster, which can take any item that you can fitinto it, and turn it into perfectly cooked toast (optionally with butterand/or jam). "Choose wisely, for your quest and your village depend on you."
----
-> One day, a strange old wizard comes to your village and tells you that
-> there is an evil dragon lurking in the hills. This wizard's story explains
-> why the village's goats and cows have been going missing lately.
-> 
-> The wizard tells you: "It is up to you, hero, to stop this dragon. Nobody
-> else in this village is foolish...errrr I mean brave enough to stop this
-> dragon." 
-> 
-> The wizard offers you a choice of one of three magic items to help you on
-> your quest. 
-> 
-> The first is a magic whistle that lets you make any bird call that you
-> want. The second is a pair of magic shoes that let you jump 10 feet in the
-> air. The third is a magic toaster, which can take any item that you can fit
-> into it, and turn it into perfectly cooked toast (optionally with butter
-> and/or jam). 
-> 
-> "Choose wisely, for your quest and your village depend on you."
-5,7c22,24
-< 1. Choose the magic whistl
-< 2. Choose the magic shoe
-< 3. Choose the magic toaste
+20d19
+< 
+23,25c22,24
+<  1. Choose the magic whistl
+<  2. Choose the magic shoe
+<  3. Choose the magic toaste
 ---
 >  1. Choose the magic whistle.
 >  2. Choose the magic shoes.
@@ -40,31 +21,12 @@ Test case 1 (success): cyoa-step1 /usr/local/ece551/cyoa/story1/page1.txt
 Your file did not match the expected output
 +-----------------------------------------------------------------------+
 Test case 2 (success): cyoa-step1 /usr/local/ece551/cyoa/story1/page2.txt
-1c1,18
-< As you take the magic whistle from the wizard's hand, he disappears in apuff of smoke. You decide that you should give the whistle a try before youset off to deal with the dragon (after all, if you learned nothing else inschool, it was that testing is VERY important). You think of a raven and blow on the whistle "CAW CAW CAW CAW". Then youthink of a chicken and blow "COCKADOODLEDOOOO". It seems like the whistleworks great, though you wonder how many different birds you can think ofand how they would help you deal with the dragon. Putting that question in the back of your mind, you contemplate whether ornot you should get some help before you set out. On the one hand, if you goalone, you might be able to better sneak into the dragon's lair. On theother hand, help might be useful.Fortunately for you, the two wisest people you know, Denevieve and Grew,live in the next village over. Thinking about it for several minutes, youdecide whom to go to for help.
----
-> As you take the magic whistle from the wizard's hand, he disappears in a
-> puff of smoke. You decide that you should give the whistle a try before you
-> set off to deal with the dragon (after all, if you learned nothing else in
-> school, it was that testing is VERY important). 
-> 
-> You think of a raven and blow on the whistle "CAW CAW CAW CAW". Then you
-> think of a chicken and blow "COCKADOODLEDOOOO". It seems like the whistle
-> works great, though you wonder how many different birds you can think of
-> and how they would help you deal with the dragon. 
-> 
-> Putting that question in the back of your mind, you contemplate whether or
-> not you should get some help before you set out. On the one hand, if you go
-> alone, you might be able to better sneak into the dragon's lair. On the
-> other hand, help might be useful.
-> 
-> Fortunately for you, the two wisest people you know, Denevieve and Grew,
-> live in the next village over. Thinking about it for several minutes, you
-> decide whom to go to for help.
-5,7c22,24
-< 1. Go to Denevieve for hel
-< 2. Go to Grew for hel
-< 3. Go alon
+20d19
+< 
+23,25c22,24
+<  1. Go to Denevieve for hel
+<  2. Go to Grew for hel
+<  3. Go alon
 ---
 >  1. Go to Denevieve for help.
 >  2. Go to Grew for help.
@@ -72,31 +34,12 @@ Test case 2 (success): cyoa-step1 /usr/local/ece551/cyoa/story1/page2.txt
 Your file did not match the expected output
 +-----------------------------------------------------------------------+
 Test case 3 (success): cyoa-step1 /usr/local/ece551/cyoa/story1/page3.txt
-1c1,18
-< As you take the magic shoes from the wizard's hand, he disappears in a puffof smoke. You decide that you should give the shoes a try before you setoff to deal with the dragon (after all, if you learned nothing else inschool, it was that testing is VERY important). You put on the shoes and start jumping all over the village. As you boundover fences and onto the roofs of small houses, your fellow villagers lookat you in awe. You are sure you could win any basketball game but are alittle more worried about how you will deal with a dragon.Putting that question in the back of your mind, you contemplate whether ornot you should get some help before you set out. On the one hand, if you goalone, you might be able to better sneak into the dragon's lair. On theother hand, help might be useful.Fortunately for you, the two wisest people you know, Denevieve and Grew,live in the next village over. Thinking about it for several minutes, youdecide whom to go to for help.
----
-> As you take the magic shoes from the wizard's hand, he disappears in a puff
-> of smoke. You decide that you should give the shoes a try before you set
-> off to deal with the dragon (after all, if you learned nothing else in
-> school, it was that testing is VERY important). 
-> 
-> You put on the shoes and start jumping all over the village. As you bound
-> over fences and onto the roofs of small houses, your fellow villagers look
-> at you in awe. You are sure you could win any basketball game but are a
-> little more worried about how you will deal with a dragon.
-> 
-> Putting that question in the back of your mind, you contemplate whether or
-> not you should get some help before you set out. On the one hand, if you go
-> alone, you might be able to better sneak into the dragon's lair. On the
-> other hand, help might be useful.
-> 
-> Fortunately for you, the two wisest people you know, Denevieve and Grew,
-> live in the next village over. Thinking about it for several minutes, you
-> decide whom to go to for help.
-5,7c22,24
-< 1. Go to Denevieve for hel
-< 2. Go to Grew for hel
-< 3. Go alon
+20d19
+< 
+23,25c22,24
+<  1. Go to Denevieve for hel
+<  2. Go to Grew for hel
+<  3. Go alon
 ---
 >  1. Go to Denevieve for help.
 >  2. Go to Grew for help.
@@ -104,35 +47,12 @@ Test case 3 (success): cyoa-step1 /usr/local/ece551/cyoa/story1/page3.txt
 Your file did not match the expected output
 +-----------------------------------------------------------------------+
 Test case 4 (success): cyoa-step1 /usr/local/ece551/cyoa/story1/page4.txt
-1c1,22
-< As you take the magic toaster from the wizard's hand, he disappears in apuff of smoke. You decide that you should give the toaster a try before youset off to deal with the dragon (after all, if you learned nothing else inschool, it was that testing is VERY important). Having not had any breakfast, you are quite hungry, so testing the toasterseems like a great solution to two problems. You grab a rock off theground, stuff it in, and think of delicious toast with raspberry jam. A fewseconds later, out pops the most perfectly done toast with just the rightamount of butter and jam. Wow that is good! You spend a while longertesting the toaster again and again "just to be sure". After you arestuffed on toast, you start to wonder how this will help you with thedragon. Putting that question in the back of your mind, you contemplate whether ornot you should get some help before you set out. On the one hand, if you goalone, you might be able to better sneak into the dragon's lair. On theother hand, help might be useful.Fortunately for you, the two wisest people you know, Denevieve and Grew,live in the next village over. Thinking about it for several minutes, youdecide whom to go to for help.
----
-> As you take the magic toaster from the wizard's hand, he disappears in a
-> puff of smoke. You decide that you should give the toaster a try before you
-> set off to deal with the dragon (after all, if you learned nothing else in
-> school, it was that testing is VERY important). 
-> 
-> Having not had any breakfast, you are quite hungry, so testing the toaster
-> seems like a great solution to two problems. You grab a rock off the
-> ground, stuff it in, and think of delicious toast with raspberry jam. A few
-> seconds later, out pops the most perfectly done toast with just the right
-> amount of butter and jam. Wow that is good! You spend a while longer
-> testing the toaster again and again "just to be sure". After you are
-> stuffed on toast, you start to wonder how this will help you with the
-> dragon. 
-> 
-> Putting that question in the back of your mind, you contemplate whether or
-> not you should get some help before you set out. On the one hand, if you go
-> alone, you might be able to better sneak into the dragon's lair. On the
-> other hand, help might be useful.
-> 
-> Fortunately for you, the two wisest people you know, Denevieve and Grew,
-> live in the next village over. Thinking about it for several minutes, you
-> decide whom to go to for help.
-5,7c26,28
-< 1. Go to Denevieve for help
-< 2. Go to Grew for help
-< 3. Go alon
+24d23
+< 
+27,29c26,28
+<  1. Go to Denevieve for help
+<  2. Go to Grew for help
+<  3. Go alon
 ---
 >  1. Go to Denevieve for help.
 >  2. Go to Grew for help.
@@ -140,27 +60,12 @@ Test case 4 (success): cyoa-step1 /usr/local/ece551/cyoa/story1/page4.txt
 Your file did not match the expected output
 +-----------------------------------------------------------------------+
 Test case 5 (success): cyoa-step1 /usr/local/ece551/cyoa/story1/page5.txt
-1c1,14
-< After thinking about it a bit, you decide that Denevieve is probably abetter choice. After all, her singing skills are likely to come in handy,especially with your magic whistle. Maybe dragons can be tamed by choirmusic and bird calls? That could be right, but you aren't sure--you sleptthrough that day of Magical Creature Biology class. After knocking on the door, Denevieve is surprised to hear about the dragonthreat but is happy to help you. After all, you were her best student andtested every piece of code extensively and incrementally. Surely you can betrusted with a quest about dragons.The two of you set off into the hills and find the cave of the dragon. Youtake a minute to confer about your musical options and come up with a shortlist of three possible combinations to tame the dragon. 
----
-> After thinking about it a bit, you decide that Denevieve is probably a
-> better choice. After all, her singing skills are likely to come in handy,
-> especially with your magic whistle. Maybe dragons can be tamed by choir
-> music and bird calls? That could be right, but you aren't sure--you slept
-> through that day of Magical Creature Biology class. 
-> 
-> After knocking on the door, Denevieve is surprised to hear about the dragon
-> threat but is happy to help you. After all, you were her best student and
-> tested every piece of code extensively and incrementally. Surely you can be
-> trusted with a quest about dragons.
-> 
-> The two of you set off into the hills and find the cave of the dragon. You
-> take a minute to confer about your musical options and come up with a short
-> list of three possible combinations to tame the dragon. 
-5,7c18,20
-< 1. Silent Night, accompanied by raven call
-< 2. Angels We Have Heard on High, accompanied by roosters crowin
-< 3. Bohemian Rhapsody, accompanied by the magestic call of a bald eagl
+16d15
+< 
+19,21c18,20
+<  1. Silent Night, accompanied by raven call
+<  2. Angels We Have Heard on High, accompanied by roosters crowin
+<  3. Bohemian Rhapsody, accompanied by the magestic call of a bald eagl
 ---
 >  1. Silent Night, accompanied by raven calls
 >  2. Angels We Have Heard on High, accompanied by roosters crowing
@@ -168,22 +73,12 @@ Test case 5 (success): cyoa-step1 /usr/local/ece551/cyoa/story1/page5.txt
 Your file did not match the expected output
 +-----------------------------------------------------------------------+
 Test case 6 (success): cyoa-step1 /usr/local/ece551/cyoa/story2/page1.txt
-1c1,9
-< One bright weekend afternoon, you decide to adventure, putting on your Ringof the Niebelungen and traveler's cloak and strapping the famed sword Iceto your back.Half-way up the mountain Matterhorn, you see a cave opening with steamcoming out. You enter the cave and tiptoe inside, straining your eyes inthe gloomy mist.You encounter a dragon.
----
-> One bright weekend afternoon, you decide to adventure, putting on your Ring
-> of the Niebelungen and traveler's cloak and strapping the famed sword Ice
-> to your back.
-> 
-> Half-way up the mountain Matterhorn, you see a cave opening with steam
-> coming out. You enter the cave and tiptoe inside, straining your eyes in
-> the gloomy mist.
-> 
-> You encounter a dragon.
-5,7c13,15
-< 1. Try to sneak past the sleeping drag
-< 2. Leave the dragon's cave and go ho
-< 3. Stab the dragon in the ne
+11d10
+< 
+14,16c13,15
+<  1. Try to sneak past the sleeping drag
+<  2. Leave the dragon's cave and go ho
+<  3. Stab the dragon in the ne
 ---
 >  1. Try to sneak past the sleeping dragon
 >  2. Leave the dragon's cave and go home
@@ -191,46 +86,29 @@ Test case 6 (success): cyoa-step1 /usr/local/ece551/cyoa/story2/page1.txt
 Your file did not match the expected output
 +-----------------------------------------------------------------------+
 Test case 7 (success): cyoa-step1 /usr/local/ece551/cyoa/story2/page2.txt
-1c1,4
-< As you tiptoe past the sleeping dragon, steam rising from her nostrils, yousee a gleaming treasure hoard, just beyond the scaly tail.An enormous, rare Scythian ruby gleams atop a pedestal, beckoning you.
----
-> As you tiptoe past the sleeping dragon, steam rising from her nostrils, you
-> see a gleaming treasure hoard, just beyond the scaly tail.
-> 
-> An enormous, rare Scythian ruby gleams atop a pedestal, beckoning you.
-5,6c8,9
-< 1. Pick up the ru
-< 2. Pass the ruby to explore the rest of the hoa
+6d5
+< 
+9,10c8,9
+<  1. Pick up the ru
+<  2. Pass the ruby to explore the rest of the hoa
 ---
 >  1. Pick up the ruby
 >  2. Pass the ruby to explore the rest of the hoard
 Your file did not match the expected output
 +-----------------------------------------------------------------------+
 Test case 8 (success): cyoa-step1 /usr/local/ece551/cyoa/story2/page3.txt
-1c1,2
-< You enjoy a quiet evening at home with a mug of herbal tea and your cats,who only think they are tiny dragons.
----
-> You enjoy a quiet evening at home with a mug of herbal tea and your cats,
-> who only think they are tiny dragons.
+4d3
+< 
 Your file did not match the expected output
 +-----------------------------------------------------------------------+
 Test case 9 (success): cyoa-step1 /usr/local/ece551/cyoa/story2/page4.txt
-1c1,2
-< Your famed sword Ice becomes embedded in the dragon's neck scales, and thedragon rolls over, crushing you.
----
-> Your famed sword Ice becomes embedded in the dragon's neck scales, and the
-> dragon rolls over, crushing you.
+4d3
+< 
 Your file did not match the expected output
 +-----------------------------------------------------------------------+
 Test case 10 (success): cyoa-step1 /usr/local/ece551/cyoa/story2/page5.txt
-1c1,5
-< The ruby is slippery, as though wet, and it glides through your fingers,crashing hard into a golden plate, which clatters and crashes like acymbal.The dragon wakes up, roasts you like a marshmallow, and eats you whole.
----
-> The ruby is slippery, as though wet, and it glides through your fingers,
-> crashing hard into a golden plate, which clatters and crashes like a
-> cymbal.
-> 
-> The dragon wakes up, roasts you like a marshmallow, and eats you whole.
+7d6
+< 
 Your file did not match the expected output
 Step 1: Failed test cases as above
 
@@ -256,18 +134,9 @@ Your program successfully indicated a failure case
 Test case 2 (error): cyoa-step1 test1.txt
 Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
-Test case 3 (success): cyoa-step1 test3.txt
-We considered this an error case and gave the following message:
-Expected file name pageX.txt, but found test3.txt
-1d0
-< The file name should start with pageX.
-Your file did not match the expected output
-+-----------------------------------------------------------------------+
-Test case 4 (success): cyoa-step1 test4.txt
-We considered this an error case and gave the following message:
-Expected file name pageX.txt, but found test4.txt
-1d0
-< The file name should start with pageX.
+Test case 3 (success): cyoa-step1 page1.txt
+6d5
+< 
 Your file did not match the expected output
 
 You have FAILED one or more of your test cases
