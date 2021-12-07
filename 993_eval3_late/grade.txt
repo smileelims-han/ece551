@@ -1,6 +1,6 @@
-Grading at 12/07/2021:22:22:27.405682
-For commit ID bc117a5400d4fb24fc791139a023231cbf6e687f
-Grading at Tue Dec  7 17:22:13 EST 2021
+Grading at 12/07/2021:22:41:10.997243
+For commit ID 4526d0a01c15ebc141d902c9efd082f9058a8708
+Grading at Tue Dec  7 17:40:57 EST 2021
 Checking Step 1 test cases required for extra credit
 
 Compiling cyoa-step1
@@ -29,21 +29,14 @@ Test case 7 (success): cyoa-step1 /usr/local/ece551/cyoa/story2/page2.txt
 Your file matched the expected output
 +-----------------------------------------------------------------------+
 Test case 8 (success): cyoa-step1 /usr/local/ece551/cyoa/story2/page3.txt
-1c1,4
-< The input formate not following the request.
----
-> You enjoy a quiet evening at home with a mug of herbal tea and your cats,
-> who only think they are tiny dragons.
-> 
-> Congratulations! You have won. Hooray!
-Your file did not match the expected output
+Your file matched the expected output
 +-----------------------------------------------------------------------+
 Test case 9 (success): cyoa-step1 /usr/local/ece551/cyoa/story2/page4.txt
 Your file matched the expected output
 +-----------------------------------------------------------------------+
 Test case 10 (success): cyoa-step1 /usr/local/ece551/cyoa/story2/page5.txt
 Your file matched the expected output
-Step 1: Failed test cases as above
+Step 1: PASSED Pre-Grader Test Cases
 
 Compiling cyoa-step2
 The code did not compile!
