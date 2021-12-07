@@ -39,6 +39,7 @@ class page {
       exit(EXIT_FAILURE);
     }
 
+    //check if the txt file name not start with pageX.
     string file_name_str;
     file_name_str += file_name;
     int name_bef = file_name_str.rfind('/');
@@ -48,6 +49,7 @@ class page {
       exit(EXIT_FAILURE);
     }
 
+    //store the txt file into vector<string> by line.
     string line;
     vector<string> line_vec;
     while (getline(file, line)) {
@@ -56,6 +58,7 @@ class page {
     add_page(line_vec);
   };
 
+  //add the information to page class based on the txt file context.
   void add_page(vector<string> line_vec) {
     //It should at least have two line
     int len = line_vec.size();
@@ -71,6 +74,7 @@ class page {
         win = true;
         for (int i = 2; i < len; i++) {
           context.append(line_vec[i]);
+          context.append("\n");
         }
       }
       else {
@@ -86,6 +90,7 @@ class page {
         lose = true;
         for (int i = 2; i < len; i++) {
           context.append(line_vec[i]);
+          context.append("\n");
         }
       }
       else {
@@ -130,6 +135,7 @@ class page {
       }
       for (int m = i + 1; m < len; m++) {
         context.append(line_vec[m]);
+        context.append("\n");
       }
     }
   }
@@ -147,7 +153,7 @@ class page {
       cout << "What would you like to do?" << endl;
       cout << '\n';
       for (int i = 1; i <= num_choice; i++) {
-        cout << i << ". " << choice[i - 1].choice_context << endl;
+        cout << " " << i << ". " << choice[i - 1].choice_context << endl;
       }
     }
   }
