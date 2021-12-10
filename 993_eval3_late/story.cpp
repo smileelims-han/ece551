@@ -2,7 +2,7 @@
 #include "story.hpp"
 
 #include <algorithm>
-#include <climit>
+#include <climits>
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -141,12 +141,11 @@ void story::play_story() {
       cerr << "Please enter the valid choice number.\n";
       exit(EXIT_FAILURE);
     };
-
-    int next_page = pages[i].choice[user - 1].next_pnum - 1;
-    i = next_page - 1;
+    int next_page = pages[i].choice[user - 1].next_pnum;
     pages[next_page - 1].print_page();
     if (pages[next_page - 1].win == true || pages[next_page - 1].lose == true) {
       exit(EXIT_SUCCESS);
     }
+    i = next_page - 1;
   }
 }
