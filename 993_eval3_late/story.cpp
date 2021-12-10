@@ -2,6 +2,7 @@
 #include "story.hpp"
 
 #include <algorithm>
+#include <climit>
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -47,6 +48,10 @@ void story::read_story(char * dirname) {
       pages.push_back(new_page);
     }
     i++;
+    if (i == INT_MAX) {
+      cerr << "The num of pages exceed the INT_MAX in this computer.\n";
+      exit(EXIT_FAILURE);
+    }
   }
 
   win_lose();
@@ -132,7 +137,12 @@ void story::play_story() {
   while (true) {
     int user;
     cin >> user;
-    int next_page = pages[i].choice[user - 1].next_pnum;
+    if (user > pages[i].num_choice) {
+      cerr << "Please enter the valid choice number.\n";
+      exit(EXIT_FAILURE);
+    };
+
+    int next_page = pages[i].choice[user - 1].next_pnum - 1;
     i = next_page - 1;
     pages[next_page - 1].print_page();
     if (pages[next_page - 1].win == true || pages[next_page - 1].lose == true) {
