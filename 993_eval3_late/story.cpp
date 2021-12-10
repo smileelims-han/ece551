@@ -133,7 +133,7 @@ void story::play_story() {
     int user;
     cin >> user;
     int next_page = pages[i].choice[user - 1].next_pnum;
-    i = next_page;
+    i = next_page - 1;
     pages[next_page - 1].print_page();
     if (pages[next_page - 1].win == true || pages[next_page - 1].lose == true) {
       exit(EXIT_SUCCESS);
