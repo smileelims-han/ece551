@@ -57,7 +57,7 @@ void story::read_story(char * dirname) {
 void story::win_lose() {
   int w = 0;
   int l = 0;
-  for (int i = 1; i <= num_pages; i++) {
+  for (int i = 0; i < num_pages; i++) {
     if (pages[i].win == true) {
       w++;
     }
