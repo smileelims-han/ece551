@@ -12,3 +12,4 @@ cyoa_step2 myTest/6_noLOSE
 cyoa-step1 page1.txt
 cyoa-step1 page3.txt
 cyoa-step2 myTest/2_noconnect_page
+cyoa-step2 myTest/4_group_pages
