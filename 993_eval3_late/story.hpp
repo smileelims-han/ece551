@@ -24,5 +24,7 @@ class story {
   void story_valid();
   void win_lose();
   void play_story();
+  int find_depth(int pid);
+  void depth_pages();
   ~story(){};
 };

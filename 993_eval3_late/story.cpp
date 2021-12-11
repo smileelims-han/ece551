@@ -1,4 +1,3 @@
-
 #include "story.hpp"
 
 #include <algorithm>
@@ -151,5 +150,27 @@ void story::play_story() {
       exit(EXIT_SUCCESS);
     }
     i = next_page - 1;
+  }
+}
+int story::find_depth(int n) {
+  int total_depth = structure.size();
+  int depth;
+  for (depth = 0; depth < total_depth; depth++) {
+    if (find_1D(n, structure[depth]) == 1) {
+      return depth;
+    }
+  }
+  return -1;
+}
+
+void story::depth_pages() {
+  for (int i = 0; i < num_pages; i++) {
+    int depth = find_depth(i + 1);
+    if (depth != -1) {
+      cout << "Page " << i + 1 << ":" << depth << endl;
+    }
+    if (depth == -1) {
+      cout << "Page " << i + 1 << " is not reachable\n" << endl;
+    }
   }
 }
