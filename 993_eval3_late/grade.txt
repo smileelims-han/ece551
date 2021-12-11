@@ -1,10 +1,10 @@
-Grading at 12/11/2021:19:09:49.167034
-For commit ID 27ac41faa7863227fdc525065eb52390428dcbf8
-Grading at Sat Dec 11 14:09:28 EST 2021
+Grading at 12/11/2021:19:33:53.647740
+For commit ID 5327fa7a45d1c113e02d70e7239db7256b476b2a
+Grading at Sat Dec 11 14:33:30 EST 2021
 Checking Step 1 test cases required for extra credit
 
 Compiling cyoa-step1
-g++ -o cyoa-step1 -ggdb3 -Wall -Werror -pedantic -std=gnu++98 cyoa-step1.cpp page.cpp page.hpp 
+make: 'cyoa-step1' is up to date.
 Compiled for step 1
 +-----------------------------------------------------------------------+
 Test case 1 (success): cyoa-step1 /usr/local/ece551/cyoa/story1/page1.txt
@@ -39,7 +39,7 @@ Your file matched the expected output
 Step 1: PASSED Pre-Grader Test Cases
 
 Compiling cyoa-step2
-make: 'cyoa-step2' is up to date.
+g++ -o cyoa-step2 -ggdb3 -Wall -Werror -pedantic -std=gnu++98 cyoa-step2.cpp story.hpp story.cpp page.cpp page.hpp
 Compiled for step 2
 Input to story is
 1
@@ -74,8 +74,14 @@ Your file matched the expected output
 Step 2: PASSED Pre-Grader Test Cases
 
 Compiling cyoa-step3
-The code did not compile!
-Did not compile for step 3
+make: 'cyoa-step3' is up to date.
++-----------------------------------------------------------------------+
+Test case 15 (success): cyoa-step3 /usr/local/ece551/cyoa/story1
+Your file matched the expected output
++-----------------------------------------------------------------------+
+Test case 16 (success): cyoa-step3 /usr/local/ece551/cyoa/story2
+Your file matched the expected output
+Step 3: PASSED Pre-Grader Test Cases
 
 Compiling cyoa-step4
 The code did not compile!
