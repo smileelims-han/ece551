@@ -113,6 +113,10 @@ void story::story_structure() {
       if (pages[p - 1].num_choice != 0) {
         for (int j = 0; j < pages[p - 1].num_choice; j++) {
           if (find_1D(pages[p - 1].choice[j].next_pnum, visited) == 0) {
+            if (pages[p - 1].choice[j].next_pnum > num_pages) {
+              cerr << "There is a choice point to an unkown page.\n";
+              exit(EXIT_FAILURE);
+            }
             q.push(pages[p - 1].choice[j].next_pnum);
             visited.push_back(pages[p - 1].choice[j].next_pnum);
           }
