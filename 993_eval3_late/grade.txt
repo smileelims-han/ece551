@@ -1,6 +1,6 @@
-Grading at 12/12/2021:01:22:52.102480
-For commit ID ad3c03f49f4a6730666f1c5e69a7be33450a3014
-Grading at Sat Dec 11 20:22:30 EST 2021
+Grading at 12/12/2021:01:32:12.992695
+For commit ID 8218d610bf3c336864e669ae6e11bc0d4fb7a155
+Grading at Sat Dec 11 20:31:52 EST 2021
 Checking Step 1 test cases required for extra credit
 
 Compiling cyoa-step1
@@ -109,10 +109,13 @@ Your program successfully indicated a failure case
 Test case 5 (error): cyoa-step2 myTest/3_choice_nopage
 Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
-Test case 6 (error): cyoa-step2 myTest/4_group_pages
-Your program successfully indicated a failure case
+Test case 6 (error): cyoa-step2 myTest/4_group_pages < input.txt
+You listed this in #errors, and we agree that it is an error case.
+However, your program did not properly indicate an error case by BOTH
+Writing an error message to standard ERROR and exiting EXIT_FAILURE
+In particular,
 
-You have PASSED all of your test cases
-Keep adding test cases until you are satisfied your program is correct
+Program must be one of cyoa-step1 cyoa-step2 cyoa-step3 cyoa-step4
+But found "cyoa_step2"
 
 Overall Grade: NO GRADE YET
