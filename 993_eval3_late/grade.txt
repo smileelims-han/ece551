@@ -1,6 +1,6 @@
-Grading at 12/12/2021:16:49:10.257326
-For commit ID c8bf3f3ff2aae3597572d2432179edbd4649cb31
-Grading at Sun Dec 12 11:48:45 EST 2021
+Grading at 12/12/2021:17:02:44.274340
+For commit ID e8b994e393250ba03e7bfb395d57e3602552bd9d
+Grading at Sun Dec 12 12:02:20 EST 2021
 Checking Step 1 test cases required for extra credit
 
 Compiling cyoa-step1
@@ -106,39 +106,33 @@ Your program successfully indicated a failure case
 Test case 4 (error): cyoa-step2 myTest/1_no_page1
 Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
-Test case 5 (error): cyoa-step2 myTest/3_choice_nopage
+Test case 5 (error): cyoa-step2 myTest/5_noWIN
 Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
-Test case 6 (error): cyoa-step2 myTest/4_group_pages < input.txt
-You listed this in #errors, and we agree that it is an error case.
-However, your program did not properly indicate an error case by BOTH
-Writing an error message to standard ERROR and exiting EXIT_FAILURE
-In particular,
-
-+-----------------------------------------------------------------------+
-Test case 7 (error): cyoa-step2 myTest/5_noWIN
-Your program successfully indicated a failure case
-+-----------------------------------------------------------------------+
-Test case 8 (error): cyoa-step2 myTest/6_noLOSE
+Test case 6 (error): cyoa-step2 myTest/6_noLOSE
 Your program successfully indicated a failure case
 
 Compiling cyoa-step1
 make: 'cyoa-step1' is up to date.
 +-----------------------------------------------------------------------+
-Test case 9 (success): cyoa-step1 page1.txt
+Test case 7 (success): cyoa-step1 page1.txt
 Your file matched the expected output
 +-----------------------------------------------------------------------+
-Test case 10 (success): cyoa-step1 page3.txt
+Test case 8 (success): cyoa-step1 page3.txt
 Your file matched the expected output
 
 Compiling cyoa-step2
 make: 'cyoa-step2' is up to date.
 +-----------------------------------------------------------------------+
-Test case 11 (success): cyoa-step2 myTest/2_noconnect_page < myinput.txt
+Test case 9 (success): cyoa-step2 myTest/2_noconnect_page < myinput.txt
+We considered this an error case and gave the following message:
+Your file matched the expected output
++-----------------------------------------------------------------------+
+Test case 10 (success): cyoa-step2 myTest/4_group_pages < input.txt
 We considered this an error case and gave the following message:
 Your file matched the expected output
 
-You have FAILED one or more of your test cases
-Keep debugging
+You have PASSED all of your test cases
+Keep adding test cases until you are satisfied your program is correct
 
 Overall Grade: NO GRADE YET
