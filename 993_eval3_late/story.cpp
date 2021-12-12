@@ -196,7 +196,7 @@ void story::depth_pages() {
       cout << "Page " << i + 1 << ":" << depth << endl;
     }
     if (depth == -1) {
-      cout << "Page " << i + 1 << " is not reachable\n" << endl;
+      cout << "Page " << i + 1 << " is not reachable" << endl;
     }
   }
 }
