@@ -15,11 +15,11 @@ class page {
  public:
   bool win;
   bool lose;
-  int page_num;
+  size_t page_num;
 
   class choice_info {
    public:
-    int next_pnum;
+    size_t next_pnum;
     string choice_context;
     choice_info() : next_pnum(0){};
     choice_info(int num) : next_pnum(num){};
@@ -27,7 +27,7 @@ class page {
   };
 
   vector<choice_info> choice;
-  int num_choice;
+  size_t num_choice;
 
   page() : win(false), lose(false), page_num(0), num_choice(0){};
   ~page(){};

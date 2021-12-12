@@ -12,13 +12,24 @@ using namespace std;
 class story {
  private:
   vector<page> pages;
-  int num_pages;
-  vector<vector<int> > structure;
+  size_t num_pages;
+  vector<int> visited;
+
+  class structure {
+   public:
+    vector<vector<int> > s;
+    int num_lev;
+    structure() : num_lev(0){};
+  };
+
+  vector<structure> group;
+  size_t num_groups;
 
  public:
-  story() : num_pages(0){};
+  story() : num_pages(0), num_groups(0){};
   void read_story(char * filename);
-  void story_structure();
+  void story_group();
+  structure story_structure(int n);
   bool find_1D(int f, vector<int> q);
   bool find_2D(int f, vector<vector<int> > s);
   void story_valid();

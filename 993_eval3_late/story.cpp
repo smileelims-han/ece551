@@ -54,14 +54,15 @@ void story::read_story(char * dirname) {
   }
 
   win_lose();
-  story_structure();
+
+  story_group();
   story_valid();
 }
 
 void story::win_lose() {
   int w = 0;
   int l = 0;
-  for (int i = 0; i < num_pages; i++) {
+  for (size_t i = 0; i < num_pages; i++) {
     if (pages[i].win == true) {
       w++;
     }
@@ -94,26 +95,39 @@ bool story::find_2D(int f, vector<vector<int> > s) {
   }
   return 0;
 }
-void story::story_structure() {
-  //adding page num into a queue following the choice sequence
+
+void story::story_group() {
+  while (visited.size() != num_pages) {
+    for (size_t i = 1; i <= num_pages; i++) {
+      if (find_1D(i, visited) == 0) {
+        group.push_back(story_structure(i));
+        num_groups++;
+      }
+    }
+  }
+}
+
+story::structure story::story_structure(int n) {
+  //adding first unvisited page num into a queue following the choice sequence
   queue<int> q;
-  q.push(1);
-  vector<int> visited;
-  visited.push_back(1);
+  q.push(n);
+  visited.push_back(n);
+  structure cur_s;
 
   while (!q.empty()) {
     int cur_level = q.size();
-    structure.push_back(vector<int>());
+    cur_s.s.push_back(vector<int>());
+    cur_s.num_lev++;
     for (int i = 0; i < cur_level; i++) {
       int p = q.front();
       q.pop();
-      structure.back().push_back(p);
+      cur_s.s.back().push_back(p);
       //iterate from the choice
       if (pages[p - 1].num_choice != 0) {
-        for (int j = 0; j < pages[p - 1].num_choice; j++) {
+        for (size_t j = 0; j < pages[p - 1].num_choice; j++) {
           if (find_1D(pages[p - 1].choice[j].next_pnum, visited) == 0) {
             if (pages[p - 1].choice[j].next_pnum > num_pages) {
-              cerr << "There is a choice point to an unkown page.\n";
+              cerr << "A choice point to an unkown page.\n";
               exit(EXIT_FAILURE);
             }
             q.push(pages[p - 1].choice[j].next_pnum);
@@ -123,28 +137,36 @@ void story::story_structure() {
       }
     }
   }
+  return cur_s;
 }
 
 void story::story_valid() {
-  for (int i = 1; i <= num_pages; i++) {
-    if (find_2D(i, structure) == 0) {
+  int find = 0;
+  for (size_t i = 1; i <= num_pages; i++) {
+    //search in each group, if find the element,reset flag find
+    //then go to find next page.
+    for (size_t j = 0; j < num_groups; j++) {
+      find += find_2D(i, group[j].s);
+    }
+    if (find == 0) {
       cerr << "There are certain pages do not have parent.\n";
       exit(EXIT_FAILURE);
     }
+    find = 0;
   }
 }
 
 void story::play_story() {
   pages[0].print_page();
-  int i = 0;
+  size_t i = 0;
   while (true) {
-    int user;
+    size_t user;
     cin >> user;
-    if (user > pages[i].num_choice) {
+    if (user > pages[i].num_choice || user < 1) {
       cerr << "Please enter the valid choice number.\n";
       exit(EXIT_FAILURE);
     };
-    int next_page = pages[i].choice[user - 1].next_pnum;
+    size_t next_page = pages[i].choice[user - 1].next_pnum;
     pages[next_page - 1].print_page();
     if (pages[next_page - 1].win == true || pages[next_page - 1].lose == true) {
       exit(EXIT_SUCCESS);
@@ -153,10 +175,14 @@ void story::play_story() {
   }
 }
 int story::find_depth(int n) {
-  int total_depth = structure.size();
+  if (find_2D(n, group[0].s) == 0) {
+    return -1;
+  }
+
+  int total_depth = group[0].num_lev;
   int depth;
   for (depth = 0; depth < total_depth; depth++) {
-    if (find_1D(n, structure[depth]) == 1) {
+    if (find_1D(n, group[0].s[depth]) == 1) {
       return depth;
     }
   }
@@ -164,7 +190,7 @@ int story::find_depth(int n) {
 }
 
 void story::depth_pages() {
-  for (int i = 0; i < num_pages; i++) {
+  for (size_t i = 0; i < num_pages; i++) {
     int depth = find_depth(i + 1);
     if (depth != -1) {
       cout << "Page " << i + 1 << ":" << depth << endl;

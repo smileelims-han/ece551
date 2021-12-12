@@ -144,7 +144,7 @@ void page::print_page() {
   if (win == false && lose == false && num_choice != 0) {
     cout << "What would you like to do?" << endl;
     cout << '\n';
-    for (int i = 1; i <= num_choice; i++) {
+    for (size_t i = 1; i <= num_choice; i++) {
       cout << " " << i << ". " << choice[i - 1].choice_context << endl;
     }
   }
