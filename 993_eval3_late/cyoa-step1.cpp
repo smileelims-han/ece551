@@ -13,4 +13,5 @@ int main(int argc, char ** argv) {
   page p;
   p.parse_page(argv[1]);
   p.print_page();
+  return EXIT_SUCCESS;
 }
