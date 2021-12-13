@@ -3,6 +3,7 @@
 #include <deque>
 #include <istream>
 #include <queue>
+#include <stack>
 #include <vector>
 
 #include "page.hpp"
@@ -24,6 +25,7 @@ class story {
 
   vector<structure> group;
   size_t num_groups;
+  vector<vector<int> > paths;
 
  public:
   story() : num_pages(0), num_groups(0){};
@@ -37,5 +39,8 @@ class story {
   void play_story();
   int find_depth(int pid);
   void depth_pages();
+  void story_paths();
+  int find_choice(int from, int to);
+  void print_paths();
   ~story(){};
 };

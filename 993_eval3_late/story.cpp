@@ -9,6 +9,7 @@
 #include <istream>
 #include <queue>
 #include <sstream>
+#include <stack>
 #include <string>
 #include <vector>
 
@@ -57,6 +58,7 @@ void story::read_story(char * dirname) {
 
   story_group();
   story_valid();
+  //story_paths();
 }
 
 void story::win_lose() {
@@ -197,6 +199,65 @@ void story::depth_pages() {
     }
     if (depth == -1) {
       cout << "Page " << i + 1 << " is not reachable" << endl;
+    }
+  }
+}
+
+void story::story_paths() {
+  stack<vector<int> > todo;
+  vector<int> visited_page;
+  vector<int> first_page;
+  first_page.push_back(1);
+  todo.push(first_page);
+  while (!todo.empty()) {
+    vector<int> cur_path = todo.top();
+    todo.pop();
+    int cur_page = cur_path.back();
+
+    if (pages[cur_page - 1].win == true) {
+      paths.push_back(cur_path);
+    }
+    if (pages[cur_page - 1].win == false && pages[cur_page - 1].lose == false &&
+        pages[cur_page - 1].num_choice != 0) {
+      if (find_1D(cur_page, visited_page) == 0) {  //if the cur_page not in the visited
+        visited_page.push_back(cur_page);
+        for (size_t i = 0; i < pages[cur_page - 1].num_choice; i++) {
+          vector<int> next_path = cur_path;
+          next_path.push_back(pages[cur_page - 1].choice[i].next_pnum);
+          todo.push(next_path);
+        }
+      }
+    }
+    if (pages[cur_page - 1].lose == true) {
+      if (find_1D(cur_page, visited_page) == 0) {  //if the cur_page not in the visited
+        visited_page.push_back(cur_page);
+      }
+    }
+  }
+}
+int story::find_choice(int from, int to) {
+  for (size_t i = 0; i < pages[from - 1].num_choice; i++) {
+    int next = pages[from - 1].choice[i].next_pnum;
+    if (to == next) {
+      return i + 1;
+    }
+  }
+  cerr << "Some wrong with find_choice" << endl;
+  return EXIT_FAILURE;
+}
+
+void story::print_paths() {
+  if (paths.size() == 0) {
+    cout << "This story is unwinnable!" << endl;
+  }
+  else {
+    for (size_t i = 0; i < paths.size(); i++) {
+      for (size_t j = 0; j < paths[i].size() - 1; j++) {
+        int next = find_choice(paths[i][j], paths[i][j + 1]);
+        cout << paths[i][j] << "(" << next << ")"
+             << ",";
+      }
+      cout << paths[i][paths[i].size() - 1] << "(win)" << endl;
     }
   }
 }
