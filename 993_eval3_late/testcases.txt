@@ -11,7 +11,6 @@ cyoa-step1 page1.txt
 cyoa-step1 page3.txt
 cyoa-step2 myTest/2_noconnect_page < myTest/2_noconnect_page/myinput.txt
 cyoa-step2 myTest/4_group_pages < myTest/4_group_pages/input.txt
-cyoa-step2 myTest/4_group_pages
 cyoa-step3 myTest/4_group_pages
 
 
