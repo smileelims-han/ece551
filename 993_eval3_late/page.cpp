@@ -10,6 +10,9 @@
 
 using namespace std;
 
+//Function parse_page:  will read the input file, parsed
+//it into each line of string, put into a vector, call
+//set_page to setup a page
 void page::parse_page(char * file_name) {
   ifstream file(file_name);
   if (!file) {
@@ -33,11 +36,11 @@ void page::parse_page(char * file_name) {
   while (getline(file, line)) {
     line_vec.push_back(line);
   }
-  add_page(line_vec);
+  set_page(line_vec);
 }
 
-//add the information to page class based on the txt file context.
-void page::add_page(vector<string> line_vec) {
+//Function set_page:using the information to set up a page.
+void page::set_page(vector<string> line_vec) {
   //It should at least have two line
   int len = line_vec.size();
   if (len <= 1) {
@@ -83,11 +86,14 @@ void page::add_page(vector<string> line_vec) {
     }
   }
 
-  //if the first line is choice
+  //if the first line is choice, the first letter of choice must
+  //be valid int from 1 to 9;
   else if (line_vec[0][0] >= '1' && line_vec[0][0] <= '9') {
     int i = 0;
     num_choice = 0;
 
+    //adding all choice to the choice class and push into choice
+    //store vector
     while (line_vec[i][0] != '#') {
       size_t col_index = line_vec[i].find(':');
 
@@ -117,7 +123,8 @@ void page::add_page(vector<string> line_vec) {
       num_choice++;
       i++;
     }
-
+    //after adding the choice, adding the other parts
+    //of the content
     if (len != 2) {
       for (int m = i + 1; m < len - 1; m++) {
         context.append(line_vec[m]);
@@ -132,6 +139,7 @@ void page::add_page(vector<string> line_vec) {
   }
 }
 
+//Function print_page: using to print page infor as required.
 void page::print_page() {
   cout << context << endl;
   cout << '\n';

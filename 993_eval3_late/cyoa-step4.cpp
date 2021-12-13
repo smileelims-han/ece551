@@ -12,7 +12,6 @@ int main(int argc, char ** argv) {
   }
   story s;
   s.read_story(argv[1]);
-  s.story_paths();
   s.print_paths();
   return EXIT_SUCCESS;
 }

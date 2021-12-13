@@ -14,17 +14,21 @@ class story {
  private:
   vector<page> pages;
   size_t num_pages;
-  vector<int> visited;
 
+  //The parameters below are using to
+  //set up the group structure of the story
+  vector<int> visited;
   class structure {
    public:
     vector<vector<int> > s;
     int num_lev;
     structure() : num_lev(0){};
   };
-
   vector<structure> group;
   size_t num_groups;
+
+  //paths using to store the valid no-circle
+  //path to win.
   vector<vector<int> > paths;
 
  public:
