@@ -202,7 +202,7 @@ void story::depth_pages() {
     }
   }
 }
-
+/*
 void story::story_paths() {
   stack<vector<int> > todo;
   vector<int> visited_page;
@@ -261,3 +261,4 @@ void story::print_paths() {
     }
   }
 }
+*/
