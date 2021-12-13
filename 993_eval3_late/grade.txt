@@ -1,6 +1,6 @@
-Grading at 12/13/2021:20:50:55.584268
-For commit ID b2d05660058361cfda8c582d9f8897f06c32bacf
-Grading at Mon Dec 13 15:50:25 EST 2021
+Grading at 12/13/2021:20:52:45.651008
+For commit ID 18dc7a2de39124ad4f455c0f849d6dd623a4157b
+Grading at Mon Dec 13 15:52:15 EST 2021
 Checking Step 1 test cases required for extra credit
 
 Compiling cyoa-step1
@@ -87,18 +87,11 @@ Compiling cyoa-step4
 g++ -ggdb3 -Wall -Werror -pedantic -std=gnu++98 -o cyoa-step4 cyoa-step4.cpp story.cpp page.cpp
 +-----------------------------------------------------------------------+
 Test case 17 (success): cyoa-step4 /usr/local/ece551/cyoa/story1
-0a1,2
-> 1(2),3(1),8(win)
-> 1(3),4(2),12(win)
-Your file did not match the expected output
+Your file matched the expected output
 +-----------------------------------------------------------------------+
 Test case 18 (success): cyoa-step4 /usr/local/ece551/cyoa/story2
-0a1,3
-> 1(1),2(2),6(1),7(1),12(1),9(win)
-> 1(1),2(2),6(2),8(1),11(win)
-> 1(2),3(win)
-Your file did not match the expected output
-Step 4: Failed test cases as above
+Your file matched the expected output
+Step 4: PASSED Pre-Grader Test Cases
 Running your test cases
 
 Compiling cyoa-step1
