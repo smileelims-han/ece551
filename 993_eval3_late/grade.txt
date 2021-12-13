@@ -1,6 +1,6 @@
-Grading at 12/13/2021:21:01:36.531125
-For commit ID 5b429eee4733e0058662ee3686bd22a16d13e162
-Grading at Mon Dec 13 16:01:05 EST 2021
+Grading at 12/13/2021:21:07:18.308410
+For commit ID a99025350f0fd9ce55a15abb4940c24a8eead664
+Grading at Mon Dec 13 16:06:46 EST 2021
 Checking Step 1 test cases required for extra credit
 
 Compiling cyoa-step1
@@ -97,17 +97,17 @@ Running your test cases
 Compiling cyoa-step1
 make: 'cyoa-step1' is up to date.
 +-----------------------------------------------------------------------+
-Test case 1 (error): cyoa-step1 page2.txt
+Test case 1 (error): cyoa-step1 myTest/page2.txt
 Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
-Test case 2 (error): cyoa-step1 page4.txt
+Test case 2 (error): cyoa-step1 myTest/page4.txt
+Your program successfully indicated a failure case
++-----------------------------------------------------------------------+
+Test case 3 (error): cyoa-step1 myTest/page5.txt
 Your program successfully indicated a failure case
 
 Compiling cyoa-step2
 make: 'cyoa-step2' is up to date.
-+-----------------------------------------------------------------------+
-Test case 3 (error): cyoa-step2 story3
-Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
 Test case 4 (error): cyoa-step2 myTest/1_no_page1
 Your program successfully indicated a failure case
@@ -121,10 +121,10 @@ Your program successfully indicated a failure case
 Compiling cyoa-step1
 make: 'cyoa-step1' is up to date.
 +-----------------------------------------------------------------------+
-Test case 7 (success): cyoa-step1 page1.txt
+Test case 7 (success): cyoa-step1 myTest/page1.txt
 Your file matched the expected output
 +-----------------------------------------------------------------------+
-Test case 8 (success): cyoa-step1 page3.txt
+Test case 8 (success): cyoa-step1 myTest/page3.txt
 Your file matched the expected output
 
 Compiling cyoa-step2
@@ -141,14 +141,17 @@ make: 'cyoa-step3' is up to date.
 +-----------------------------------------------------------------------+
 Test case 11 (success): cyoa-step3 myTest/4_group_pages
 Your file matched the expected output
++-----------------------------------------------------------------------+
+Test case 12 (success): cyoa-step3 myTest/7_circle_path
+Your file matched the expected output
 
 Compiling cyoa-step4
 make: 'cyoa-step4' is up to date.
 +-----------------------------------------------------------------------+
-Test case 12 (success): cyoa-step4 myTest/4_group_pages
+Test case 13 (success): cyoa-step4 myTest/4_group_pages
 Your file matched the expected output
 +-----------------------------------------------------------------------+
-Test case 13 (success): cyoa-step4 myTest/7_circle_path
+Test case 14 (success): cyoa-step4 myTest/7_circle_path
 Your file matched the expected output
 
 You have PASSED all of your test cases
