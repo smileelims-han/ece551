@@ -18,6 +18,7 @@ using namespace std;
 //Function read_story: read the story from valid
 //dirname, and parsed into the pages, fullfill
 //the story class
+
 void story::read_story(char * dirname) {
   //check if page1 exist
   string p1 = +dirname;
@@ -77,6 +78,7 @@ void story::read_story(char * dirname) {
 
 //Function win_lose: check if the current
 //story have at least one "WIN" and one "LOSE"
+
 void story::win_lose() {
   int w = 0;
   int l = 0;
@@ -97,6 +99,7 @@ void story::win_lose() {
 //Function find_1D: a helper function will be used
 //in multiple plase, to check if certain page is
 //in the 1D vector of not.
+
 bool story::find_1D(int f, vector<int> v) {
   for (vector<int>::iterator it = v.begin(); it != v.end(); ++it) {
     if ((*it) == f) {
@@ -109,6 +112,7 @@ bool story::find_1D(int f, vector<int> v) {
 //Function find_2D: a helper function will be used
 //in multiple plase, to check if certain page is
 //in the 2D vector of not.
+
 bool story::find_2D(int f, vector<vector<int> > s) {
   for (vector<vector<int> >::iterator it1 = s.begin(); it1 != s.end(); ++it1) {
     for (vector<int>::iterator it2 = (*it1).begin(); it2 != (*it1).end(); ++it2) {
@@ -125,6 +129,7 @@ bool story::find_2D(int f, vector<vector<int> > s) {
 //contains a valid structure. For example, if there
 //are a group which not reached by page1, but refer
 //to each other.
+
 void story::story_group() {
   while (visited.size() != num_pages) {
     for (size_t i = 1; i <= num_pages; i++) {
@@ -140,6 +145,7 @@ void story::story_group() {
 //which contains a 2D vector;Each of the vector contains
 //a level of the current group of story, and each level
 //contains the page num in current level.
+
 story::structure story::story_structure(int n) {
   //adding first unvisited page num into a queue following the choice sequence
   //using queue to help generate the structure
@@ -179,6 +185,7 @@ story::structure story::story_structure(int n) {
 }
 
 //Function story_valid: checking if the given story is valid.
+
 void story::story_valid() {
   int find = 0;
   for (size_t i = 1; i <= num_pages; i++) {
@@ -196,6 +203,7 @@ void story::story_valid() {
 }
 
 //Function play_story: ask user to play the story as request.
+
 void story::play_story() {
   //always start with page 1
   pages[0].print_page();
@@ -224,6 +232,7 @@ void story::play_story() {
 //we only need to read the first group(because if there
 //has a second group, the others will not reachable
 //from page1.
+
 int story::find_depth(int n) {
   if (find_2D(n, group[0].s) == 0) {
     return -1;
@@ -241,6 +250,7 @@ int story::find_depth(int n) {
 
 //Function depth_pages: print out each pages depth by
 //calling the function find_depth.
+
 void story::depth_pages() {
   for (size_t i = 0; i < num_pages; i++) {
     int depth = find_depth(i + 1);
@@ -255,6 +265,7 @@ void story::depth_pages() {
 
 //Function story_paths: using stack of vector<int> to set up
 //a DFS in the current story.
+
 void story::story_paths() {
   stack<vector<int> > todo;
   //a local vector visited_page to track the visited page.
@@ -301,6 +312,7 @@ void story::story_paths() {
 //Function find_choice:a helper function for print_path;
 //it will return the choice number from page "from" to
 //page "to".
+
 int story::find_choice(int from, int to) {
   for (size_t i = 0; i < pages[from - 1].num_choice; i++) {
     int next = pages[from - 1].choice[i].next_pnum;
@@ -315,6 +327,7 @@ int story::find_choice(int from, int to) {
 }
 
 //Function print_paths:print the valid paths as request.
+
 void story::print_paths() {
   if (paths.size() == 0) {
     cout << "This story is unwinnable!" << endl;
